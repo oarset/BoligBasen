@@ -11,6 +11,7 @@ public class Bolig {
 	private int boa, byggeaar;
 	private int leiepris; // pris regnes i øre (pris = 300000 beetyr 3000 kroner)
 	private Date opprettet;
+	public Bolig next;
 	
 	// constructor oppretter bolig med adresse og type
 	public Bolig(String add, String type){
@@ -43,8 +44,7 @@ public class Bolig {
 	public int getLeiePris(){
 		return leiepris;
 		
-		
+	public String toString() {
+		String printString = "test";
 	}
-	
-	
 }
