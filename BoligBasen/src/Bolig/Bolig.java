@@ -1,11 +1,10 @@
-//TESTTESTTESTrerwerwerwe
 
 package Bolig;
 
 import java.util.Date;
 
 
-public class Bolig {
+public abstract class Bolig {
 
 	private String addresse, boligtype, beskrivelse;
 	private int boa, byggeaar;
@@ -43,8 +42,9 @@ public class Bolig {
 	// finner leieprisen for boligen (pr. mnd)
 	public int getLeiePris(){
 		return leiepris;
-		
+	}
 	public String toString() {
 		String printString = "test";
+		return printString;
 	}
 }
