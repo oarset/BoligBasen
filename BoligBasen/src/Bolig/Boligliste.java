@@ -1,3 +1,9 @@
+/**
+ * Boligliste --- Liste med boliger.
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 9. mai - Lagt til metode for å hente ny boligliste basert på eier/epost.
+ */
+
 package Bolig;
 
 public class Boligliste {
@@ -39,6 +45,26 @@ public class Boligliste {
 			cycle.next = cycle.next.next;
 			return;
 		}
+	}
+	
+	public Boligliste utleierBoligliste(String epost) {
+		if (epost == null) 
+			return null;
+		Boligliste ny = new Boligliste();
+		if (first.getEier().email == epost) {
+			ny.first = first;
+		}
+		else {
+		Bolig cycle = first;
+		while (cycle.next != null) {
+			if (cycle.getEier().email == epost) {
+				ny.settInnBolig(cycle);
+			}
+			cycle = cycle.next;
+		}
+		return ny;
+		}
+		return null;
 	}
 	
 	public String toString() {
