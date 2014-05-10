@@ -1,3 +1,9 @@
+/**
+ * Utleiere. Klasse for alle Personer av typen utleier.
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 10. mai.
+ */
+
 package Bolig;
 
 public class Utleiere extends Person {
