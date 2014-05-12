@@ -1,3 +1,9 @@
+/**
+ * Leilighetklasse
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 10. mai.
+ */
+
 package Bolig;
 
 public class Leilighet extends Bolig{

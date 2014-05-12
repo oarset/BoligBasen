@@ -1,3 +1,8 @@
+/**
+ * Bolig --- Boligklasse
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 10. mai.
+ */
 
 package Bolig;
 
@@ -10,6 +15,7 @@ public abstract class Bolig {
 	private int boa, byggeaar;
 	private int leiepris; // pris regnes i øre (pris = 300000 beetyr 3000 kroner)
 	private Date opprettet;
+	private Utleiere eier;
 	public Bolig next;
 	
 	// constructor oppretter bolig med adresse og type
@@ -38,6 +44,9 @@ public abstract class Bolig {
 	// setter leie prisen pr. mnd.
 	public void setLeiePris(int leie){
 		leiepris = leie;
+	}
+	public Utleiere getEier() {
+		return eier;
 	}
 	// finner leieprisen for boligen (pr. mnd)
 	public int getLeiePris(){

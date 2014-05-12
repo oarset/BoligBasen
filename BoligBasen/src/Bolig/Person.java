@@ -1,3 +1,9 @@
+/**
+ * Personklasse
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 10. mai.
+ */
+
 package Bolig;
 
 public abstract class Person {

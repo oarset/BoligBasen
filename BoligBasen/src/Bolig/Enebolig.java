@@ -1,3 +1,9 @@
+/**
+ * Eneboligklasse
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 10. mai.
+ */
+
 package Bolig;
 
 public class Enebolig extends Bolig{

@@ -1,3 +1,9 @@
+/**
+ * Boligsøker --- Boligsøker klasse
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 10. mai.
+ */
+
 package Bolig;
 
 public class Boligsøker extends Person {
