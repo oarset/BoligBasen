@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
@@ -11,9 +12,12 @@ public class newBoligPanel extends JPanel{
 	
 	public newBoligPanel(){
 		
-		setPreferredSize(new Dimension(300,300));
+		setPreferredSize(new Dimension(500,800));
+		setBackground(Color.cyan);
 		
-		add( new JLabel( "Legg til ny bolig" ) );
+		add( new JLabel( "Legg til en ny bolig" ) );
+		
+		
 		
 	}
 }

@@ -1,7 +1,10 @@
 package GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class BoligBaseFrame extends JFrame{
@@ -23,6 +27,17 @@ public class BoligBaseFrame extends JFrame{
 		super("BoligBasen");
 
 		leftframe = 1;
+		
+		// lager default panelene
+		newBrukerPanel brukerpan = new newBrukerPanel();
+		
+		// lager default infor panel
+		final infoPanel info = new infoPanel();
+		
+		// lager default tittel
+		final JPanel header = new JPanel();
+		JLabel headerLabel = new JLabel("Lag ny Bruker");
+		header.add(headerLabel);
 		
 		 // Legger til Fil meny
 		JMenu filemenu = new JMenu("Fil");
@@ -39,7 +54,7 @@ public class BoligBaseFrame extends JFrame{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(2);
+					setLeftFrame(2, info, header);
 					}
 
 
@@ -53,7 +68,7 @@ public class BoligBaseFrame extends JFrame{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(1);
+					setLeftFrame(1, info, header);
 					}
 
 
@@ -84,22 +99,20 @@ public class BoligBaseFrame extends JFrame{
 		// legger til innhold i Info menyen
 		infomenu.add(veiviser);
 		infomenu.add(om);
-		
-		
-		header = new JTextField( 18 );
-		
-		newBrukerPanel brukerpan = new newBrukerPanel();
+
 		
 		Container c = getContentPane();
-	 	c.setLayout( new FlowLayout() );
-	 	c.add(brukerpan);
+	 	c.setLayout( new BorderLayout() );
+	 	c.add(header,BorderLayout.PAGE_START);
+	 	c.add(brukerpan, BorderLayout.LINE_START);
+	 	c.add(info, BorderLayout.LINE_END);
 		  
 		  
-		  setSize( 850, 800 );
-		  setVisible( true );
+		setSize( 1080, 840 );
+		setVisible( true );
 		}
 	 
-	 public void setLeftFrame(int i){
+	 public void setLeftFrame(int i, infoPanel info, JPanel head){
 		 
 		leftframe = i; 
 		if(leftframe == 1){
@@ -107,7 +120,10 @@ public class BoligBaseFrame extends JFrame{
 			 
 		Container c = getContentPane();
 		c.removeAll();
-		c.add(boligpan);
+	 	c.setLayout( new BorderLayout() );
+	 	c.add(head,BorderLayout.PAGE_START);
+	 	c.add(boligpan, BorderLayout.LINE_START);
+	 	c.add(info, BorderLayout.LINE_END);
 		c.revalidate();
 		c.repaint();
 		}
@@ -117,7 +133,10 @@ public class BoligBaseFrame extends JFrame{
 		
 		Container c = getContentPane();
 		c.removeAll();
-		c.add(brukerpan);
+	 	c.setLayout( new BorderLayout() );
+	 	c.add(head,BorderLayout.PAGE_START);
+	 	c.add(brukerpan, BorderLayout.LINE_START);
+	 	c.add(info, BorderLayout.LINE_END);
 		c.revalidate();
 		c.repaint();
 		}
