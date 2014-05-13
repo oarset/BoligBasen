@@ -2,7 +2,7 @@ package Bolig;
 
 public class Leiekontrakterliste {
 	
-	Leiekontrakter neste;
+	Leiekontrakter first;
 	
 	public Leiekontrakterliste() {
 		
