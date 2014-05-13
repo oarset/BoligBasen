@@ -6,11 +6,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Bolig.Boligsøker;
+import Bolig.Person;
+
 
 public class NewBrukerPanel extends JPanel{
 
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
 	private JButton newBoligSeekerButton, newUtleierButton;
+	private Person per;
 	
 	public NewBrukerPanel(){
 		
@@ -192,12 +196,42 @@ public class NewBrukerPanel extends JPanel{
 		
 	}
 	
-	public void nyBoligSeeker(){
+	public Boligsøker nyBoligSeeker(){
+		try{
+		String bsfnavn = fornavn.getText();
+		String bsenavn = etternavn.getText();
+		String bsadd = adresse.getText();
+		String bspnr = pnr.getText();
+		String bssted = sted.getText();
+		int bsdag = Integer.parseInt(dag.getText());
+		int bsmnd = Integer.parseInt(mnd.getText());
+		int bsaar = Integer.parseInt(aar.getText());
+		String bsemail = email.getText();
+		String bstlf = tlf.getText();
+		
+		Boligsøker seeker = new Boligsøker(bsfnavn, bsenavn, bsadd, bspnr, bssted, bsdag, bsmnd, bsaar, bsemail, bstlf);
+		
+		return seeker;
+		
+		}
+		catch ( NumberFormatException e ) {
+		    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
+		    return null;
+		  }
+		
+		
+		
 		
 	}
 	
 	public void nyUtleier(){
 		
+	}
+	
+	
+	private void errorOutput( String msg )
+	{
+	  JOptionPane.showMessageDialog( this, msg );
 	}
 
 	private class Knappelytter implements ActionListener
