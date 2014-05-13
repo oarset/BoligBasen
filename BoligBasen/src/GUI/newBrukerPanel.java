@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 public class newBrukerPanel extends JPanel{
 
-	private JFormattedTextField fornavn, etternavn, adresse, dag, mnd, aar, email, tlf;
+	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
 	
 	public newBrukerPanel(){
 		
@@ -28,6 +28,7 @@ public class newBrukerPanel extends JPanel{
 		fornavnPanel.setLayout(bl);
 		fornavn = new JFormattedTextField();
 		fornavn.setColumns(20);
+		
 		fornavnPanel.add( new JLabel( "Fornavn" ), BorderLayout.PAGE_START );
 		fornavnPanel.add(fornavn, BorderLayout.LINE_START);
 		
@@ -47,6 +48,7 @@ public class newBrukerPanel extends JPanel{
 		etternavnPanel.setLayout(bl2);
 		etternavn = new JFormattedTextField();
 		etternavn.setColumns(20);
+		
 		etternavnPanel.add( new JLabel( "Etternavn" ), BorderLayout.PAGE_START );
 		etternavnPanel.add(etternavn, BorderLayout.LINE_START);
 		
@@ -63,6 +65,7 @@ public class newBrukerPanel extends JPanel{
 		adressePanel.setLayout(bl3);
 		adresse = new JFormattedTextField();
 		adresse.setColumns(20);
+		
 		adressePanel.add( new JLabel( "Adresse" ), BorderLayout.PAGE_START );
 		adressePanel.add(adresse, BorderLayout.LINE_START);
 		
@@ -71,12 +74,34 @@ public class newBrukerPanel extends JPanel{
 		c.gridy = 3;
 		add(adressePanel, c);
 		
-		// label og inputfelt for fødselsdato
-		JPanel datoPanel = new JPanel();
+		// label og inputfelt for postnummer/sted
+		
+		JPanel postPanel = new JPanel();
 		BorderLayout bl4 = new BorderLayout();
 		bl4.setHgap(10);
 		bl4.setVgap(5);
-		datoPanel.setLayout(bl4);
+		postPanel.setLayout(bl4);
+		pnr = new JFormattedTextField(  );
+		pnr.setColumns(4);
+		sted = new JFormattedTextField(  );
+		sted.setColumns(15);
+				
+		postPanel.add( new JLabel( "Postnummer/Sted" ), BorderLayout.PAGE_START );
+		postPanel.add(pnr, BorderLayout.LINE_START);
+		postPanel.add(sted, BorderLayout.CENTER);
+
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 4;
+		add(postPanel, c);
+		
+		
+		// label og inputfelt for fødselsdato
+		JPanel datoPanel = new JPanel();
+		BorderLayout bl5 = new BorderLayout();
+		bl5.setHgap(10);
+		bl5.setVgap(5);
+		datoPanel.setLayout(bl5);
 		dag = new JFormattedTextField(  );
 		dag.setColumns(2);
 		mnd = new JFormattedTextField(  );
@@ -92,7 +117,7 @@ public class newBrukerPanel extends JPanel{
 		
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 0;
-		c.gridy = 4;
+		c.gridy = 5;
 		add(datoPanel, c);
 		
 		
@@ -104,7 +129,7 @@ public class newBrukerPanel extends JPanel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 5;
+		c.gridy = 6;
 		add(bottomFillPanel, c);
 		
 	}
