@@ -42,8 +42,12 @@ public class Boligliste {
 			Bolig cycle = first;
 			while (cycle.next != ny && cycle.next != null)
 				cycle = cycle.next;
-			cycle.next = cycle.next.next;
-			return;
+			if (cycle.next == ny) {
+				cycle.next = cycle.next.next;
+				return;
+			}
+			else
+				return;
 		}
 	}
 	
