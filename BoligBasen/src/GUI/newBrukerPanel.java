@@ -120,6 +120,23 @@ public class newBrukerPanel extends JPanel{
 		c.gridy = 5;
 		add(datoPanel, c);
 		
+		// label og input felt for mail
+		JPanel emailPanel = new JPanel();
+		BorderLayout bl6 = new BorderLayout();
+		bl6.setVgap(5);
+		emailPanel.setLayout(bl6);
+		email = new JFormattedTextField();
+		email.setColumns(20);
+		
+		etternavnPanel.add( new JLabel( "Email" ), BorderLayout.PAGE_START );
+		etternavnPanel.add(email, BorderLayout.LINE_START);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 6;
+		c.insets = new Insets(10,50,0,10);
+		add(etternavnPanel, c);
+		
 		
 		// label som fyller bunn
 		JPanel bottomFillPanel = new JPanel( new BorderLayout());
@@ -129,7 +146,7 @@ public class newBrukerPanel extends JPanel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 6;
+		c.gridy = 7;
 		add(bottomFillPanel, c);
 		
 	}
