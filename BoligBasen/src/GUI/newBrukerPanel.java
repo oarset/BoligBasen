@@ -120,7 +120,7 @@ public class newBrukerPanel extends JPanel{
 		c.gridy = 5;
 		add(datoPanel, c);
 		
-		// label og input felt for mail
+		// label og inputfelt for mail
 		JPanel emailPanel = new JPanel();
 		BorderLayout bl6 = new BorderLayout();
 		bl6.setVgap(5);
@@ -128,14 +128,31 @@ public class newBrukerPanel extends JPanel{
 		email = new JFormattedTextField();
 		email.setColumns(20);
 		
-		etternavnPanel.add( new JLabel( "Email" ), BorderLayout.PAGE_START );
-		etternavnPanel.add(email, BorderLayout.LINE_START);
+		emailPanel.add( new JLabel( "Email" ), BorderLayout.PAGE_START );
+		emailPanel.add(email, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 0;
 		c.gridy = 6;
 		c.insets = new Insets(10,50,0,10);
-		add(etternavnPanel, c);
+		add(emailPanel, c);
+		
+		// label og inputfelt for mail
+		JPanel tlfPanel = new JPanel();
+		BorderLayout bl7 = new BorderLayout();
+		bl7.setVgap(5);
+		tlfPanel.setLayout(bl7);
+		tlf = new JFormattedTextField();
+		tlf.setColumns(20);
+		
+		tlfPanel.add( new JLabel( "Tlf" ), BorderLayout.PAGE_START );
+		tlfPanel.add(tlf, BorderLayout.LINE_START);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 7;
+		c.insets = new Insets(10,50,0,10);
+		add(tlfPanel, c);
 		
 		
 		// label som fyller bunn
@@ -146,7 +163,7 @@ public class newBrukerPanel extends JPanel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 7;
+		c.gridy = 8;
 		add(bottomFillPanel, c);
 		
 	}
