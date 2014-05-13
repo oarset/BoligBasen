@@ -10,8 +10,8 @@ public class Utleiere extends Person {
 	
 	private String firma;
 	
-	public Utleiere(String nvn, String enavn, String adr,String epost, int tlf) {
-		super(nvn, enavn, adr, epost, tlf);
+	public Utleiere(String nvn, String enavn, String adr, String pnr, String sted, String epost, int tlf) {
+		super(nvn, enavn, adr, pnr, sted, epost, tlf);
 
 	}
 	

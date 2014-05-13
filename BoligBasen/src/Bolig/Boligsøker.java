@@ -12,8 +12,8 @@ public class Boligsøker extends Person {
 	private int prisklasse, antRom, størrelse;
 
 	
-	public Boligsøker(String nvn, String enavn, String adr,String epost, int tlf) {
-		super(nvn, enavn, adr, epost, tlf);
+	public Boligsøker(String nvn, String enavn, String adr, String pnr, String sted, String epost, int tlf) {
+		super(nvn, enavn, adr, pnr, sted, epost, tlf);
 
 	}
 	
