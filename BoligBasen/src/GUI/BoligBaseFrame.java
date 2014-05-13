@@ -18,7 +18,8 @@ import javax.swing.JTextField;
 
 public class BoligBaseFrame extends JFrame{
 	
-	private JTextField header;
+	private JPanel header;
+	private InfoPanel info;
 	private int leftframe;
 	
 	
@@ -29,13 +30,13 @@ public class BoligBaseFrame extends JFrame{
 		leftframe = 1;
 		
 		// lager default panelene
-		newBrukerPanel brukerpan = new newBrukerPanel();
+		NewBrukerPanel brukerpan = new NewBrukerPanel();
 		
 		// lager default infor panel
-		final infoPanel info = new infoPanel();
+		info = new InfoPanel();
 		
 		// lager default tittel
-		final JPanel header = new JPanel();
+		header = new JPanel();
 		JLabel headerLabel = new JLabel("Lag ny Bruker");
 		header.add(headerLabel);
 		
@@ -112,11 +113,11 @@ public class BoligBaseFrame extends JFrame{
 		setVisible( true );
 		}
 	 
-	 public void setLeftFrame(int i, infoPanel info, JPanel head){
+	 public void setLeftFrame(int i, InfoPanel info, JPanel head){
 		 
 		leftframe = i; 
 		if(leftframe == 1){
-		newBoligPanel boligpan = new newBoligPanel();
+		NewBoligPanel boligpan = new NewBoligPanel();
 			 
 		Container c = getContentPane();
 		c.removeAll();
@@ -129,7 +130,7 @@ public class BoligBaseFrame extends JFrame{
 		}
 		
 		else if( leftframe == 2){
-		newBrukerPanel brukerpan = new newBrukerPanel();
+		NewBrukerPanel brukerpan = new NewBrukerPanel();
 		
 		Container c = getContentPane();
 		c.removeAll();
@@ -140,6 +141,24 @@ public class BoligBaseFrame extends JFrame{
 		c.revalidate();
 		c.repaint();
 		}
+		
+		else if( leftframe == 3){
+			SeekerPanel seekerpan = new SeekerPanel();
+			
+			Container c = getContentPane();
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(head,BorderLayout.PAGE_START);
+		 	c.add(seekerpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+			c.revalidate();
+			c.repaint();
+			}
 		 
+	 }
+	 
+	 public void nyBoligSeeker(){
+		 
+		 setLeftFrame(3, info, header);
 	 }
 }

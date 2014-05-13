@@ -1,18 +1,18 @@
 package GUI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-public class newBrukerPanel extends JPanel{
+
+public class NewBrukerPanel extends JPanel{
 
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
+	private JButton newBoligSeekerButton, newUtleierButton;
 	
-	public newBrukerPanel(){
+	public NewBrukerPanel(){
 		
 		setPreferredSize(new Dimension(500,200));
 		setLayout(new GridBagLayout());
@@ -154,6 +154,25 @@ public class newBrukerPanel extends JPanel{
 		c.insets = new Insets(10,50,0,10);
 		add(tlfPanel, c);
 		
+		// legger til knapper for å lagre boligsøker/utleier
+		
+		JPanel buttonPanel = new JPanel();
+		FlowLayout fl = new FlowLayout();
+		fl.setAlignment(FlowLayout.RIGHT);
+		buttonPanel.setLayout(fl);
+		
+		newBoligSeekerButton = new JButton("Ny Bolig Søker");
+		newUtleierButton = new JButton("Ny Utleier");
+		
+		buttonPanel.add(newBoligSeekerButton);
+		buttonPanel.add(newUtleierButton);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 8;
+		c.insets = new Insets(10,50,0,10);
+		add(buttonPanel, c);
+		
 		
 		// label som fyller bunn
 		JPanel bottomFillPanel = new JPanel( new BorderLayout());
@@ -163,9 +182,35 @@ public class newBrukerPanel extends JPanel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 8;
+		c.gridy = 9;
 		add(bottomFillPanel, c);
 		
-	}
+		Knappelytter lytter = new Knappelytter();
+
+		newBoligSeekerButton.addActionListener( lytter );
+		newUtleierButton.addActionListener(lytter);
 		
+	}
+	
+	public void nyBoligSeeker(){
+		
+	}
+	
+	public void nyUtleier(){
+		
+	}
+
+	private class Knappelytter implements ActionListener
+	{
+	  public void actionPerformed( ActionEvent e )
+	  {
+	    if ( e.getSource() == newBoligSeekerButton )
+	      nyBoligSeeker();
+	    else if ( e.getSource() == newUtleierButton )
+	      nyUtleier();
+
+	  }
+	}
 }
+
+

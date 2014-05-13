@@ -5,9 +5,9 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class infoPanel extends JPanel{
+public class InfoPanel extends JPanel{
 
-	public infoPanel(){
+	public InfoPanel(){
 		
 		setPreferredSize(new Dimension(540,800));
 		

@@ -6,11 +6,11 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class newBoligPanel extends JPanel{
+public class NewBoligPanel extends JPanel{
 	
 	
 	
-	public newBoligPanel(){
+	public NewBoligPanel(){
 		
 		setPreferredSize(new Dimension(500,800));
 		setBackground(Color.cyan);
