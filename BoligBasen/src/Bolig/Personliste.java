@@ -52,6 +52,21 @@ public class Personliste {
 		}
 	}
 	
+	public Personliste utleierliste() {
+		if (first == null) {
+			return null;
+		}
+		Personliste ny = new Personliste();
+		Bruker cycle = first;
+		while (cycle.neste != null) {
+			if (cycle.erUtleier() == true) {
+				ny.settInnPerson(cycle);
+			}
+			cycle = cycle.neste;
+		}
+		return ny;
+	}
+	
 	public Bruker finnPerson(String epost) {
 		return null;
 	}

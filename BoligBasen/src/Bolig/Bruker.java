@@ -26,6 +26,9 @@ public abstract class Bruker {
 		aar = aa;
 	}
 
+	public boolean erUtleier() {
+		return false;
+	}
 	
 	public void setTelefon(String tlf) {
 		telefon = tlf;
