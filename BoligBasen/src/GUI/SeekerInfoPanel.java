@@ -23,8 +23,10 @@ public class SeekerInfoPanel extends JLabel{
 	public JPanel buttonPanel;
 	public JButton saveInfoButton, backButton;
 	private Boligsøker seeker;
-	private JComboBox<String> sivstatvelger;
+	private JComboBox<String> sivstatvelger, dyrvelger, smokevelger;
 	private String[] sivstatListe = {"Singel", "Samboer", "Gift", "Skilt", "Enke/Enkemann"};
+	private String[] dyrListe = {"ja", "nei"};
+	private String[] smokeListe = {"ja", "nei"};
 	
 	public SeekerInfoPanel(){
 
@@ -102,12 +104,12 @@ public class SeekerInfoPanel extends JLabel{
 		bl3.setHgap(10);
 		bl3.setVgap(5);
 		smokePanel.setLayout(bl3);
-		smoke = new JFormattedTextField(  );
-		smoke.setColumns(8);
+		smokevelger = new JComboBox<>(smokeListe);
+		smokevelger.setSelectedIndex(0);
 
 				
 		smokePanel.add( new JLabel( "Røyker" ), BorderLayout.PAGE_START );
-		smokePanel.add(smoke, BorderLayout.LINE_START);
+		smokePanel.add(smokevelger, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
@@ -146,12 +148,13 @@ public class SeekerInfoPanel extends JLabel{
 		bl5.setHgap(10);
 		bl5.setVgap(5);
 		husdyrPanel.setLayout(bl5);
-		husdyr = new JFormattedTextField(  );
-		husdyr.setColumns(8);
+		
+		dyrvelger = new JComboBox<>(dyrListe);
+		dyrvelger.setSelectedIndex(0);
 
 				
 		husdyrPanel.add( new JLabel( "Har Boligsøkeren husdyr?" ), BorderLayout.PAGE_START );
-		husdyrPanel.add(husdyr, BorderLayout.LINE_START);
+		husdyrPanel.add(dyrvelger, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
@@ -212,7 +215,7 @@ public class SeekerInfoPanel extends JLabel{
 			seeker.setHusholdningSize(husholdning);
 			String seekyrke = yrke.getText();
 			seeker.setYrke(seekyrke);
-			String smoker = smoke.getText();
+			String smoker = smokeListe[(smokevelger.getSelectedIndex())];
 			if (smoker == "ja"){
 				seeker.setRøyker(true);
 			}
@@ -220,7 +223,7 @@ public class SeekerInfoPanel extends JLabel{
 				seeker.setRøyker(false);
 			}
 			
-			String seekhusdyr = husdyr.getText();
+			String seekhusdyr = dyrListe[(dyrvelger.getSelectedIndex())];
 			if (seekhusdyr == "ja"){
 				seeker.setHusdyr(true);
 			}
