@@ -34,6 +34,7 @@ public class Utleiere extends Bruker {
 	public String getFirmaInfo() {
 		return firmaInfo;
 	}
+
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {

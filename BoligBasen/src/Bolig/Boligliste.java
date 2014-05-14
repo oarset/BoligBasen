@@ -102,6 +102,19 @@ public class Boligliste {
 		return null;
 	}
 	
+	public boolean utleierHarBolig(Utleiere person) {
+		if (person == null)
+			return false;
+		Bolig cycle = first;
+		while (cycle.next != null) {
+			if (cycle.getEier().email == person.email) {
+				return true;
+			}
+			cycle = cycle.next;
+			}
+		return false;
+	}
+	
 	public String toString() {
 		String outPrint = "";
 		Bolig cycle = first;
