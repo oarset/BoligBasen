@@ -206,7 +206,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for Utleier");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(6, null, null);
+				setLeftFrame(1, null, utl);
 				
 			}
 	 		
@@ -266,7 +266,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(6, null, null);
+				setLeftFrame(1, null, null);
 				
 			}
 	 		

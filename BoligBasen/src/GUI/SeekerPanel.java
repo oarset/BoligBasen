@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,6 +23,8 @@ public class SeekerPanel extends JLabel{
 	public JButton saveSeekerButton, backButton;
 	public JPanel buttonPanel;
 	private Boligsøker seeker;
+	private JComboBox<String> antromvelger;
+	private String[] antromListe = {"1","2","3","4","5","6","7"};
 	
 	public SeekerPanel(){
 			super();
@@ -99,11 +102,15 @@ public class SeekerPanel extends JLabel{
 			rom = new JFormattedTextField(  );
 			rom.setColumns(8);
 			
-			romPanel.add( new JLabel( "Antall rom" ), BorderLayout.PAGE_START );
-			romPanel.add(rom, BorderLayout.LINE_START);
+			antromvelger = new JComboBox<>(antromListe);
+			antromvelger.setSelectedIndex(0);
+			
+			romPanel.add( new JLabel( "Antall soverom" ), BorderLayout.PAGE_START );
+			romPanel.add(antromvelger, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
 			c.ipady = 10;
+			c.ipadx = 10;
 			c.weightx = 1;
 			c.weighty = 0;
 			c.gridx = 0;
@@ -124,6 +131,7 @@ public class SeekerPanel extends JLabel{
 
 			c.fill = GridBagConstraints.NONE;
 			c.ipady = 10;
+			c.ipadx = 0;
 			c.weightx = 1;
 			c.weighty = 0;
 			c.gridx = 0;
@@ -229,8 +237,10 @@ public class SeekerPanel extends JLabel{
 			seeker.setMaxPris(seekmaxpris);
 			int seekminpris = Integer.parseInt(minmndpris.getText());
 			seeker.setMinPris(seekminpris);
-			int seekrom = Integer.parseInt(rom.getText());
-			seeker.setAntRom(seekrom);
+			
+			int antrom = Integer.parseInt(antromListe[(antromvelger.getSelectedIndex())]);
+			seeker.setAntRom(antrom);
+			
 			int seeksize = Integer.parseInt(size.getText());
 			seeker.setStørrelse(seeksize);
 			String seekbalkong = balkong.getText();

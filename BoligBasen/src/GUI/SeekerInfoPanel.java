@@ -6,9 +6,11 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +23,8 @@ public class SeekerInfoPanel extends JLabel{
 	public JPanel buttonPanel;
 	public JButton saveInfoButton, backButton;
 	private Boligsøker seeker;
+	private JComboBox<String> sivstatvelger;
+	private String[] sivstatListe = {"Singel", "Samboer", "Gift", "Skilt", "Enke/Enkemann"};
 	
 	public SeekerInfoPanel(){
 
@@ -53,12 +57,12 @@ public class SeekerInfoPanel extends JLabel{
 		bl.setHgap(10);
 		bl.setVgap(5);
 		sivilPanel.setLayout(bl);
-		sivilstatus = new JFormattedTextField(  );
-		sivilstatus.setColumns(8);
-
-				
+		
+		sivstatvelger = new JComboBox<>(sivstatListe);
+		sivstatvelger.setSelectedIndex(0);
+			
 		sivilPanel.add( new JLabel( "Sivilstatus" ), BorderLayout.PAGE_START );
-		sivilPanel.add(sivilstatus, BorderLayout.LINE_START);
+		sivilPanel.add(sivstatvelger, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
@@ -201,8 +205,9 @@ public class SeekerInfoPanel extends JLabel{
 	
 	public void setCompleetSeeker(){
 		try{
-			String sivstat = sivilstatus.getText();
+			String sivstat = sivstatListe[(sivstatvelger.getSelectedIndex())];
 			seeker.setSivilstatus(sivstat);
+			
 			int husholdning = Integer.parseInt(hhs.getText());
 			seeker.setHusholdningSize(husholdning);
 			String seekyrke = yrke.getText();
