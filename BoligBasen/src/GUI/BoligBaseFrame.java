@@ -21,6 +21,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	private InfoPanel info;
 	private int leftframe;
 	public NewBrukerPanel brukerpan;
+	public SeekerPanel seeker;
 	
 	
 	 public BoligBaseFrame()
@@ -31,6 +32,9 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
+		
+		// lager hjelpe panel for boligsøkere
+	 	seeker = new SeekerPanel();
 		
 		// lager default infor panel
 		info = new InfoPanel("");
@@ -108,8 +112,8 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	 	c.add(brukerpan, BorderLayout.LINE_START);
 	 	c.add(info, BorderLayout.LINE_END);
 		  
+	 	// actionlistener som håndterer opprettelse av ny Boligsøker (page1)
 	 	brukerpan.newSeekerActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -126,6 +130,28 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	 		
 	 		
 	 	});
+	 	
+	 	seeker.saveSeekerActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Boligsøker seek = seeker.getSeeker();
+				String infostring = seek.toString();
+		    	InfoPanel info = new InfoPanel(infostring);
+		    	JPanel header = new JPanel();
+				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+				header.add(headerLabel);
+				setLeftFrame(3, info, header, seek, null);
+				
+			}
+	 		
+	 		
+	 	});
+	 	
+
+	 	
+
 	 	
 		setSize( 1080, 840 );
 		setVisible( true );
@@ -162,13 +188,13 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		
 		else if( leftframe == 3){
 			Boligsøker s = seek;
-			SeekerPanel seekerpan = new SeekerPanel(s);
 			
+
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(head,BorderLayout.PAGE_START);
-		 	c.add(seekerpan, BorderLayout.LINE_START);
+		 	c.add(seeker, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 			c.revalidate();
 			c.repaint();

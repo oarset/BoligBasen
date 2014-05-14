@@ -2,10 +2,13 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,8 +19,11 @@ import Bolig.Bruker;
 public class SeekerPanel extends JLabel{
 	
 	private JFormattedTextField maxmndpris, minmndpris, rom, size, balkong, hage, husdyr;
+	public JButton saveSeekerButton, backButton;
+	public JPanel buttonPanel;
+	private Boligsøker seeker;
 	
-	public SeekerPanel(Boligsøker seek){
+	public SeekerPanel(){
 			super();
 			setPreferredSize(new Dimension(500,200));
 			setLayout(new GridBagLayout());
@@ -84,7 +90,7 @@ public class SeekerPanel extends JLabel{
 			c.gridy = 2;
 			add(minprisPanel, c);
 			
-			// label og inputfelt for min pris
+			// label og inputfelt for antall rom
 			JPanel romPanel = new JPanel();
 			BorderLayout bl3 = new BorderLayout();
 			bl3.setHgap(10);
@@ -104,7 +110,7 @@ public class SeekerPanel extends JLabel{
 			c.gridy = 3;
 			add(romPanel, c);
 			
-			// label og inputfelt for min pris
+			// label og inputfelt for kvm størrelse
 			JPanel sizePanel = new JPanel();
 			BorderLayout bl4 = new BorderLayout();
 			bl4.setHgap(10);
@@ -124,6 +130,70 @@ public class SeekerPanel extends JLabel{
 			c.gridy = 4;
 			add(sizePanel, c);
 			
+			// label og inputfelt for balkong
+			JPanel balkongPanel = new JPanel();
+			BorderLayout bl5 = new BorderLayout();
+			bl5.setHgap(10);
+			bl5.setVgap(5);
+			balkongPanel.setLayout(bl5);
+			
+			// to be changed
+			balkong = new JFormattedTextField(  );
+			balkong.setColumns(8);
+			
+			balkongPanel.add( new JLabel( "Ønsker Brukeren Balkong?" ), BorderLayout.PAGE_START );
+			balkongPanel.add(balkong, BorderLayout.LINE_START);
+
+			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
+			c.gridx = 0;
+			c.gridy = 5;
+			add(balkongPanel, c);
+			
+			// label og inputfelt for hage
+			JPanel hagePanel = new JPanel();
+			BorderLayout bl6 = new BorderLayout();
+			bl6.setHgap(10);
+			bl6.setVgap(5);
+			hagePanel.setLayout(bl6);
+			
+			// to be changed
+			hage = new JFormattedTextField(  );
+			hage.setColumns(8);
+			
+			hagePanel.add( new JLabel( "Ønsker Brukeren Hage?" ), BorderLayout.PAGE_START );
+			hagePanel.add(hage, BorderLayout.LINE_START);
+
+			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
+			c.gridx = 0;
+			c.gridy = 6;
+			add(hagePanel, c);
+			
+			// legger til knapper for å lagre boligsøker eller gåt tilbake til bruker info
+			
+			buttonPanel = new JPanel();
+			FlowLayout fl = new FlowLayout();
+			fl.setAlignment(FlowLayout.RIGHT);
+			buttonPanel.setLayout(fl);
+			
+			saveSeekerButton = new JButton("Lagre info");
+			backButton = new JButton("Tilbake");
+			
+			buttonPanel.add(saveSeekerButton);
+			buttonPanel.add(backButton);
+			
+			c.fill = GridBagConstraints.NONE;
+			c.gridx = 0;
+			c.gridy = 7;
+			c.insets = new Insets(10,50,0,10);
+			add(buttonPanel, c);
+			
+			
 			// label som fyller bunn
 			JPanel bottomFillPanel = new JPanel( new BorderLayout());
 			
@@ -132,8 +202,35 @@ public class SeekerPanel extends JLabel{
 			c.weighty = 1;
 			c.gridheight = 1;
 			c.gridx = 0;
-			c.gridy = 5;
+			c.gridy = 8;
 			add(bottomFillPanel, c);
+			
+			
 	}
+	
+	public void setSeeker(Boligsøker seek){
+		seeker = seek;
+	}
+	
+	public Boligsøker getSeeker(){
+		return seeker;
+	}
+	
+	public Boligsøker nyBoligSeeker(){
+		try{
+			int seekmaxpris = Integer.parseInt(maxmndpris.getText());
+			setMaxPris();
+			int seekminpris = Integer.parseInt(minmndpris.getText());
+			setMinPris();
+		
+		}
+		catch(NumberFormatException e){
+			
+		}
+	}
+	
+	public void saveSeekerActionListener(ActionListener al) {  
+	    saveSeekerButton.addActionListener(al);  
+	  } 
 }
 
