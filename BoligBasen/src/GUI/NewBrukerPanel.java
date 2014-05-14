@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Bolig.Boligsøker;
-import Bolig.Person;
+import Bolig.Bruker;
 import Bolig.Utleiere;
 
 
@@ -16,7 +16,7 @@ public class NewBrukerPanel extends JPanel{
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
 	public JButton newBoligSeekerButton, newUtleierButton;
 	public JPanel buttonPanel;
-	private Person per;
+	private Bruker per;
 	
 	
 	public NewBrukerPanel(){

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Bolig.Person;
+import Bolig.Bruker;
 
 
 public class BoligBaseFrame extends JFrame implements ActionListener{
@@ -112,7 +112,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				Person p = brukerpan.nyBoligSeeker();
+				Bruker p = brukerpan.nyBoligSeeker();
 				String infostring = p.toString();
 		    	InfoPanel info = new InfoPanel(infostring);
 		    	JPanel header = new JPanel();
@@ -129,7 +129,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		setVisible( true );
 		}
 	 
-	 public void setLeftFrame(int i, InfoPanel info, JPanel head, Person p){
+	 public void setLeftFrame(int i, InfoPanel info, JPanel head, Bruker p){
 		 
 		leftframe = i; 
 		if(leftframe == 1){

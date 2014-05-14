@@ -10,13 +10,13 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Bolig.Person;
+import Bolig.Bruker;
 
 public class SeekerPanel extends JLabel{
 	
 	private JFormattedTextField maxmndpris, minmndpris, rom, size, balkong, hage, husdyr;
 	
-	public SeekerPanel(Person p){
+	public SeekerPanel(Bruker p){
 			super();
 			setPreferredSize(new Dimension(500,200));
 			setLayout(new GridBagLayout());
