@@ -51,6 +51,12 @@ public class Boligliste {
 		}
 	}
 	
+	//Sorterer en boligliste på pris og så returnerer den nye sorterte listen.
+	public Boligliste prisSort() {
+		Boligliste ny = new Boligliste();
+		Bolig cycle = first;
+	}
+	
 	public Boligliste utleierBoligliste(String epost) {
 		if (epost == null) 
 			return null;
