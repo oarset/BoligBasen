@@ -14,7 +14,7 @@ import Bolig.Person;
 
 public class SeekerPanel extends JLabel{
 	
-	private JFormattedTextField maxmndpris, minmndpris;
+	private JFormattedTextField maxmndpris, minmndpris, rom, size, balkong, hage, husdyr;
 	
 	public SeekerPanel(Person p){
 			super();
@@ -74,6 +74,24 @@ public class SeekerPanel extends JLabel{
 			
 			minprisPanel.add( new JLabel( "Min Måneds Pris" ), BorderLayout.PAGE_START );
 			minprisPanel.add(minmndpris, BorderLayout.LINE_START);
+
+			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
+			c.gridx = 0;
+			c.gridy = 2;
+			c.insets = new Insets(10,50,0,10);
+			add(minprisPanel, c);
+			
+			// label og inputfelt for min pris
+			JPanel romPanel = new JPanel();
+			romPanel.setLayout(bl2);
+			rom = new JFormattedTextField(  );
+			rom.setColumns(8);
+			
+			romPanel.add( new JLabel( "Min Måneds Pris" ), BorderLayout.PAGE_START );
+			romPanel.add(minmndpris, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
 			c.ipady = 10;
