@@ -26,14 +26,14 @@ public class Utleiere extends Bruker {
 	}
 	
 	//Metode for å sette informasjon om firma til en utleier.
-		public void setFirmaInfo(String selskapInfo) {
-			firmaInfo = selskapInfo;
-		}
-		
-		//Metode for å returnere en String med informasjon om firmaet til en utleier.
-		public String getFirmaInfo() {
-			return firmaInfo;
-		}
+	public void setFirmaInfo(String selskapInfo) {
+		firmaInfo = selskapInfo;
+	}
+	
+	//Metode for å returnere en String med informasjon om firmaet til en utleier.
+	public String getFirmaInfo() {
+		return firmaInfo;
+	}
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {

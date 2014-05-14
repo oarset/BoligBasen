@@ -19,7 +19,7 @@ import Bolig.Utleiere;
 
 public class UtleierPanel extends JLabel{
 	
-	private JFormattedTextField firma, firmaInfo;
+	public JFormattedTextField firma, firmaInfo;
 	public JButton saveUtlButton, backButton;
 	public JPanel buttonPanel;
 	private Utleiere utl;
@@ -135,15 +135,15 @@ public class UtleierPanel extends JLabel{
 	    backButton.addActionListener(al);  
 	  }
 	
-	public void setSeeker(Utleiere utleier){
+	public void setUtl(Utleiere utleier){
 		utl = utleier;
 	}
 	
-	public Utleiere getSeeker(){
+	public Utleiere getUtl(){
 		return utl;
 	}
 	
-	public void nyBoligSeeker(){
+	public void setCompleetUtl(){
 		try{
 			String firmaInput = firma.getText();
 			utl.setFirma(firmaInput);

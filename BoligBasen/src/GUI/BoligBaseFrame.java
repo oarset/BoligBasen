@@ -143,6 +143,25 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
+	 
+	// actionlistener som håndterer opprettelse av ny Utleier (page1)
+		 brukerpan.newUtlActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					Utleiere utl = brukerpan.nyUtleier();
+					String infostring = utl.toString();
+			    	info.addContent(infostring);
+					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+					header.removeAll();
+					header.add(headerLabel);
+					setLeftFrame(6, null, utl);
+					
+				}
+		 		
+		 		
+		 	});
 	 // actionlistener som håndterer lagring av Boligsøer fra "SeekerPanel" (page2)
 	 seeker.saveSeekerActionListener(new ActionListener(){
 			@Override
@@ -162,6 +181,39 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
+	// actionlistener som håndterer lagring av Utleier fra "UtleierPanel" (page2)
+	 utlpan.saveUtlActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Container c = getContentPane();
+				c.removeAll();
+			 	c.setLayout( new BorderLayout() );
+			 	c.add(header,BorderLayout.PAGE_START);
+			 	c.add(brukerpan, BorderLayout.LINE_START);
+			 	c.add(info, BorderLayout.LINE_END);
+			 	addAllAL();
+				c.revalidate();
+				c.repaint();
+				
+				Utleiere u = utlpan.getUtl();
+				utlpan.setUtl(u);
+				utlpan.setCompleetUtl();
+				Utleiere utl = utlpan.getUtl();
+				String infostring = utl.toString();
+				info.addContent(infostring);
+				personliste.settInnPerson(utl);
+				JLabel headerLabel = new JLabel("Legg inn data for Utleier");
+				header.removeAll();
+				header.add(headerLabel);
+				setLeftFrame(6, null, null);
+				
+			}
+	 		
+	 		
+	 	});
+	 
+	 
 	 
 	 seeker.seekerBackActionListener(new ActionListener(){
 			@Override
@@ -214,11 +266,11 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(1, null, null);
+				setLeftFrame(6, null, null);
 				
 			}
 	 		
-	 		
+			
 	 	});
 	 
 	 utlpan.utlBackActionListener(new ActionListener(){
@@ -246,6 +298,8 @@ public class BoligBaseFrame extends JFrame{
 	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl){
 		 
 		leftframe = i; 
+		
+		// setter venstre frame til NyBoligPanel
 		if(leftframe == 1){
 				 
 			Container c = getContentPane();
@@ -259,6 +313,7 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
+		// setter venstre frame til NyBrukerPanel
 		else if( leftframe == 2){
 			
 			Container c = getContentPane();
@@ -272,6 +327,7 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
+		// setter venstre frame til SeekerPanel
 		else if( leftframe == 3){
 			Boligsøker s = seek;
 			
@@ -286,6 +342,7 @@ public class BoligBaseFrame extends JFrame{
 			c.revalidate();
 			c.repaint();
 		}
+		// setter venstre frame til SeekerInfoPanel
 		else if( leftframe == 4){
 			Boligsøker s = seek;
 			
@@ -316,6 +373,21 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
+		// setter venstre frame til UtleierPanel
+		else if( leftframe == 6){
+			Utleiere u = utl;
+			
+			utlpan.setUtl(u);
+			Container c = getContentPane();
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(utlpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
+			c.revalidate();
+			c.repaint();
+		}
 		 
 	 }
 	 

@@ -203,6 +203,10 @@ public class NewBrukerPanel extends JPanel{
 	public void newSeekerActionListener(ActionListener al) {  
 	    newBoligSeekerButton.addActionListener(al);  
 	  }  
+	
+	public void newUtlActionListener(ActionListener al) {  
+	    newUtleierButton.addActionListener(al);  
+	  } 
 
 	
 	public Boligsøker nyBoligSeeker(){
