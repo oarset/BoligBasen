@@ -13,10 +13,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import Bolig.Bruker;
+import Bolig.Personliste;
 import Bolig.Utleiere;
 
 public class NewBoligPanel extends JPanel{
@@ -26,13 +29,15 @@ public class NewBoligPanel extends JPanel{
 	private Utleiere utl;
 	private JComboBox<String> typevelger, utleiervelger;
 	private String[] typeListe = {"Leilighet", "Enebolig", "Rekkehus"};
-	private Utleiere[] utleierListe;
+	private Personliste utleierListe;
+	private String[] utleierStringListe;
 	private JButton newEierButton, saveBoligButton, backButton;
 	
 	public NewBoligPanel(){
 		super();
 		//setBackground(Color.cyan);
 		
+		utleierListe = new Personliste();
 		setPreferredSize(new Dimension(500,200));
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -192,19 +197,36 @@ public class NewBoligPanel extends JPanel{
 		bl7.setVgap(5);
 		utleierPanel.setLayout(bl7);	
 		
-		//utleiervelger = new JComboBox<>();
-		//utleiervelger.setSelectedIndex(0);
 		
-		//typePanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
-		//typePanel.add(utleiervelger, BorderLayout.LINE_START);
+		
+		if (utleierListe.getFirst() == null) {
+			utleierStringListe = new String[1]; 
+			utleierStringListe[0] = "Ingen eiere, registrer ny eier";
+		}
+		else{
+			int i = 0;
+			Bruker cycle = utleierListe.getFirst();
+			while (cycle.neste != null) {
+				utleierStringListe[i] = cycle.neste.nametoString();
+				i++;
+				cycle = cycle.neste;
+				
+			}
+		}
+		
+		utleiervelger = new JComboBox<>(utleierStringListe);
+		utleiervelger.setSelectedIndex(0);
+		
+		utleierPanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
+		utleierPanel.add(utleiervelger, BorderLayout.LINE_START);
 
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
 		c.weightx = 1;
 		c.weighty = 0;
 		c.gridx = 0;
-		c.gridy = 2;
-		add(typePanel, c);
+		c.gridy = 7;
+		add(utleierPanel, c);
 		
 		
 		// legger til knapper for å lagre boligsøker eller gå tilbake til bruker info
@@ -224,7 +246,7 @@ public class NewBoligPanel extends JPanel{
 		
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 0;
-		c.gridy = 7;
+		c.gridy = 8;
 		c.insets = new Insets(10,50,0,10);
 		add(buttonPanel, c);
 		
@@ -236,7 +258,7 @@ public class NewBoligPanel extends JPanel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 8;
+		c.gridy = 9;
 		add(bottomFillPanel, c);
 	}
 	
@@ -249,4 +271,17 @@ public class NewBoligPanel extends JPanel{
 	public void boligBackActionListener(ActionListener al) {  
 	    backButton.addActionListener(al);  
 	  }
+	public void setUtleierListe(Personliste p){
+		try{
+			utleierListe = p.utleierliste();
+		}
+		catch ( NumberFormatException e ) {
+		    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
+		  }	
+	}
+	
+	private void errorOutput( String msg )
+	{
+	  JOptionPane.showMessageDialog( this, msg );
+	}
 }

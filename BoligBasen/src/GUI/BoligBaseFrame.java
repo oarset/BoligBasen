@@ -16,6 +16,7 @@ import Bolig.*;
 public class BoligBaseFrame extends JFrame{
 	
 	private JPanel header;
+	private Personliste theList;
 	private InfoPanel info;
 	private int leftframe;
 	private Personliste personliste;
@@ -32,6 +33,7 @@ public class BoligBaseFrame extends JFrame{
 
 		leftframe = 1;
 		personliste = new Personliste();
+		theList = new Personliste();
 		
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
@@ -65,7 +67,7 @@ public class BoligBaseFrame extends JFrame{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(2, null, null);
+					setLeftFrame(2, null, null, theList);
 					}
 
 
@@ -79,7 +81,7 @@ public class BoligBaseFrame extends JFrame{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(1, null, null);
+					setLeftFrame(1, null, null, theList);
 					}
 
 
@@ -137,7 +139,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(3, seek, null);
+				setLeftFrame(3, seek, null, theList);
 				
 			}
 	 		
@@ -156,7 +158,7 @@ public class BoligBaseFrame extends JFrame{
 					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 					header.removeAll();
 					header.add(headerLabel);
-					setLeftFrame(6, null, utl);
+					setLeftFrame(6, null, utl, theList);
 					
 				}
 		 		
@@ -175,7 +177,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(4, seek, null);
+				setLeftFrame(4, seek, null, theList);
 				
 			}
 	 		
@@ -206,7 +208,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for Utleier");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(1, null, utl);
+				setLeftFrame(1, null, utl, theList);
 				
 			}
 	 		
@@ -266,7 +268,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(1, null, null);
+				setLeftFrame(1, null, null, theList);
 				
 			}
 	 		
@@ -315,13 +317,14 @@ public class BoligBaseFrame extends JFrame{
 	 
 }
 	 
-	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl){
+	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl, Personliste list){
 		 
 		leftframe = i; 
 		
 		// setter venstre frame til NyBoligPanel
 		if(leftframe == 1){
 				 
+			boligpan.setUtleierListe(list);
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
@@ -413,7 +416,7 @@ public class BoligBaseFrame extends JFrame{
 	 
 	 public void nySeeker(){
 		 
-		 setLeftFrame(3, null, null);
+		 setLeftFrame(3, null, null, theList);
 
 	 }
 

@@ -36,13 +36,7 @@ public class Utleiere extends Bruker {
 		return firmaInfo;
 	}
 	
-	//Metode som returnerer navn og etternavn som String.
-	public String nametoString() {
-		String ut = "";
-		if (navn != null && etternavn != null) 
-			ut += "Navn: " + navn + " " + etternavn + "\n";
-		return ut;
-	}
+	
 	
 	//Hjelpemetode for å lage utleierliste.
 	public boolean erUtleier() {
