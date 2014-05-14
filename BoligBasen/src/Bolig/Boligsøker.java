@@ -101,6 +101,13 @@ public class Boligsøker extends Person {
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
-		return navn + " " + adresse + " " + email + " " + telefon;
+		return navn + " " + etternavn + "\n" + 
+			   adresse + "\n" + 
+			   email + "\n" + 
+			   telefon + "\n" +
+			   sted  + "\n" +
+			   postnr  + "\n" +
+			   sivilstatus  + "\n" +
+			   yrke  + "\n";
 	}
 }
