@@ -113,7 +113,8 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 				// TODO Auto-generated method stub
 				
 				Person p = brukerpan.nyBoligSeeker();
-		    	InfoPanel info = new InfoPanel("");
+				String infostring = p.toString();
+		    	InfoPanel info = new InfoPanel(infostring);
 		    	JPanel header = new JPanel();
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.add(headerLabel);

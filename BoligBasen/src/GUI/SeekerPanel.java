@@ -24,6 +24,23 @@ public class SeekerPanel extends JLabel{
 			c.anchor = GridBagConstraints.NORTHWEST;
 	
 			
+			// label for "siden"
+			JPanel headerPanel = new JPanel();
+			BorderLayout blhead = new BorderLayout();
+			blhead.setHgap(10);
+			blhead.setVgap(5);
+			headerPanel.setLayout(blhead);
+					
+			headerPanel.add( new JLabel( "Informasjon om Boligsøkerens preferanser" ), BorderLayout.PAGE_START );
+			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
+			c.gridx = 0;
+			c.gridy = 0;
+			c.insets = new Insets(30,50,0,10);
+			add(headerPanel, c);
+			
 			// label og inputfelt for max pris
 			JPanel maxprisPanel = new JPanel();
 			BorderLayout bl = new BorderLayout();
@@ -37,6 +54,15 @@ public class SeekerPanel extends JLabel{
 			maxprisPanel.add( new JLabel( "Max Måneds Pris" ), BorderLayout.PAGE_START );
 			maxprisPanel.add(maxmndpris, BorderLayout.LINE_START);
 			
+			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
+			c.gridx = 0;
+			c.gridy = 1;
+			c.insets = new Insets(10,50,0,10);
+			add(maxprisPanel, c);
+			
 			// label og inputfelt for min pris
 			JPanel minprisPanel = new JPanel();
 			BorderLayout bl2 = new BorderLayout();
@@ -46,7 +72,7 @@ public class SeekerPanel extends JLabel{
 			minmndpris = new JFormattedTextField(  );
 			minmndpris.setColumns(8);
 			
-			minprisPanel.add( new JLabel( "Main Måneds Pris" ), BorderLayout.PAGE_START );
+			minprisPanel.add( new JLabel( "Min Måneds Pris" ), BorderLayout.PAGE_START );
 			minprisPanel.add(minmndpris, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
@@ -54,9 +80,20 @@ public class SeekerPanel extends JLabel{
 			c.weightx = 1;
 			c.weighty = 0;
 			c.gridx = 0;
-			c.gridy = 1;
-			c.insets = new Insets(30,50,0,10);
-			add(maxprisPanel, c);
+			c.gridy = 2;
+			c.insets = new Insets(10,50,0,10);
+			add(minprisPanel, c);
+			
+			// label som fyller bunn
+			JPanel bottomFillPanel = new JPanel( new BorderLayout());
+			
+			c.fill = GridBagConstraints.BOTH;
+			c.weightx = 1;
+			c.weighty = 1;
+			c.gridheight = 1;
+			c.gridx = 0;
+			c.gridy = 3;
+			add(bottomFillPanel, c);
 	}
 }
 
