@@ -8,19 +8,17 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-public class BoligBaseFrame extends JFrame{
+import Bolig.Person;
+
+
+public class BoligBaseFrame extends JFrame implements ActionListener{
 	
 	private JPanel header;
 	private InfoPanel info;
 	private int leftframe;
+	public NewBrukerPanel brukerpan;
 	
 	
 	 public BoligBaseFrame()
@@ -30,10 +28,10 @@ public class BoligBaseFrame extends JFrame{
 		leftframe = 1;
 		
 		// lager default panelene
-		NewBrukerPanel brukerpan = new NewBrukerPanel();
+		brukerpan = new NewBrukerPanel();
 		
 		// lager default infor panel
-		info = new InfoPanel();
+		info = new InfoPanel("");
 		
 		// lager default tittel
 		header = new JPanel();
@@ -55,7 +53,7 @@ public class BoligBaseFrame extends JFrame{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(2, info, header);
+					setLeftFrame(2, info, header, null);
 					}
 
 
@@ -69,7 +67,7 @@ public class BoligBaseFrame extends JFrame{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(1, info, header);
+					setLeftFrame(1, info, header, null);
 					}
 
 
@@ -108,12 +106,29 @@ public class BoligBaseFrame extends JFrame{
 	 	c.add(brukerpan, BorderLayout.LINE_START);
 	 	c.add(info, BorderLayout.LINE_END);
 		  
-		  
+	 	brukerpan.newSeekerActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Person p = brukerpan.nyBoligSeeker();
+		    	InfoPanel info = new InfoPanel("");
+		    	JPanel header = new JPanel();
+				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+				header.add(headerLabel);
+				setLeftFrame(3, info, header, p);
+				
+			}
+	 		
+	 		
+	 	});
+	 	
 		setSize( 1080, 840 );
 		setVisible( true );
 		}
 	 
-	 public void setLeftFrame(int i, InfoPanel info, JPanel head){
+	 public void setLeftFrame(int i, InfoPanel info, JPanel head, Person p){
 		 
 		leftframe = i; 
 		if(leftframe == 1){
@@ -143,7 +158,7 @@ public class BoligBaseFrame extends JFrame{
 		}
 		
 		else if( leftframe == 3){
-			SeekerPanel seekerpan = new SeekerPanel();
+			SeekerPanel seekerpan = new SeekerPanel(p);
 			
 			Container c = getContentPane();
 			c.removeAll();
@@ -157,8 +172,28 @@ public class BoligBaseFrame extends JFrame{
 		 
 	 }
 	 
-	 public void nyBoligSeeker(){
+	 public void nySeeker(){
 		 
-		 setLeftFrame(3, info, header);
+		 setLeftFrame(3, info, header, null);
+
 	 }
+	 
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			if ( e.getSource() == brukerpan.newBoligSeekerButton ){
+	
+	
+		  }
+		    else if ( e.getSource() == brukerpan.newUtleierButton ){
+		      brukerpan.nyUtleier();
+	
+		  }
+			
+		}
+
+		  
+	 
+	 
 }

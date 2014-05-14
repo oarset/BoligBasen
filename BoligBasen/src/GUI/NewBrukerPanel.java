@@ -8,15 +8,19 @@ import javax.swing.*;
 
 import Bolig.Boligsøker;
 import Bolig.Person;
+import Bolig.Utleiere;
 
 
 public class NewBrukerPanel extends JPanel{
 
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
-	private JButton newBoligSeekerButton, newUtleierButton;
+	public JButton newBoligSeekerButton, newUtleierButton;
+	public JPanel buttonPanel;
 	private Person per;
 	
+	
 	public NewBrukerPanel(){
+		super();
 		
 		setPreferredSize(new Dimension(500,200));
 		setLayout(new GridBagLayout());
@@ -160,7 +164,7 @@ public class NewBrukerPanel extends JPanel{
 		
 		// legger til knapper for å lagre boligsøker/utleier
 		
-		JPanel buttonPanel = new JPanel();
+		buttonPanel = new JPanel();
 		FlowLayout fl = new FlowLayout();
 		fl.setAlignment(FlowLayout.RIGHT);
 		buttonPanel.setLayout(fl);
@@ -188,13 +192,18 @@ public class NewBrukerPanel extends JPanel{
 		c.gridx = 0;
 		c.gridy = 9;
 		add(bottomFillPanel, c);
-		
-		Knappelytter lytter = new Knappelytter();
 
-		newBoligSeekerButton.addActionListener( lytter );
-		newUtleierButton.addActionListener(lytter);
+		//newBoligSeekerButton.addActionListener(new BoligBaseFrame());
+		//newUtleierButton.addActionListener(new BoligBaseFrame());
+
+		
 		
 	}
+	
+	public void newSeekerActionListener(ActionListener al) {  
+	    newBoligSeekerButton.addActionListener(al);  
+	  }  
+
 	
 	public Boligsøker nyBoligSeeker(){
 		try{
@@ -211,21 +220,42 @@ public class NewBrukerPanel extends JPanel{
 		
 		Boligsøker seeker = new Boligsøker(bsfnavn, bsenavn, bsadd, bspnr, bssted, bsdag, bsmnd, bsaar, bsemail, bstlf);
 		
+		
+		
 		return seeker;
 		
 		}
 		catch ( NumberFormatException e ) {
 		    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
 		    return null;
-		  }
-		
-		
-		
+		  }		
 		
 	}
 	
-	public void nyUtleier(){
-		
+	public Utleiere nyUtleier(){
+		try{
+			String bsfnavn = fornavn.getText();
+			String bsenavn = etternavn.getText();
+			String bsadd = adresse.getText();
+			String bspnr = pnr.getText();
+			String bssted = sted.getText();
+			int bsdag = Integer.parseInt(dag.getText());
+			int bsmnd = Integer.parseInt(mnd.getText());
+			int bsaar = Integer.parseInt(aar.getText());
+			String bsemail = email.getText();
+			String bstlf = tlf.getText();
+			
+			Utleiere utleier = new Utleiere(bsfnavn, bsenavn, bsadd, bspnr, bssted, bsdag, bsmnd, bsaar, bsemail, bstlf);
+			
+			
+			
+			return utleier;
+			
+			}
+			catch ( NumberFormatException e ) {
+			    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
+			    return null;
+			  }	
 	}
 	
 	
@@ -233,18 +263,12 @@ public class NewBrukerPanel extends JPanel{
 	{
 	  JOptionPane.showMessageDialog( this, msg );
 	}
+	
+	
+	
+	
 
-	private class Knappelytter implements ActionListener
-	{
-	  public void actionPerformed( ActionEvent e )
-	  {
-	    if ( e.getSource() == newBoligSeekerButton )
-	      nyBoligSeeker();
-	    else if ( e.getSource() == newUtleierButton )
-	      nyUtleier();
-
-	  }
-	}
+	
 }
 
 
