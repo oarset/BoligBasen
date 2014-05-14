@@ -41,4 +41,12 @@ public abstract class Bruker {
 	public String toString() {
 		return "masse tekst" + navn + " " + etternavn ;
 	} 
+	
+	//Metode som returnerer navn og etternavn som String.
+		public String nametoString() {
+			String ut = "";
+			if (navn != null && etternavn != null) 
+				ut += "Navn: " + navn + " " + etternavn + "\n";
+			return ut;
+		}
 }
