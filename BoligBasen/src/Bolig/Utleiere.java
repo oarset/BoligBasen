@@ -20,8 +20,19 @@ public class Utleiere extends Person {
 		firma = selskap;
 	}
 	
+	//Metode for å returnere en String med firmaet til en utleier.
+	public String getFirma() {
+		return firma;
+	}
+	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
-		return firma + " " +  navn + " " + adresse + " " + email + " " + telefon;
-	}
+			return navn + " " + etternavn + "\n" + 
+				   adresse + "\n" + 
+				   email + "\n" + 
+				   telefon + "\n" +
+				   sted  + "\n" +
+				   postnr  + "\n" +
+				   firma  + "\n";
+		}
 }
