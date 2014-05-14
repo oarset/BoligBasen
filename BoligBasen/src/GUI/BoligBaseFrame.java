@@ -15,13 +15,15 @@ import Bolig.Bruker;
 import Bolig.Utleiere;
 
 
-public class BoligBaseFrame extends JFrame implements ActionListener{
+public class BoligBaseFrame extends JFrame{
 	
 	private JPanel header;
 	private InfoPanel info;
 	private int leftframe;
 	public NewBrukerPanel brukerpan;
+	public NewBoligPanel boligpan;
 	public SeekerPanel seeker;
+	public SeekerInfoPanel sip;
 	
 	
 	 public BoligBaseFrame()
@@ -33,11 +35,13 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
 		
-		// lager hjelpe panel for boligsøkere
+		// lager hjelpe panel for boligsøkere og ny bolig
 	 	seeker = new SeekerPanel();
+	 	boligpan = new NewBoligPanel();
+	 	sip = new SeekerInfoPanel();
 		
 		// lager default infor panel
-		info = new InfoPanel("");
+		info = new InfoPanel();
 		
 		// lager default tittel
 		header = new JPanel();
@@ -59,7 +63,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(2, info, header, null, null);
+					setLeftFrame(2, null, null);
 					}
 
 
@@ -73,7 +77,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(1, info, header, null, null);
+					setLeftFrame(1, null, null);
 					}
 
 
@@ -112,26 +116,33 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	 	c.add(brukerpan, BorderLayout.LINE_START);
 	 	c.add(info, BorderLayout.LINE_END);
 		  
-	 	// actionlistener som håndterer opprettelse av ny Boligsøker (page1)
-	 	brukerpan.newSeekerActionListener(new ActionListener(){
+	 	addAllAL();
+	 	
+		setSize( 1080, 840 );
+		setVisible( true );
+		}
+
+	// actionlistener som håndterer opprettelse av ny Boligsøker (page1)
+	 public void addAllAL(){
+	 brukerpan.newSeekerActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
 				Boligsøker seek = brukerpan.nyBoligSeeker();
 				String infostring = seek.toString();
-		    	InfoPanel info = new InfoPanel(infostring);
-		    	JPanel header = new JPanel();
+		    	info.addContent(infostring);
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(3, info, header, seek, null);
+				setLeftFrame(3, seek, null);
 				
 			}
 	 		
 	 		
 	 	});
-	 	
-	 	seeker.saveSeekerActionListener(new ActionListener(){
+	 
+	 seeker.saveSeekerActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -139,22 +150,20 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 				seeker.nyBoligSeeker();
 				Boligsøker seek = seeker.getSeeker();
 				String infostring = seek.toString();
-		    	InfoPanel info = new InfoPanel(infostring);
-		    	JPanel header = new JPanel();
+				info.addContent(infostring);
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(4, info, header, seek, null);
+				setLeftFrame(4, seek, null);
 				
 			}
 	 		
 	 		
 	 	});
-	 	
-	 	seeker.seekerBackActionListener(new ActionListener(){
+	 
+	 seeker.seekerBackActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				NewBrukerPanel brukerpan = new NewBrukerPanel();
 				
 				Container c = getContentPane();
 				c.removeAll();
@@ -162,6 +171,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 			 	c.add(header,BorderLayout.PAGE_START);
 			 	c.add(brukerpan, BorderLayout.LINE_START);
 			 	c.add(info, BorderLayout.LINE_END);
+			 	addAllAL();
 				c.revalidate();
 				c.repaint();
 				
@@ -169,40 +179,33 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	 		
 	 		
 	 	});
-	 	
-
-	 	
-
-	 	
-		setSize( 1080, 840 );
-		setVisible( true );
-		}
+}
 	 
-	 public void setLeftFrame(int i, InfoPanel info, JPanel head, Boligsøker seek, Utleiere utl){
+	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl){
 		 
 		leftframe = i; 
 		if(leftframe == 1){
-			NewBoligPanel boligpan = new NewBoligPanel();
 				 
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
-		 	c.add(head,BorderLayout.PAGE_START);
+		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(boligpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
 			c.revalidate();
 			c.repaint();
 		}
 		
 		else if( leftframe == 2){
-			NewBrukerPanel brukerpan = new NewBrukerPanel();
 			
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
-		 	c.add(head,BorderLayout.PAGE_START);
+		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(brukerpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
 			c.revalidate();
 			c.repaint();
 		}
@@ -214,9 +217,10 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
-		 	c.add(head,BorderLayout.PAGE_START);
+		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(seeker, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
 			c.revalidate();
 			c.repaint();
 		}
@@ -227,9 +231,10 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
-		 	c.add(head,BorderLayout.PAGE_START);
-		 	c.add(seeker, BorderLayout.LINE_START);
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(sip, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
 			c.revalidate();
 			c.repaint();
 		}
@@ -238,26 +243,9 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	 
 	 public void nySeeker(){
 		 
-		 setLeftFrame(3, info, header, null, null);
+		 setLeftFrame(3, null, null);
 
 	 }
-	 
 
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-			if ( e.getSource() == brukerpan.newBoligSeekerButton ){
-	
-	
-		  }
-		    else if ( e.getSource() == brukerpan.newUtleierButton ){
-		      brukerpan.nyUtleier();
-	
-		  }
-			
-		}
-
-		  
-	 
 	 
 }

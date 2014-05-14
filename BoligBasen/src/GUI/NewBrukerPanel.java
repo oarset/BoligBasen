@@ -219,8 +219,7 @@ public class NewBrukerPanel extends JPanel{
 		String bstlf = tlf.getText();
 		
 		Boligsøker seeker = new Boligsøker(bsfnavn, bsenavn, bsadd, bspnr, bssted, bsdag, bsmnd, bsaar, bsemail, bstlf);
-		
-		
+
 		
 		return seeker;
 		

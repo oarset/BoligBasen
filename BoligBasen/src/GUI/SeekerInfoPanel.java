@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 public class SeekerInfoPanel extends JLabel{
 
-	private JFormattedTextField sivilstatus, husholdningSize, smoke, yrke, husdyr; 
+	private JFormattedTextField sivilstatus, hhs, smoke, yrke, husdyr; 
 	
 	public SeekerInfoPanel(){
 
@@ -61,6 +61,28 @@ public class SeekerInfoPanel extends JLabel{
 		c.insets = new Insets(10,50,0,10);
 		add(sivilPanel, c);
 		
+		// label og inputfelt størrelse på husholdningen
+		JPanel hhsPanel = new JPanel();
+		BorderLayout bl2 = new BorderLayout();
+		bl2.setHgap(10);
+		bl2.setVgap(5);
+		hhsPanel.setLayout(bl2);
+		hhs = new JFormattedTextField(  );
+		hhs.setColumns(8);
+
+				
+		hhsPanel.add( new JLabel( "Størrelse på Husholdningn" ), BorderLayout.PAGE_START );
+		hhsPanel.add(hhs, BorderLayout.LINE_START);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.ipady = 10;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.gridx = 0;
+		c.gridy = 2;
+		c.insets = new Insets(10,50,0,10);
+		add(hhsPanel, c);
+		
 		
 		// label som fyller bunn
 		JPanel bottomFillPanel = new JPanel( new BorderLayout());
@@ -70,7 +92,7 @@ public class SeekerInfoPanel extends JLabel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 8;
+		c.gridy = 3;
 		add(bottomFillPanel, c);
 		
 	}
