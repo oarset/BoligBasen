@@ -76,12 +76,8 @@ public class SeekerPanel extends JLabel{
 			minprisPanel.add(minmndpris, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
-			c.ipady = 10;
-			c.weightx = 1;
-			c.weighty = 0;
 			c.gridx = 0;
 			c.gridy = 2;
-			c.insets = new Insets(10,50,0,10);
 			add(minprisPanel, c);
 			
 			// label og inputfelt for min pris
@@ -90,17 +86,13 @@ public class SeekerPanel extends JLabel{
 			rom = new JFormattedTextField(  );
 			rom.setColumns(8);
 			
-			romPanel.add( new JLabel( "Min Måneds Pris" ), BorderLayout.PAGE_START );
-			romPanel.add(minmndpris, BorderLayout.LINE_START);
+			romPanel.add( new JLabel( "Antall rom" ), BorderLayout.PAGE_START );
+			romPanel.add(rom, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
-			c.ipady = 10;
-			c.weightx = 1;
-			c.weighty = 0;
 			c.gridx = 0;
-			c.gridy = 2;
-			c.insets = new Insets(10,50,0,10);
-			add(minprisPanel, c);
+			c.gridy = 3;
+			add(romPanel, c);
 			
 			// label som fyller bunn
 			JPanel bottomFillPanel = new JPanel( new BorderLayout());
@@ -110,7 +102,7 @@ public class SeekerPanel extends JLabel{
 			c.weighty = 1;
 			c.gridheight = 1;
 			c.gridx = 0;
-			c.gridy = 3;
+			c.gridy = 4;
 			add(bottomFillPanel, c);
 	}
 }
