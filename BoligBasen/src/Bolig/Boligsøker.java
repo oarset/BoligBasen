@@ -9,8 +9,8 @@ package Bolig;
 public class Boligsøker extends Bruker {
 	
 	private String sivilstatus, yrke;
-	private boolean røyker, husdyr, balkong, hage, arbeidsforhold;
-	private int prisklasse, antRom, størrelse;
+	private boolean røyker, husdyr, balkong, hage;
+	private int maxpris, minpris, antRom, størrelse, husholdningSize;
 
 	
 	public Boligsøker(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {
@@ -18,85 +18,93 @@ public class Boligsøker extends Bruker {
 	}
 	
 	//Sette ny sivilstatus til en boligsøker.
-	private void setSivilstatus(String ny) {
+	public void setSivilstatus(String ny) {
 		sivilstatus = ny;
 	}
 	
-	private String getSivilstatus() {
+	public String getSivilstatus() {
 		return sivilstatus;
 	}
 	
 	//Sette et yrke til en boligsøker.
-	private void setYrke(String ny) {
+	public void setYrke(String ny) {
 		yrke = ny;
 	}
 	
-	private String getYrke() {
+	public String getYrke() {
 		return yrke;
 	}
 	
-	private void setRøyker(boolean ny) {
+	public void setRøyker(boolean ny) {
 		røyker = ny;
 	}
 	
-	private boolean getRøyker() {
+	public boolean getRøyker() {
 		return røyker;
 	}
 	
-	private void setHusdyr(boolean ny) {
+	public void setHusdyr(boolean ny) {
 		husdyr = ny;
 	}
 	
-	private boolean getHusdyr() {
+	public boolean getHusdyr() {
 		return husdyr;
 	}
 	
-	private void setBalkong(boolean ny) {
+	public void setBalkong(boolean ny) {
 		balkong = ny;
 	}
 	
-	private boolean getBalkong() {
+	public boolean getBalkong() {
 		return balkong;
 	}
 	
-	private void setHage(boolean ny) {
+	public void setHage(boolean ny) {
 		hage = ny;
 	}
 	
-	private boolean getHage() {
+	public boolean getHage() {
 		return hage;
 	}
 	
-	private void setArbeidsforhold(boolean ny) {
-		arbeidsforhold = ny;
+	public void setMaxPris(int ny) {
+		maxpris = ny;
 	}
 	
-	private boolean getArbeidsforhold() {
-		return arbeidsforhold;
+	public int getMaxPris() {
+		return maxpris;
 	}
 	
-	private void setPrisklasse(int ny) {
-		prisklasse = ny;
+	public void setMinPris(int ny) {
+		minpris = ny;
 	}
 	
-	private int getPrisklasse() {
-		return prisklasse;
+	public int getMinPris() {
+		return minpris;
 	}
 	
-	private void setAntRom(int ny) {
+	public void setAntRom(int ny) {
 		antRom = ny;
 	}
 	
-	private int getAntRom() {
+	public int getAntRom() {
 		return antRom;
 	}
 	
-	private void setStørrelse(int ny) {
+	public void setStørrelse(int ny) {
 		størrelse = ny;
 	}
 	
-	private int getStørrelse() {
+	public int getStørrelse() {
 		return størrelse;
+	}
+	
+	public void setHusholdningSize(int ny) {
+		husholdningSize = ny;
+	}
+	
+	public int getHusholdningSize() {
+		return husholdningSize;
 	}
 	
 	//ToString for å hente informasjon om en utleier.
