@@ -70,6 +70,9 @@ public class Personliste {
 	public Bruker finnPerson(String epost) {
 		return null;
 	}
+	public Bruker getFirst(){
+		return first;
+	}
 	
 	public String toString() {
 		return "lalala";
