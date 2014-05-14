@@ -6,7 +6,7 @@
 
 package Bolig;
 
-public class Utleiere extends Person {
+public class Utleiere extends Bruker {
 	
 	private String firma;
 	
