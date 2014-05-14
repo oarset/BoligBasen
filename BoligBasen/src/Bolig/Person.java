@@ -25,4 +25,9 @@ public abstract class Person {
 		mnd = m;
 		aar = aa;
 	}
+	
+	//ToString for å hente informasjon om en utleier.
+		public String toString() {
+			return navn + " " + adresse + " " + email + " " + telefon;
+		}
 }
