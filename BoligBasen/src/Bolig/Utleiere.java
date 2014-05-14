@@ -27,6 +27,12 @@ public class Utleiere extends Person {
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
-		return firma + " " +  navn + " " + adresse + " " + email + " " + telefon;
-	}
+			return navn + " " + etternavn + "\n" + 
+				   adresse + "\n" + 
+				   email + "\n" + 
+				   telefon + "\n" +
+				   sted  + "\n" +
+				   postnr  + "\n" +
+				   firma  + "\n";
+		}
 }
