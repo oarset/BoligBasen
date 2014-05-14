@@ -109,13 +109,27 @@ public class Boligsøker extends Bruker {
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
-		return navn + " " + etternavn + "\n" + 
-			   adresse + "\n" + 
-			   email + "\n" + 
-			   telefon + "\n" +
-			   sted  + "\n" +
-			   postnr  + "\n" +
-			   sivilstatus  + "\n" +
-			   yrke  + "\n";
+		String ut = null;
+		if (navn != null && etternavn != null) 
+			ut += "Navn: " + navn + " " + etternavn + "\n";
+		if (adresse != null)
+			ut += "Adresse: " + adresse + "\n";
+		if (email != null)
+			ut += "Email: " + email  + "\n";
+		if (telefon != null)
+			ut += "Telefon: " + telefon  + "\n";
+		if (sted != null && postnr != null)
+			ut += "Postnummer og sted: " + postnr + " " + sted + "\n";
+		if (sivilstatus != null)
+			ut += "Sivilstatus: " + sivilstatus  + "\n";
+		if (yrke != null)
+			ut += "Yrke: " + yrke  + "\n";
+		if (røyker = true) {
+			ut += "Røyker: " + "Ja" + "\n";
+		}
+		else {
+			ut += "Røyker: " + "Nei" + "\n";
+		}
+		return ut;
 	}
 }
