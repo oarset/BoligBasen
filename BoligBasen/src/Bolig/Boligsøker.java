@@ -6,7 +6,7 @@
 
 package Bolig;
 
-public class Boligsøker extends Person {
+public class Boligsøker extends Bruker {
 	
 	private String sivilstatus, yrke;
 	private boolean røyker, husdyr, balkong, hage, arbeidsforhold;

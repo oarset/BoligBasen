@@ -8,13 +8,13 @@ package Bolig;
 
 public class Personliste {
 	
-	private Person first;
+	private Bruker first;
 
 	public Personliste() {
 		
 	}
 	
-	public void settInnPerson(Person ny) {
+	public void settInnPerson(Bruker ny) {
 		if (ny == null) {
 			return;
 		}
@@ -23,14 +23,14 @@ public class Personliste {
 			return;
 		}
 		else {
-			Person cycle = first;
+			Bruker cycle = first;
 			while (cycle.neste != null) 
 				cycle = cycle.neste;
 			cycle.neste = ny;
 		}
 	}
 	
-	public void slettPerson(Person ny) {
+	public void slettPerson(Bruker ny) {
 		if (ny == null) {
 			return;
 		}
@@ -39,7 +39,7 @@ public class Personliste {
 			return;
 		}
 		else {
-			Person cycle = first;
+			Bruker cycle = first;
 			while (cycle.neste != ny && cycle.neste != null)
 				cycle = cycle.neste;
 			if (cycle.neste == ny) {
@@ -51,7 +51,7 @@ public class Personliste {
 		}
 	}
 	
-	public Person finnPerson(String epost) {
+	public Bruker finnPerson(String epost) {
 		return null;
 	}
 	

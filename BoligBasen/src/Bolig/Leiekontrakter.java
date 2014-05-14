@@ -3,11 +3,11 @@ package Bolig;
 public class Leiekontrakter {
 	
 	Bolig utleieboligen;
-	Person utleier;
-	Person leietaker;
+	Bruker utleier;
+	Bruker leietaker;
 	int pris, varighet;
 	
-	public Leiekontrakter(Bolig bolig, Person utleieren, Person leietakeren, int leie, int lengde) {
+	public Leiekontrakter(Bolig bolig, Bruker utleieren, Bruker leietakeren, int leie, int lengde) {
 		utleieboligen = bolig;
 		utleier = utleieren;
 		leietaker = leietakeren;
