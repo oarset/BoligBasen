@@ -40,9 +40,14 @@ public class Boligliste {
 		}
 		else {
 			Bolig cycle = first;
-			while (cycle.next != null) 
+			while (cycle.next != null) {
+				if (cycle.getLeiePris() < ny.getLeiePris() && cycle.next.getLeiePris() > ny.getLeiePris()) {
+					ny.next = cycle.next;
+					cycle.next = ny;
+					return;
+				}
 				cycle = cycle.next;
-			cycle.next = ny;
+			}
 		}
 	}
 	
@@ -71,6 +76,10 @@ public class Boligliste {
 	public Boligliste prisSort() {
 		Boligliste ny = new Boligliste();
 		Bolig cycle = first;
+		while (cycle.next != null) {
+			ny.settInnSortertBolig(cycle);
+		}
+		return ny;
 	}
 	
 	public Boligliste utleierBoligliste(String epost) {
