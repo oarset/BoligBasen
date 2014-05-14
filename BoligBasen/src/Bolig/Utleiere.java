@@ -37,12 +37,21 @@ public class Utleiere extends Bruker {
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
-			return navn + " " + etternavn + "\n" + 
-				   adresse + "\n" + 
-				   email + "\n" + 
-				   telefon + "\n" +
-				   sted  + "\n" +
-				   postnr  + "\n" +
-				   firma  + "\n";
+		String ut = "";
+		if (navn != null && etternavn != null) 
+			ut += "Navn: " + navn + " " + etternavn + "\n";
+		if (adresse != null)
+			ut += "Adresse: " + adresse + "\n";
+		if (email != null)
+			ut += "Email: " + email  + "\n";
+		if (telefon != null)
+			ut += "Telefon: " + telefon  + "\n";
+		if (sted != null && postnr != null)
+			ut += "Postnummer og sted: " + postnr + " " + sted + "\n";
+		if (firma != null) 
+			ut += "Firma: " + firma  + "\n";
+		if (firmaInfo != null)
+			ut += "Informasjon om firma: " + firmaInfo  + "\n";
+		return ut;
 		}
 }
