@@ -11,10 +11,12 @@ public class Boligsøker extends Bruker {
 	private String sivilstatus, yrke;
 	private boolean røyker, husdyr, balkong, hage;
 	private int maxpris, minpris, antrom, størrelse, husholdningSize;
+	private boolean utleier;
 
 	
 	public Boligsøker(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {
 		super(nvn, enavn, adr, pnr, sted, d, m, aa, epost, tlf);
+		utleier = false;
 	}
 	
 	//Sette ny sivilstatus til en boligsøker.
@@ -105,6 +107,11 @@ public class Boligsøker extends Bruker {
 	
 	public int getHusholdningSize() {
 		return husholdningSize;
+	}
+	
+	//Hjelpemetode for å lage utleierliste.
+	public boolean erUtleier() {
+		return utleier;
 	}
 	
 	//ToString for å hente informasjon om en utleier.

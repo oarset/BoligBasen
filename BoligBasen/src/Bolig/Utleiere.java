@@ -9,10 +9,11 @@ package Bolig;
 public class Utleiere extends Bruker {
 	
 	private String firma, firmaInfo;
+	private boolean utleier;
 	
 	public Utleiere(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {
 		super(nvn, enavn, adr, pnr, sted, d, m, aa, epost, tlf);
-
+		utleier = true;
 	}
 	
 	//Metode for å sette firma til en utleier.
@@ -34,12 +35,18 @@ public class Utleiere extends Bruker {
 	public String getFirmaInfo() {
 		return firmaInfo;
 	}
+	
 	//Metode som returnerer navn og etternavn som String.
 	public String nametoString() {
 		String ut = "";
 		if (navn != null && etternavn != null) 
 			ut += "Navn: " + navn + " " + etternavn + "\n";
 		return ut;
+	}
+	
+	//Hjelpemetode for å lage utleierliste.
+	public boolean erUtleier() {
+		return utleier;
 	}
 	
 	//ToString for å hente informasjon om en utleier.
