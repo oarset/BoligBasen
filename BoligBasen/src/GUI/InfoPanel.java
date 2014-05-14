@@ -7,12 +7,15 @@ import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class InfoPanel extends JPanel{
+	
+	private JTextArea output;
 
 	public InfoPanel(){
 		
-		setPreferredSize(new Dimension(540,800));
+		setPreferredSize(new Dimension(540,300));
 		BorderLayout bl = new BorderLayout();
 		bl.setVgap(5);
 		setLayout(bl);
@@ -25,8 +28,9 @@ public class InfoPanel extends JPanel{
 		
 		removeAll();
 		
-		JLabel output = new JLabel( s );
-		output.setBackground(Color.white);
-		add( output, BorderLayout.LINE_START );
+		output = new JTextArea( 0, 40 );
+		output.setEditable( false );
+		add( output, BorderLayout.PAGE_START );
+		output.setText(s);
 	}
 }

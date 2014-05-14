@@ -223,7 +223,7 @@ public class SeekerPanel extends JLabel{
 		return seeker;
 	}
 	
-	public void nyBoligSeeker(){
+	public void oppdaterBoligSeeker(){
 		try{
 			int seekmaxpris = Integer.parseInt(maxmndpris.getText());
 			seeker.setMaxPris(seekmaxpris);

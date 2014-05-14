@@ -143,13 +143,13 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
-	 
+	 // actionlistener som håndterer lagring av Boligsøer fra "SeekerPanel" (page2)
 	 seeker.saveSeekerActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				seeker.nyBoligSeeker();
+				seeker.oppdaterBoligSeeker();
 				Boligsøker seek = seeker.getSeeker();
 				String infostring = seek.toString();
 				info.addContent(infostring);
@@ -214,7 +214,7 @@ public class BoligBaseFrame extends JFrame{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(5, seek, null);
+				setLeftFrame(1, null, null);
 				
 			}
 	 		
