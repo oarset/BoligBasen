@@ -2,10 +2,13 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +16,8 @@ import javax.swing.JPanel;
 public class SeekerInfoPanel extends JLabel{
 
 	private JFormattedTextField sivilstatus, hhs, smoke, yrke, husdyr; 
+	public JPanel buttonPanel;
+	public JButton saveInfoButton, backButton;
 	
 	public SeekerInfoPanel(){
 
@@ -71,7 +76,7 @@ public class SeekerInfoPanel extends JLabel{
 		hhs.setColumns(8);
 
 				
-		hhsPanel.add( new JLabel( "Størrelse på Husholdningn" ), BorderLayout.PAGE_START );
+		hhsPanel.add( new JLabel( "Størrelse på Husholdningen" ), BorderLayout.PAGE_START );
 		hhsPanel.add(hhs, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
@@ -84,6 +89,92 @@ public class SeekerInfoPanel extends JLabel{
 		add(hhsPanel, c);
 		
 		
+		// label og inputfelt røyking/ikke-røyk
+		JPanel smokePanel = new JPanel();
+		BorderLayout bl3 = new BorderLayout();
+		bl3.setHgap(10);
+		bl3.setVgap(5);
+		smokePanel.setLayout(bl3);
+		smoke = new JFormattedTextField(  );
+		smoke.setColumns(8);
+
+				
+		smokePanel.add( new JLabel( "Røyker" ), BorderLayout.PAGE_START );
+		smokePanel.add(smoke, BorderLayout.LINE_START);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.ipady = 10;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.insets = new Insets(10,50,0,10);
+		add(smokePanel, c);
+		
+		// label og inputfelt yrke
+		JPanel yrkePanel = new JPanel();
+		BorderLayout bl4 = new BorderLayout();
+		bl4.setHgap(10);
+		bl4.setVgap(5);
+		yrkePanel.setLayout(bl4);
+		yrke = new JFormattedTextField(  );
+		yrke.setColumns(8);
+
+				
+		yrkePanel.add( new JLabel( "Yrke" ), BorderLayout.PAGE_START );
+		yrkePanel.add(yrke, BorderLayout.LINE_START);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.ipady = 10;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.gridx = 0;
+		c.gridy = 4;
+		c.insets = new Insets(10,50,0,10);
+		add(yrkePanel, c);
+		
+		// label og inputfelt størrelse på husholdningen
+		JPanel husdyrPanel = new JPanel();
+		BorderLayout bl5 = new BorderLayout();
+		bl5.setHgap(10);
+		bl5.setVgap(5);
+		husdyrPanel.setLayout(bl5);
+		husdyr = new JFormattedTextField(  );
+		husdyr.setColumns(8);
+
+				
+		husdyrPanel.add( new JLabel( "Huysdyr?" ), BorderLayout.PAGE_START );
+		husdyrPanel.add(husdyr, BorderLayout.LINE_START);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.ipady = 10;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.gridx = 0;
+		c.gridy = 5;
+		c.insets = new Insets(10,50,0,10);
+		add(husdyrPanel, c);
+		
+		
+		// legger til knapper for å lagre boligsøker eller gåt tilbake til bruker info
+		
+		buttonPanel = new JPanel();
+		FlowLayout fl = new FlowLayout();
+		fl.setAlignment(FlowLayout.RIGHT);
+		buttonPanel.setLayout(fl);
+		
+		saveInfoButton = new JButton("Lagre info");
+		backButton = new JButton("Tilbake");
+		
+		buttonPanel.add(saveInfoButton);
+		buttonPanel.add(backButton);
+		
+		c.fill = GridBagConstraints.NONE;
+		c.gridx = 0;
+		c.gridy = 7;
+		c.insets = new Insets(10,50,0,10);
+		add(buttonPanel, c);
+		
 		// label som fyller bunn
 		JPanel bottomFillPanel = new JPanel( new BorderLayout());
 		
@@ -92,8 +183,20 @@ public class SeekerInfoPanel extends JLabel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 3;
+		c.gridy = 6;
 		add(bottomFillPanel, c);
 		
 	}
+	
+	public void setCompleetSeeker(){
+		
+	}
+	
+	
+	public void saveSeekerInfoActionListener(ActionListener al) {  
+	    saveInfoButton.addActionListener(al);  
+	  } 
+	public void seekerBackActionListener(ActionListener al) {  
+	    backButton.addActionListener(al);  
+	  }
 }

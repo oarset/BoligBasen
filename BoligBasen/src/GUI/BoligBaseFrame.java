@@ -179,6 +179,43 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
+	 
+	 sip.seekerBackActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Container c = getContentPane();
+				c.removeAll();
+			 	c.setLayout( new BorderLayout() );
+			 	c.add(header,BorderLayout.PAGE_START);
+			 	c.add(seeker, BorderLayout.LINE_START);
+			 	c.add(info, BorderLayout.LINE_END);
+			 	addAllAL();
+				c.revalidate();
+				c.repaint();
+				
+			}
+	 		
+	 		
+	 	});
+	 
+	 sip.saveSeekerInfoActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				Boligsøker seek = seeker.getSeeker();
+				String infostring = seek.toString();
+				info.addContent(infostring);
+				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+				header.removeAll();
+				header.add(headerLabel);
+				setLeftFrame(4, seek, null);
+				
+			}
+	 		
+	 		
+	 	});
 }
 	 
 	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl){
