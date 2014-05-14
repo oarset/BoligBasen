@@ -124,7 +124,7 @@ public class Boligsøker extends Bruker {
 			ut += "Sivilstatus: " + sivilstatus  + "\n";
 		if (yrke != null)
 			ut += "Yrke: " + yrke  + "\n";
-		if (røyker = true) {
+		if (røyker == true) {
 			ut += "Røyker: " + "Ja" + "\n";
 		}
 		else {
