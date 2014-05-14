@@ -251,5 +251,8 @@ public class SeekerPanel extends JLabel{
 	public void saveSeekerActionListener(ActionListener al) {  
 	    saveSeekerButton.addActionListener(al);  
 	  } 
+	public void seekerBackActionListener(ActionListener al) {  
+	    backButton.addActionListener(al);  
+	  }
 }
 
