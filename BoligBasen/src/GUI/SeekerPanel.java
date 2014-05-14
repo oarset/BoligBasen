@@ -23,8 +23,11 @@ public class SeekerPanel extends JLabel{
 	public JButton saveSeekerButton, backButton;
 	public JPanel buttonPanel;
 	private Boligsøker seeker;
-	private JComboBox<String> antromvelger;
+	private JComboBox<String> antromvelger, hagevelger, balkongvelger;
 	private String[] antromListe = {"1","2","3","4","5","6","7"};
+	private String[] hageListe = {"ja", "nei"};
+	private String[] balkongListe = {"ja","nei"};
+	
 	
 	public SeekerPanel(){
 			super();
@@ -145,12 +148,11 @@ public class SeekerPanel extends JLabel{
 			bl5.setVgap(5);
 			balkongPanel.setLayout(bl5);
 			
-			// to be changed
-			balkong = new JFormattedTextField(  );
-			balkong.setColumns(8);
+			balkongvelger = new JComboBox<>(balkongListe);
+			balkongvelger.setSelectedIndex(0);
 			
 			balkongPanel.add( new JLabel( "Ønsker Brukeren Balkong?" ), BorderLayout.PAGE_START );
-			balkongPanel.add(balkong, BorderLayout.LINE_START);
+			balkongPanel.add(balkongvelger, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
 			c.ipady = 10;
@@ -167,12 +169,11 @@ public class SeekerPanel extends JLabel{
 			bl6.setVgap(5);
 			hagePanel.setLayout(bl6);
 			
-			// to be changed
-			hage = new JFormattedTextField(  );
-			hage.setColumns(8);
+			hagevelger = new JComboBox<>(hageListe);
+			hagevelger.setSelectedIndex(0);
 			
 			hagePanel.add( new JLabel( "Ønsker Brukeren Hage?" ), BorderLayout.PAGE_START );
-			hagePanel.add(hage, BorderLayout.LINE_START);
+			hagePanel.add(hagevelger, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
 			c.ipady = 10;
@@ -243,7 +244,8 @@ public class SeekerPanel extends JLabel{
 			
 			int seeksize = Integer.parseInt(size.getText());
 			seeker.setStørrelse(seeksize);
-			String seekbalkong = balkong.getText();
+			
+			String seekbalkong = balkongListe[(balkongvelger.getSelectedIndex())];
 			if (seekbalkong == "ja"){
 				seeker.setBalkong(true);
 			}
@@ -251,7 +253,7 @@ public class SeekerPanel extends JLabel{
 				seeker.setBalkong(false);
 			}
 			
-			String seekhage = hage.getText();
+			String seekhage = hageListe[(hagevelger.getSelectedIndex())];
 			if (seekhage == "ja"){
 				seeker.setHage(true);
 			}
