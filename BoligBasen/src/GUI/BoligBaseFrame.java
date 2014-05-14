@@ -214,7 +214,7 @@ public class BoligBaseFrame extends JFrame{
 	 	});
 	 
 	 
-	 
+	// actionlistener som håndterer "tilbake" knappen på SeekerPanel (page2)
 	 seeker.seekerBackActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -233,8 +233,8 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
-	 
-	 sip.seekerBackActionListener(new ActionListener(){
+	// actionlistener som håndterer "tilbake" knappen på SeekerInfoPanel (page3)
+	 sip.seekerInfoBackActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -252,7 +252,7 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
-	 
+	// actionlistener som håndterer lagring av Boligsøker fra "SeekerInfoPanel" (page3)
 	 sip.saveSeekerInfoActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -272,7 +272,7 @@ public class BoligBaseFrame extends JFrame{
 	 		
 			
 	 	});
-	 
+	// actionlistener som håndterer "tilbake" knappen på UtleierPanel (page2)
 	 utlpan.utlBackActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -291,6 +291,26 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
+	 
+	// actionlistener som håndterer "tilbake" knappen på UtleierPanel (page1)
+		 boligpan.boligBackActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					Container c = getContentPane();
+					c.removeAll();
+				 	c.setLayout( new BorderLayout() );
+				 	c.add(header,BorderLayout.PAGE_START);
+				 	c.add(brukerpan, BorderLayout.LINE_START);
+				 	c.add(info, BorderLayout.LINE_END);
+				 	addAllAL();
+					c.revalidate();
+					c.repaint();
+					
+				}
+		 		
+		 		
+		 	});
 	 
 	 
 }

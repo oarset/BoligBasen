@@ -241,7 +241,7 @@ public class SeekerInfoPanel extends JLabel{
 	public void saveSeekerInfoActionListener(ActionListener al) {  
 	    saveInfoButton.addActionListener(al);  
 	  } 
-	public void seekerBackActionListener(ActionListener al) {  
+	public void seekerInfoBackActionListener(ActionListener al) {  
 	    backButton.addActionListener(al);  
 	  }
 }
