@@ -8,7 +8,7 @@ package Bolig;
 
 public class Utleiere extends Bruker {
 	
-	private String firma;
+	private String firma, firmaInfo;
 	
 	public Utleiere(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {
 		super(nvn, enavn, adr, pnr, sted, d, m, aa, epost, tlf);
@@ -24,6 +24,16 @@ public class Utleiere extends Bruker {
 	public String getFirma() {
 		return firma;
 	}
+	
+	//Metode for å sette informasjon om firma til en utleier.
+		public void setFirmaInfo(String selskapInfo) {
+			firmaInfo = selskapInfo;
+		}
+		
+		//Metode for å returnere en String med informasjon om firmaet til en utleier.
+		public String getFirmaInfo() {
+			return firmaInfo;
+		}
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
