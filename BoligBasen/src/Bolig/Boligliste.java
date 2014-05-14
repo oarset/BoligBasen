@@ -30,6 +30,22 @@ public class Boligliste {
 		}
 	}
 	
+	public void settInnSortertBolig(Bolig ny) {
+		if (ny == null) {
+			return;
+		}
+		if (first == null) {
+			first = ny;
+			return;
+		}
+		else {
+			Bolig cycle = first;
+			while (cycle.next != null) 
+				cycle = cycle.next;
+			cycle.next = ny;
+		}
+	}
+	
 	public void slettBolig(Bolig ny) {
 		if (ny == null) {
 			return;
