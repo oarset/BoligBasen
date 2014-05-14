@@ -10,7 +10,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Bolig.Boligsøker;
 import Bolig.Bruker;
+import Bolig.Utleiere;
 
 
 public class BoligBaseFrame extends JFrame implements ActionListener{
@@ -53,7 +55,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(2, info, header, null);
+					setLeftFrame(2, info, header, null, null);
 					}
 
 
@@ -67,7 +69,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 					// endrer venstre panel til "ny bolig panel"
 					public void actionPerformed(ActionEvent e){
 						
-					setLeftFrame(1, info, header, null);
+					setLeftFrame(1, info, header, null, null);
 					}
 
 
@@ -112,13 +114,13 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				Bruker p = brukerpan.nyBoligSeeker();
-				String infostring = p.toString();
+				Boligsøker seek = brukerpan.nyBoligSeeker();
+				String infostring = seek.toString();
 		    	InfoPanel info = new InfoPanel(infostring);
 		    	JPanel header = new JPanel();
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.add(headerLabel);
-				setLeftFrame(3, info, header, p);
+				setLeftFrame(3, info, header, seek, null);
 				
 			}
 	 		
@@ -129,7 +131,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		setVisible( true );
 		}
 	 
-	 public void setLeftFrame(int i, InfoPanel info, JPanel head, Bruker p){
+	 public void setLeftFrame(int i, InfoPanel info, JPanel head, Boligsøker seek, Utleiere utl){
 		 
 		leftframe = i; 
 		if(leftframe == 1){
@@ -159,7 +161,8 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		}
 		
 		else if( leftframe == 3){
-			SeekerPanel seekerpan = new SeekerPanel(p);
+			Boligsøker s = seek;
+			SeekerPanel seekerpan = new SeekerPanel(s);
 			
 			Container c = getContentPane();
 			c.removeAll();
@@ -175,7 +178,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 	 
 	 public void nySeeker(){
 		 
-		 setLeftFrame(3, info, header, null);
+		 setLeftFrame(3, info, header, null, null);
 
 	 }
 	 

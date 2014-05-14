@@ -10,13 +10,14 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Bolig.Boligsøker;
 import Bolig.Bruker;
 
 public class SeekerPanel extends JLabel{
 	
 	private JFormattedTextField maxmndpris, minmndpris, rom, size, balkong, hage, husdyr;
 	
-	public SeekerPanel(Bruker p){
+	public SeekerPanel(Boligsøker seek){
 			super();
 			setPreferredSize(new Dimension(500,200));
 			setLayout(new GridBagLayout());
@@ -76,13 +77,19 @@ public class SeekerPanel extends JLabel{
 			minprisPanel.add(minmndpris, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
 			c.gridx = 0;
 			c.gridy = 2;
 			add(minprisPanel, c);
 			
 			// label og inputfelt for min pris
 			JPanel romPanel = new JPanel();
-			romPanel.setLayout(bl2);
+			BorderLayout bl3 = new BorderLayout();
+			bl3.setHgap(10);
+			bl3.setVgap(5);
+			romPanel.setLayout(bl3);
 			rom = new JFormattedTextField(  );
 			rom.setColumns(8);
 			
@@ -90,9 +97,32 @@ public class SeekerPanel extends JLabel{
 			romPanel.add(rom, BorderLayout.LINE_START);
 
 			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
 			c.gridx = 0;
 			c.gridy = 3;
 			add(romPanel, c);
+			
+			// label og inputfelt for min pris
+			JPanel sizePanel = new JPanel();
+			BorderLayout bl4 = new BorderLayout();
+			bl4.setHgap(10);
+			bl4.setVgap(5);
+			sizePanel.setLayout(bl4);
+			size = new JFormattedTextField(  );
+			size.setColumns(8);
+			
+			sizePanel.add( new JLabel( "Antall kvadratmeter" ), BorderLayout.PAGE_START );
+			sizePanel.add(size, BorderLayout.LINE_START);
+
+			c.fill = GridBagConstraints.NONE;
+			c.ipady = 10;
+			c.weightx = 1;
+			c.weighty = 0;
+			c.gridx = 0;
+			c.gridy = 4;
+			add(sizePanel, c);
 			
 			// label som fyller bunn
 			JPanel bottomFillPanel = new JPanel( new BorderLayout());
@@ -102,7 +132,7 @@ public class SeekerPanel extends JLabel{
 			c.weighty = 1;
 			c.gridheight = 1;
 			c.gridx = 0;
-			c.gridy = 4;
+			c.gridy = 5;
 			add(bottomFillPanel, c);
 	}
 }
