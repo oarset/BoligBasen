@@ -13,11 +13,14 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Bolig.Boligsøker;
+
 public class SeekerInfoPanel extends JLabel{
 
 	private JFormattedTextField sivilstatus, hhs, smoke, yrke, husdyr; 
 	public JPanel buttonPanel;
 	public JButton saveInfoButton, backButton;
+	private Boligsøker seeker;
 	
 	public SeekerInfoPanel(){
 
@@ -133,7 +136,7 @@ public class SeekerInfoPanel extends JLabel{
 		c.insets = new Insets(10,50,0,10);
 		add(yrkePanel, c);
 		
-		// label og inputfelt størrelse på husholdningen
+		// label og inputfelt for husdyr
 		JPanel husdyrPanel = new JPanel();
 		BorderLayout bl5 = new BorderLayout();
 		bl5.setHgap(10);
@@ -143,7 +146,7 @@ public class SeekerInfoPanel extends JLabel{
 		husdyr.setColumns(8);
 
 				
-		husdyrPanel.add( new JLabel( "Huysdyr?" ), BorderLayout.PAGE_START );
+		husdyrPanel.add( new JLabel( "Har Boligsøkeren husdyr?" ), BorderLayout.PAGE_START );
 		husdyrPanel.add(husdyr, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
@@ -188,8 +191,42 @@ public class SeekerInfoPanel extends JLabel{
 		
 	}
 	
+	public void setSeeker(Boligsøker seek){
+		seeker = seek;
+	}
+	
+	public Boligsøker getSeeker(){
+		return seeker;
+	}
+	
 	public void setCompleetSeeker(){
+		try{
+			String sivstat = sivilstatus.getText();
+			seeker.setSivilstatus(sivstat);
+			int husholdning = Integer.parseInt(hhs.getText());
+			seeker.setHusholdningSize(husholdning);
+			String seekyrke = yrke.getText();
+			seeker.setYrke(seekyrke);
+			String smoker = smoke.getText();
+			if (smoker == "ja"){
+				seeker.setRøyker(true);
+			}
+			else{
+				seeker.setRøyker(false);
+			}
+			
+			String seekhusdyr = husdyr.getText();
+			if (seekhusdyr == "ja"){
+				seeker.setHusdyr(true);
+			}
+			else{
+				seeker.setHusdyr(false);
+			}
 		
+		}
+		catch(NumberFormatException e){
+			
+		}
 	}
 	
 	

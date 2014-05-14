@@ -10,9 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Bolig.Boligsøker;
-import Bolig.Bruker;
-import Bolig.Utleiere;
+import Bolig.*;
 
 
 public class BoligBaseFrame extends JFrame{
@@ -20,10 +18,12 @@ public class BoligBaseFrame extends JFrame{
 	private JPanel header;
 	private InfoPanel info;
 	private int leftframe;
+	private Personliste personliste;
 	public NewBrukerPanel brukerpan;
 	public NewBoligPanel boligpan;
 	public SeekerPanel seeker;
 	public SeekerInfoPanel sip;
+	public UtleierPanel utlpan;
 	
 	
 	 public BoligBaseFrame()
@@ -31,6 +31,7 @@ public class BoligBaseFrame extends JFrame{
 		super("BoligBasen");
 
 		leftframe = 1;
+		personliste = new Personliste();
 		
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
@@ -39,6 +40,7 @@ public class BoligBaseFrame extends JFrame{
 	 	seeker = new SeekerPanel();
 	 	boligpan = new NewBoligPanel();
 	 	sip = new SeekerInfoPanel();
+	 	utlpan = new UtleierPanel();
 		
 		// lager default infor panel
 		info = new InfoPanel();
@@ -202,20 +204,43 @@ public class BoligBaseFrame extends JFrame{
 	 sip.saveSeekerInfoActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				Boligsøker seek = seeker.getSeeker();
+				Boligsøker bs = seeker.getSeeker();
+				sip.setSeeker(bs);
+				sip.setCompleetSeeker();
+				Boligsøker seek = sip.getSeeker();
 				String infostring = seek.toString();
 				info.addContent(infostring);
+				personliste.settInnPerson(seek);
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(4, seek, null);
+				setLeftFrame(5, seek, null);
 				
 			}
 	 		
 	 		
 	 	});
+	 
+	 utlpan.utlBackActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Container c = getContentPane();
+				c.removeAll();
+			 	c.setLayout( new BorderLayout() );
+			 	c.add(header,BorderLayout.PAGE_START);
+			 	c.add(brukerpan, BorderLayout.LINE_START);
+			 	c.add(info, BorderLayout.LINE_END);
+			 	addAllAL();
+				c.revalidate();
+				c.repaint();
+				
+			}
+	 		
+	 		
+	 	});
+	 
+	 
 }
 	 
 	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl){
@@ -275,6 +300,22 @@ public class BoligBaseFrame extends JFrame{
 			c.revalidate();
 			c.repaint();
 		}
+		
+		else if( leftframe == 5){
+			Boligsøker s = seek;
+			
+			seeker.setSeeker(s);
+			Container c = getContentPane();
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(brukerpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
+			c.revalidate();
+			c.repaint();
+		}
+		
 		 
 	 }
 	 

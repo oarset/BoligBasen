@@ -128,10 +128,10 @@ public class UtleierPanel extends JLabel{
 			
 	}
 	
-	public void saveSeekerActionListener(ActionListener al) {  
+	public void saveUtlActionListener(ActionListener al) {  
 	    saveUtlButton.addActionListener(al);  
 	  } 
-	public void seekerBackActionListener(ActionListener al) {  
+	public void utlBackActionListener(ActionListener al) {  
 	    backButton.addActionListener(al);  
 	  }
 	
