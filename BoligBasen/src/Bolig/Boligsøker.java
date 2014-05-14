@@ -10,7 +10,7 @@ public class Boligsøker extends Bruker {
 	
 	private String sivilstatus, yrke;
 	private boolean røyker, husdyr, balkong, hage;
-	private int maxpris, minpris, antRom, størrelse, husholdningSize;
+	private int maxpris, minpris, antrom, størrelse, husholdningSize;
 
 	
 	public Boligsøker(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {
@@ -84,11 +84,11 @@ public class Boligsøker extends Bruker {
 	}
 	
 	public void setAntRom(int ny) {
-		antRom = ny;
+		antrom = ny;
 	}
 	
 	public int getAntRom() {
-		return antRom;
+		return antrom;
 	}
 	
 	public void setStørrelse(int ny) {
@@ -109,7 +109,7 @@ public class Boligsøker extends Bruker {
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
-		String ut = null;
+		String ut = "";
 		if (navn != null && etternavn != null) 
 			ut += "Navn: " + navn + " " + etternavn + "\n";
 		if (adresse != null)
@@ -129,6 +129,12 @@ public class Boligsøker extends Bruker {
 		}
 		else {
 			ut += "Røyker: " + "Nei" + "\n";
+		}
+		if (minpris != 0 || maxpris != 0){
+			ut += "Pris: " + minpris + " til " + maxpris +"\n";
+		}
+		if (antrom != 0){
+			ut += "Minimum antall rom: " + antrom + "\n";
 		}
 		return ut;
 	}
