@@ -107,7 +107,7 @@ public class Boligsøker extends Bruker {
 		return husholdningSize;
 	}
 	
-	//ToString for å hente informasjon om en utleier. test
+	//ToString for å hente informasjon om en utleier.
 	public String toString() {
 		String ut = null;
 		if (navn != null && etternavn != null) 
