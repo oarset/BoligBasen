@@ -25,4 +25,16 @@ public abstract class Person {
 		mnd = m;
 		aar = aa;
 	}
+	
+	public void setTelefon(String tlf) {
+		telefon = tlf;
+	}
+	
+	public String getTelefon() {
+		return telefon;
+	}
+	
+	public String toString() {
+		return "masse tekst";
+	}
 }
