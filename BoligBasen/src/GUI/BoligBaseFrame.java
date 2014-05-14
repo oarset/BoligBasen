@@ -189,7 +189,7 @@ public class BoligBaseFrame extends JFrame implements ActionListener{
 		else if( leftframe == 3){
 			Boligsøker s = seek;
 			
-
+			seeker.setSeeker(s);
 			Container c = getContentPane();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );

@@ -216,12 +216,31 @@ public class SeekerPanel extends JLabel{
 		return seeker;
 	}
 	
-	public Boligsøker nyBoligSeeker(){
+	public void nyBoligSeeker(){
 		try{
 			int seekmaxpris = Integer.parseInt(maxmndpris.getText());
-			setMaxPris();
+			seeker.setMaxPris(seekmaxpris);
 			int seekminpris = Integer.parseInt(minmndpris.getText());
-			setMinPris();
+			seeker.setMinPris(seekminpris);
+			int seekrom = Integer.parseInt(rom.getText());
+			seeker.setAntRom(seekrom);
+			int seeksize = Integer.parseInt(size.getText());
+			seeker.setStørrelse(seeksize);
+			String seekbalkong = balkong.getText();
+			if (seekbalkong == "ja"){
+				seeker.setBalkong(true);
+			}
+			else{
+				seeker.setBalkong(false);
+			}
+			
+			String seekhage = hage.getText();
+			if (seekhage == "ja"){
+				seeker.setHage(true);
+			}
+			else{
+				seeker.setHage(false);
+			}
 		
 		}
 		catch(NumberFormatException e){
