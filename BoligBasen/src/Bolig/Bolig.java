@@ -13,7 +13,7 @@ public abstract class Bolig {
 
 	private String addresse, boligtype, beskrivelse;
 	private int boa, byggeaar;
-	private int leiepris; // pris regnes i øre (pris = 300000 beetyr 3000 kroner)
+	private int leiepris; 
 	private Date opprettet;
 	private Utleiere eier;
 	public Bolig next;

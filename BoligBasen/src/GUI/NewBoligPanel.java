@@ -192,11 +192,11 @@ public class NewBoligPanel extends JPanel{
 		bl7.setVgap(5);
 		utleierPanel.setLayout(bl7);	
 		
-		utleiervelger = new JComboBox<>();
-		utleiervelger.setSelectedIndex(0);
+		//utleiervelger = new JComboBox<>();
+		//utleiervelger.setSelectedIndex(0);
 		
-		typePanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
-		typePanel.add(utleiervelger, BorderLayout.LINE_START);
+		//typePanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
+		//typePanel.add(utleiervelger, BorderLayout.LINE_START);
 
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
