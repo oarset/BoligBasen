@@ -174,7 +174,7 @@ public class SeekerPanel extends JLabel{
 			c.gridy = 6;
 			add(hagePanel, c);
 			
-			// legger til knapper for å lagre boligsøker eller gåt tilbake til bruker info
+			// legger til knapper for å lagre boligsøker eller gå tilbake til bruker info
 			
 			buttonPanel = new JPanel();
 			FlowLayout fl = new FlowLayout();
