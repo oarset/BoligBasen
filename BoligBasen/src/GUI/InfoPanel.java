@@ -27,7 +27,6 @@ public class InfoPanel extends JPanel{
 		
 		JLabel output = new JLabel( s );
 		output.setBackground(Color.white);
-		add( new JLabel( "Vis info her" ),BorderLayout.PAGE_START );
 		add( output, BorderLayout.LINE_START );
 	}
 }
