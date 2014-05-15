@@ -197,7 +197,9 @@ public class Boligliste implements Serializable {
 		Bolig cycle = first;
 		while (cycle != null) {
 			outPrint += cycle.toString();
+			if (cycle.next != null) {
 			cycle = cycle.next;
+			}
 		}
 		
 		return outPrint;
