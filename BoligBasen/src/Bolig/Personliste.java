@@ -30,10 +30,8 @@ public class Personliste {
 			while (cycle.neste != null) { 
 				cycle = cycle.neste;	
 			}
-			cycle.neste = ny;
-			
+			cycle.neste = ny;	
 		}
-		
 	}
 	
 	public void slettPerson(Bruker ny) {
