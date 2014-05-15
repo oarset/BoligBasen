@@ -71,6 +71,16 @@ public class Personliste {
 		return ny;
 	}
 	
+	public int antPersoner() {
+		Bruker cycle = first;
+		int teller = 0;
+		while (cycle.neste != null) {
+			teller += 1;
+			cycle = cycle.neste;
+		}
+		return teller;
+	}
+	
 	public Bruker finnPerson(String epost) {
 		return null;
 	}
