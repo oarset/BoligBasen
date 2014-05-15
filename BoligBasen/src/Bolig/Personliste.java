@@ -84,12 +84,11 @@ public class Personliste {
 		
 		Personliste ny = new Personliste();
 		Bruker cycle = first;
-		while (cycle.neste != null) {
+		while (cycle != null) {
 			if (cycle.erUtleier() == true) {
 				ny.settInnUtleier(cycle);
 				}
 			cycle = cycle.neste;
-			
 			}
 		return ny;
 	}
