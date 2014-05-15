@@ -377,11 +377,12 @@ public class BoligBaseFrame extends JFrame{
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
 			Container c = getContentPane();
-			NewBoligPanel boligpanel = new NewBoligPanel();
+			//NewBoligPanel boligpanel = new NewBoligPanel();
+			//boligpanel = boligpan;
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(boligpanel, BorderLayout.LINE_START);
+		 	c.add(boligpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 		 	//laster ActionListeners
 		 	
@@ -411,8 +412,6 @@ public class BoligBaseFrame extends JFrame{
 		// setter venstre panel til SeekerPanel
 		else if( leftframe == 3){
 			Boligsøker s = seek;
-			
-			
 			Container c = getContentPane();
 			SeekerPanel seekpanel = new SeekerPanel();
 			seeker = seekpanel;

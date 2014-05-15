@@ -205,6 +205,7 @@ public class NewBoligPanel extends JPanel{
 			utleierStringListe[0] = "Ingen eiere, registrer ny eier";
 		}
 		else{
+			
 			int i = 0;
 			Bruker cycle = utleierListe.getFirst();
 			while (cycle.neste != null) {
