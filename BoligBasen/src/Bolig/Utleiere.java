@@ -42,6 +42,7 @@ public class Utleiere extends Bruker {
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
 		String ut = "";
+			ut += "Brukerid: " + brukerid + "\n";
 		if (navn != null && etternavn != null) 
 			ut += "Navn: " + navn + " " + etternavn + "\n";
 		if (adresse != null)

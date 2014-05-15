@@ -9,6 +9,7 @@ package Bolig;
 public class Personliste {
 	
 	private Bruker first;
+	private int brukerTeller = 1000;
 
 	public Personliste() {
 		first = null;
@@ -22,7 +23,9 @@ public class Personliste {
 		
 		//tom liste
 		if (first == null) {
-			first = ny;		
+			first = ny;	
+			ny.setBrukerid(brukerTeller);
+			brukerTeller += 1;
 			return;
 		}
 		else {
@@ -31,6 +34,8 @@ public class Personliste {
 				cycle = cycle.neste;	
 			}
 			cycle.neste = ny;	
+			ny.setBrukerid(brukerTeller);
+			brukerTeller += 1;
 		}
 	}
 	
@@ -98,15 +103,26 @@ public class Personliste {
 	public int antPersoner() {
 		Bruker cycle = first;
 		int teller = 0;
-		while (cycle.neste != null) {
+		while (cycle != null) {
 			teller += 1;
+			if (cycle.neste != null) {
 			cycle = cycle.neste;
+			}
 		}
 		return teller;
 	}
 	
-	//Finner en bruker i lista basert på epost, ubrukt.
-	public Bruker finnPerson(String epost) {
+	//Finner en bruker i lista basert på brukerid
+	public Bruker finnPerson(int brukerid) {
+		Bruker cycle = first;
+		while (cycle != null) {
+			if (cycle.getBrukerid() == brukerid) {
+				return cycle;
+			}
+			if (cycle.neste != null) {
+			cycle = cycle.neste;
+			}
+		}
 		return null;
 	}
 	

@@ -9,7 +9,7 @@ package Bolig;
 public abstract class Bruker {
 	
 	protected String navn, etternavn, adresse, postnr, sted, email, telefon;
-	protected int dag, mnd, aar;
+	protected int dag, mnd, aar, brukerid;
 	public Bruker neste;
 	public Bruker utleierNeste;
 	
@@ -39,6 +39,16 @@ public abstract class Bruker {
 	//Setter telefonnummer
 	public void setTelefon(String tlf) {
 		telefon = tlf;
+	}
+	
+	//Setter en brukerid til en bruker
+	public void setBrukerid(int id) {
+		brukerid = id;
+	}
+	
+	//Henter ut en bruker sin brukerid
+	public int getBrukerid() {
+		return brukerid;
 	}
 	
 	//Henter ut telefonnummer
