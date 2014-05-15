@@ -85,20 +85,20 @@ public class Boligliste implements Serializable {
 		else {
 			Bolig cycle = first;
 			if (cycle.getMatchingScore() > ny.getMatchingScore() ) {
-				ny.next = cycle;
+				ny.matchedNext = cycle;
 				return;
 			}
-			while (cycle.next != null) {
-				if (cycle.next.getMatchingScore() > ny.getMatchingScore() && cycle.getMatchingScore() < ny.getMatchingScore() ) {
-					ny.next = cycle.next;
-					cycle.next = ny;
+			while (cycle.matchedNext != null) {
+				if (cycle.matchedNext.getMatchingScore() > ny.getMatchingScore() && cycle.getMatchingScore() < ny.getMatchingScore() ) {
+					ny.matchedNext = cycle.matchedNext;
+					cycle.matchedNext = ny;
 					return;
 				}
-				cycle = cycle.next;
+				cycle = cycle.matchedNext;
 				
 			}
-			if (cycle.next != null && cycle.getMatchingScore() < ny.getMatchingScore()) {
-				cycle.next = ny;
+			if (cycle.matchedNext != null && cycle.getMatchingScore() < ny.getMatchingScore()) {
+				cycle.matchedNext = ny;
 				return;
 			}
 			return;
@@ -163,7 +163,7 @@ public class Boligliste implements Serializable {
 			return null;
 		Bolig cycle = first;
 		Boligliste ny = new Boligliste();
-		while (cycle.matchedNext != null) {
+		while (cycle.next != null) {
 			cycle.resetMatchingScore();
 			if (cycle.getLeiePris() < person.getMaxPris() && cycle.getLeiePris() > person.getMinPris()) {
 				cycle.addToMatchingscore(cycle.getLeiePris() - person.getMinPris());
@@ -172,7 +172,7 @@ public class Boligliste implements Serializable {
 			}
 			ny.settInnSortertMatchetBolig(cycle);
 			}
-			cycle = cycle.matchedNext;
+			cycle = cycle.next;
 		}
 		return ny;
 	}
