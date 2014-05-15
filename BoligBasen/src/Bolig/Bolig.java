@@ -65,6 +65,10 @@ public abstract class Bolig {
 	public Utleiere getEier() {
 		return eier;
 	}
+	//Setter eieren av en bolig.
+		public void setEier(Utleiere utl) {
+			eier = utl;
+		}
 	
 	//Sørger for at om en bolig ikke har spesifisert om den har balkong blir det levert false.
 	public boolean getBalkong(){
