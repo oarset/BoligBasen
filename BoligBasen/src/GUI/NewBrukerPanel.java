@@ -14,7 +14,7 @@ import Bolig.Utleiere;
 public class NewBrukerPanel extends JPanel{
 
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
-	private JButton newBoligSeekerButton, newUtleierButton;
+	public JButton newBoligSeekerButton, newUtleierButton;
 	private JPanel buttonPanel;
 	private Bruker per;
 	

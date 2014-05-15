@@ -20,7 +20,7 @@ import Bolig.Utleiere;
 public class UtleierPanel extends JLabel{
 	
 	private JFormattedTextField firma, firmaInfo;
-	private JButton saveUtlButton, backButton;
+	public JButton saveUtlButton, backButton;
 	private JPanel buttonPanel;
 	private Utleiere utl;
 	
