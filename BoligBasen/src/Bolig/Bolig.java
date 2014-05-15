@@ -90,7 +90,17 @@ public abstract class Bolig implements Serializable{
 		return leiepris;
 	}
 	public String toString() {
-		String printString = "test";
-		return printString;
+		String ut = "";
+		if (addresse != null) 
+			ut += "Adresse: " + addresse + "\n";
+		if (boligtype != null)
+			ut += "Boligtype: " + boligtype + "\n";
+		if (beskrivelse != null) {
+			ut += "Beskrivelse: " + beskrivelse + "\n";
+		}
+			ut += "Boligareal: " + boa + "\n";
+			ut += "Byggeår: " + byggeaar + "\n";
+			ut += "Leiepris: " + leiepris + "\n";
+		return ut;
 	}
 }
