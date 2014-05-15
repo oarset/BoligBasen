@@ -6,7 +6,9 @@
 
 package Bolig;
 
-public class Enebolig extends Bolig{
+import java.io.Serializable;
+
+public class Enebolig extends Bolig implements Serializable {
 	
 	private int antEtg, tomt;
 	private boolean kjeller;

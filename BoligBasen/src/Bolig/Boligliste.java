@@ -6,7 +6,9 @@
 
 package Bolig;
 
-public class Boligliste {
+import java.io.Serializable;
+
+public class Boligliste implements Serializable {
 	
 	private Bolig first;
 	

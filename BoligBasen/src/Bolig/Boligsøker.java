@@ -6,7 +6,9 @@
 
 package Bolig;
 
-public class Boligsøker extends Bruker {
+import java.io.Serializable;
+
+public class Boligsøker extends Bruker implements Serializable {
 	
 	private String sivilstatus, yrke;
 	private boolean røyker, husdyr, balkong, hage;

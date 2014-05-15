@@ -1,6 +1,8 @@
 package Bolig;
 
-public class Leiekontrakter {
+import java.io.Serializable;
+
+public class Leiekontrakter implements Serializable {
 	
 	Bolig utleieboligen;
 	Bruker utleier;

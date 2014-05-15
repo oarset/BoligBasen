@@ -6,7 +6,9 @@
 
 package Bolig;
 
-public class Personliste {
+import java.io.Serializable;
+
+public class Personliste implements Serializable {
 	
 	private Bruker first;
 	private int brukerTeller = 1000;

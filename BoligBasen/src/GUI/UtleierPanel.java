@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -17,7 +18,7 @@ import Bolig.Boligsøker;
 import Bolig.Bruker;
 import Bolig.Utleiere;
 
-public class UtleierPanel extends JLabel{
+public class UtleierPanel extends JLabel implements Serializable{
 	
 	private JFormattedTextField firma, firmaInfo;
 	public JButton saveUtlButton, backButton;

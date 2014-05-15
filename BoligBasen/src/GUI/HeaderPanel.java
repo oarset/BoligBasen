@@ -1,9 +1,11 @@
 package GUI;
 
+import java.io.Serializable;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class HeaderPanel extends JPanel{
+public class HeaderPanel extends JPanel implements Serializable {
 
 	private JLabel headerLabel;
 	
