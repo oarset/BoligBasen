@@ -16,7 +16,7 @@ public abstract class Bolig {
 	private int leiepris; 
 	private Date opprettet;
 	private Utleiere eier;
-	public Bolig next;
+	public Bolig next, sortertNext, matchedNext, utleierNext;
 	private int matchingScore;
 	
 	// constructor oppretter bolig med adresse og type

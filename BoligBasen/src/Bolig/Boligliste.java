@@ -31,6 +31,23 @@ public class Boligliste {
 		}
 	}
 	
+	//Setter inn en ny bolig i liste som tilhører en utleier.
+	public void settInnUtleierBolig(Bolig ny) {
+		if (ny == null) {
+			return;
+		}
+		if (first == null) {
+			first = ny;
+			return;
+		}
+		else {
+			Bolig cycle = first;
+			while (cycle.utleierNext != null) 
+				cycle = cycle.utleierNext;
+			cycle.utleierNext = ny;
+		}
+	}
+	
 	//Setter inn en ny bolig sortert på pris.
 	public void settInnSortertBolig(Bolig ny) {
 		if (ny == null) {
@@ -42,13 +59,13 @@ public class Boligliste {
 		}
 		else {
 			Bolig cycle = first;
-			while (cycle.next != null) {
-				if (cycle.getLeiePris() < ny.getLeiePris() && cycle.next.getLeiePris() > ny.getLeiePris()) {
-					ny.next = cycle.next;
-					cycle.next = ny;
+			while (cycle.sortertNext != null) {
+				if (cycle.getLeiePris() < ny.getLeiePris() && cycle.sortertNext.getLeiePris() > ny.getLeiePris()) {
+					ny.sortertNext = cycle.sortertNext;
+					cycle.sortertNext = ny;
 					return;
 				}
-				cycle = cycle.next;
+				cycle = cycle.sortertNext;
 			}
 		}
 	}
@@ -122,20 +139,14 @@ public class Boligliste {
 		if (epost == null) 
 			return null;
 		Boligliste ny = new Boligliste();
-		if (first.getEier().email == epost) {
-			ny.first = first;
-		}
-		else {
 		Bolig cycle = first;
-		while (cycle.next != null) {
+		while (cycle != null) {
 			if (cycle.getEier().email == epost) {
-				ny.settInnBolig(cycle);
+				ny.settInnUtleierBolig(cycle);
 			}
-			cycle = cycle.next;
+			cycle = cycle.utleierNext;
 		}
 		return ny;
-		}
-		return null;
 	}
 	
 	//Returnerer en liste med boliger som passer til Boligsøkeren i input. Sortert på hvor god match de er.
