@@ -8,6 +8,7 @@ public class Leiekontrakter implements Serializable {
 	Bruker utleier;
 	Bruker leietaker;
 	int pris, varighet;
+	Leiekontrakter neste;
 	
 	public Leiekontrakter(Bolig bolig, Bruker utleieren, Bruker leietakeren, int leie, int lengde) {
 		utleieboligen = bolig;
