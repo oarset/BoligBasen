@@ -21,10 +21,8 @@ public abstract class Bolig {
 	
 	// constructor oppretter bolig med adresse og type
 	public Bolig(String add, String type){
-		
 		addresse = add;
 		boligtype = type;
-		
 	}
 	
 	//Metode for å sette bolig - person matching score tilbake til 0.
@@ -62,6 +60,8 @@ public abstract class Bolig {
 	public void setLeiePris(int leie){
 		leiepris = leie;
 	}
+	
+	//Returnerer eieren av en bolig.
 	public Utleiere getEier() {
 		return eier;
 	}

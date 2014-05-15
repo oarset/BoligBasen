@@ -14,6 +14,7 @@ public class Boligliste {
 		
 	}
 	
+	//Setter inn en ny bolig i listen.
 	public void settInnBolig(Bolig ny) {
 		if (ny == null) {
 			return;
@@ -30,6 +31,7 @@ public class Boligliste {
 		}
 	}
 	
+	//Setter inn en ny bolig sortert på pris.
 	public void settInnSortertBolig(Bolig ny) {
 		if (ny == null) {
 			return;
@@ -51,6 +53,7 @@ public class Boligliste {
 		}
 	}
 	
+	//Setter inn en ny bolig basert på matching score.
 	public void settInnSortertMatchetBolig(Bolig ny) {
 		if (ny == null) {
 			return;
@@ -82,6 +85,7 @@ public class Boligliste {
 		}
 	}
 	
+	//Sletter en bolig 
 	public void slettBolig(Bolig ny) {
 		if (ny == null) {
 			return;
@@ -113,6 +117,7 @@ public class Boligliste {
 		return ny;
 	}
 	
+	//Returnerer en boligliste hvor alle boliger i listen er eid av bruker med epost i input.
 	public Boligliste utleierBoligliste(String epost) {
 		if (epost == null) 
 			return null;
@@ -133,6 +138,7 @@ public class Boligliste {
 		return null;
 	}
 	
+	//Returnerer en liste med boliger som passer til Boligsøkeren i input. Sortert på hvor god match de er.
 	public Boligliste matchingBolig(Boligsøker person) {
 		if (person == null)
 			return null;
@@ -152,6 +158,7 @@ public class Boligliste {
 		return ny;
 	}
 	
+	//Sjekker som en utleier eier bolig.
 	public boolean utleierHarBolig(Utleiere person) {
 		if (person == null)
 			return false;
@@ -165,6 +172,7 @@ public class Boligliste {
 		return false;
 	}
 	
+	//Returnerer informasjon om boligene i listen.
 	public String toString() {
 		String outPrint = "";
 		Bolig cycle = first;

@@ -27,23 +27,26 @@ public abstract class Bruker {
 		neste = null;
 	}
 
+	//Hjelpemetode for å lage utleierlister.
 	public abstract boolean erUtleier();
-
 	
+	//Metode for å sjekke om en bruker ønsker balkong.
+	public boolean getBalkong() {
+		return false;
+	}
+
+	//Setter telefonnummer
 	public void setTelefon(String tlf) {
 		telefon = tlf;
 	}
 	
+	//Henter ut telefonnummer
 	public String getTelefon() {
 		return telefon;
 	}
 	
-	public boolean getBalkong() {
-		return false;
-	}
-	
 	public String toString() {
-		return "masse tekst" + navn + " " + etternavn ;
+		return navn + " " + etternavn ;
 	} 
 	
 	//Metode som returnerer navn og etternavn som String.
