@@ -54,7 +54,7 @@ public abstract class Bruker {
 		public String nametoString() {
 			String ut = "";
 			if (navn != null && etternavn != null) 
-				ut += "Navn: " + navn + " " + etternavn + "\n";
+				ut +=  navn + " " + etternavn + "\n";
 			return ut;
 		}
 }

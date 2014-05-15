@@ -380,7 +380,16 @@ public class BoligBaseFrame extends JFrame{
 			NewBoligPanel boligpanel = new NewBoligPanel();
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
-			boligpan.utleierPanel.revalidate();
+			
+			Bruker cycle = boligpan.utleierListe.getFirst();
+			if (cycle != null){
+				boligpan.utleiervelger.addItem(cycle.nametoString());
+				while (cycle.neste != null) {
+					boligpan.utleiervelger.addItem(cycle.neste.nametoString());
+					cycle = cycle.neste;
+					
+				}	
+			}
 			//boligpanel = boligpan;
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);

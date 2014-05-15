@@ -27,12 +27,11 @@ public class NewBoligPanel extends JPanel{
 	JFormattedTextField adresse,  boa, byggeaar, pris;
 	JTextArea beskrivelse;
 	private Utleiere utl;
-	private JComboBox<String> typevelger, utleiervelger;
+	public JComboBox<String> typevelger, utleiervelger;
 	private String[] typeListe = {"Leilighet", "Enebolig", "Rekkehus"};
-	private Personliste utleierListe;
+	public Personliste utleierListe;
 	private String[] utleierStringListe;
 	public JButton newEierButton, saveBoligButton, backButton;
-	public JPanel utleierPanel;
 	
 	
 	public NewBoligPanel(){
@@ -193,30 +192,17 @@ public class NewBoligPanel extends JPanel{
 		add(prisPanel, c);
 		
 		// label og valg av Utleier
-		utleierPanel = new JPanel();
+		JPanel utleierPanel = new JPanel();
+		utleierPanel = utleierVelgerPanel();
 		BorderLayout bl7 = new BorderLayout();
 		bl7.setHgap(10);
 		bl7.setVgap(5);
 		utleierPanel.setLayout(bl7);	
 		
 		
-		
-		if (utleierListe.getFirst() == null) {
 			utleierStringListe = new String[1]; 
-			utleierStringListe[0] = "Ingen eiere, registrer ny eier";
-		}
-		else{
-			
-			utleierStringListe = new String[utleierListe.antPersoner()];
-			int i = 0;
-			Bruker cycle = utleierListe.getFirst();
-			while (cycle.neste != null) {
-				utleierStringListe[i] = cycle.neste.nametoString();
-				i++;
-				cycle = cycle.neste;
-				
-			}
-		}
+			utleierStringListe[0] = "---";
+		
 		
 		utleiervelger = new JComboBox<>(utleierStringListe);
 		utleiervelger.setSelectedIndex(0);
@@ -282,6 +268,45 @@ public class NewBoligPanel extends JPanel{
 		catch ( NumberFormatException e ) {
 		    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
 		  }	
+	}
+	
+	public JPanel utleierVelgerPanel(){
+		
+		// label og valg av Utleier
+				JPanel utlPanel = new JPanel();
+				BorderLayout bl7 = new BorderLayout();
+				bl7.setHgap(10);
+				bl7.setVgap(5);
+				utlPanel.setLayout(bl7);	
+				
+				
+				
+				if (utleierListe.getFirst() == null) {
+					utleierStringListe = new String[1]; 
+					utleierStringListe[0] = "Ingen eiere, registrer ny eier";
+				}
+				else{
+					
+					utleierStringListe = new String[utleierListe.antPersoner()];
+					int i = 0;
+					Bruker cycle = utleierListe.getFirst();
+					while (cycle.neste != null) {
+						utleierStringListe[i] = cycle.neste.nametoString();
+						i++;
+						cycle = cycle.neste;
+						
+					}
+				}
+				
+				utleiervelger = new JComboBox<>(utleierStringListe);
+				utleiervelger.setSelectedIndex(0);
+				
+				utlPanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
+				utlPanel.add(utleiervelger, BorderLayout.LINE_START);
+				
+				return utlPanel;
+				
+				
 	}
 	
 	private void errorOutput( String msg )
