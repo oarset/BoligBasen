@@ -27,8 +27,9 @@ public class Personliste {
 		}
 		else {
 			Bruker cycle = first;
-			while (cycle.neste != null) 
+			while (cycle.neste != null) { 
 				cycle = cycle.neste;	
+			}
 			cycle.neste = ny;
 			
 		}
