@@ -34,6 +34,25 @@ public class Personliste {
 		}
 	}
 	
+	public void settInnUtleier(Bruker ny) {
+		if (ny == null) {
+			return;
+		}
+		
+		//tom liste
+		if (first == null) {
+			first = ny;		
+			return;
+		}
+		else {
+			Bruker cycle = first;
+			while (cycle.utleierNeste != null) { 
+				cycle = cycle.utleierNeste;	
+			}
+			cycle.utleierNeste = ny;	
+		}
+	}
+	
 	public void slettPerson(Bruker ny) {
 		if (ny == null) {
 			return;
@@ -63,7 +82,7 @@ public class Personliste {
 		Bruker cycle = first;
 		while (cycle.neste != null) {
 			if (cycle.erUtleier() == true) {
-				ny.settInnPerson(cycle);
+				ny.settInnUtleier(cycle);
 			}
 			cycle = cycle.neste;
 		}

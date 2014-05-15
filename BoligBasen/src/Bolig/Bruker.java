@@ -11,6 +11,7 @@ public abstract class Bruker {
 	protected String navn, etternavn, adresse, postnr, sted, email, telefon;
 	protected int dag, mnd, aar;
 	public Bruker neste;
+	public Bruker utleierNeste;
 	
 	//Constructor som oppretter bruker
 	public Bruker(String nvn, String enavn, String adr,String pnr, String s, int d, int m, int aa, String epost, String tlf) {
