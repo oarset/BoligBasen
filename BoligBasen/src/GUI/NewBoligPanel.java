@@ -18,8 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import Bolig.Bolig;
 import Bolig.Bruker;
+import Bolig.Enebolig;
+import Bolig.Leilighet;
 import Bolig.Personliste;
+import Bolig.Rekkehus;
 import Bolig.Utleiere;
 
 public class NewBoligPanel extends JPanel{
@@ -31,7 +35,7 @@ public class NewBoligPanel extends JPanel{
 	private String[] typeListe = {"Leilighet", "Enebolig", "Rekkehus"};
 	public Personliste utleierListe;
 	private String[] utleierStringListe;
-	public JButton newEierButton, saveBoligButton, backButton;
+	public JButton newEierButton, saveBoligButton;
 	
 	
 	public NewBoligPanel(){
@@ -193,7 +197,6 @@ public class NewBoligPanel extends JPanel{
 		
 		// label og valg av Utleier
 		JPanel utleierPanel = new JPanel();
-		utleierPanel = utleierVelgerPanel();
 		BorderLayout bl7 = new BorderLayout();
 		bl7.setHgap(10);
 		bl7.setVgap(5);
@@ -228,11 +231,9 @@ public class NewBoligPanel extends JPanel{
 		
 		newEierButton = new JButton("Nye Eier");
 		saveBoligButton = new JButton("Lagre info");
-		backButton = new JButton("Tilbake");
 		
 		buttonPanel.add(newEierButton);
 		buttonPanel.add(saveBoligButton);
-		buttonPanel.add(backButton);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 0;
@@ -258,9 +259,6 @@ public class NewBoligPanel extends JPanel{
 	public void saveBoligActionListener(ActionListener al) {  
 	    saveBoligButton.addActionListener(al);  
 	  }
-	public void boligBackActionListener(ActionListener al) {  
-	    backButton.addActionListener(al);  
-	  }
 	public void setUtleierListe(Personliste p){
 		try{
 			utleierListe = p.utleierliste();
@@ -270,44 +268,40 @@ public class NewBoligPanel extends JPanel{
 		  }	
 	}
 	
-	public JPanel utleierVelgerPanel(){
-		
-		// label og valg av Utleier
-				JPanel utlPanel = new JPanel();
-				BorderLayout bl7 = new BorderLayout();
-				bl7.setHgap(10);
-				bl7.setVgap(5);
-				utlPanel.setLayout(bl7);	
-				
-				
-				
-				if (utleierListe.getFirst() == null) {
-					utleierStringListe = new String[1]; 
-					utleierStringListe[0] = "Ingen eiere, registrer ny eier";
-				}
-				else{
-					
-					utleierStringListe = new String[utleierListe.antPersoner()];
-					int i = 0;
-					Bruker cycle = utleierListe.getFirst();
-					while (cycle.utleierNeste != null) {
-						utleierStringListe[i] = cycle.utleierNeste.nametoString();
-						i++;
-						cycle = cycle.utleierNeste;
-						
-					}
-				}
-				
-				utleiervelger = new JComboBox<>(utleierStringListe);
-				utleiervelger.setSelectedIndex(0);
-				
-				utlPanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
-				utlPanel.add(utleiervelger, BorderLayout.LINE_START);
-				
-				return utlPanel;
-				
-				
+	public Bolig saveNyBolig(){
+		try{
+			Bolig bolig;
+			String boadresse = adresse.getText();
+			int boboa = Integer.parseInt(boa.getText());
+			String botype = typeListe[typevelger.getSelectedIndex()];
+			String boutleier = utleierStringListe[(utleiervelger.getSelectedIndex())];
+			int bobygg = Integer.parseInt(byggeaar.getText());
+			int bopris = Integer.parseInt(pris.getText());
+			
+			if(botype == "Rekkehus"){
+				bolig = new Rekkehus(boadresse, botype);
+			}
+			else if (botype == "Enebolig"){
+				bolig = new Enebolig(boadresse, botype);
+			}
+			else {
+				bolig = new Leilighet(boadresse, botype);
+			}
+			
+			bolig.setBOA(boboa);
+			bolig.setByggeAar(bobygg);
+			bolig.setLeiePris(bopris);
+			
+			return bolig;
+			
+			}
+			catch ( NumberFormatException e ) {
+			    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
+			    return null;
+			  }	
 	}
+	
+	
 	
 	private void errorOutput( String msg )
 	{

@@ -42,7 +42,7 @@ public class BoligBaseFrame extends JFrame{
 	 	sip = new SeekerInfoPanel();
 	 	utlpan = new UtleierPanel();
 		
-		// lager default infor panel
+		// lager default info panel
 		info = new InfoPanel();
 		
 		// lager default tittel
@@ -333,10 +333,7 @@ public class BoligBaseFrame extends JFrame{
 	 utlpan.utlBackActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				if (e.getSource() == utlpan.backButton){
-					
-					
 					setLeftFrame(2, null, null, theList);
 				}
 			}
@@ -344,20 +341,14 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 	});
 	 }
-	 public void nyBackUtlP1AL(){
+	 public void nySaveBOP1AL(){
 	// actionlistener som håndterer "tilbake" knappen på BoligPaneled (page1)
-		 boligpan.boligBackActionListener(new ActionListener(){
+		 boligpan.saveBoligActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if (e.getSource() == boligpan.backButton){	
-					Container c = getContentPane();
-					c.removeAll();
-				 	c.setLayout( new BorderLayout() );
-				 	c.add(header,BorderLayout.PAGE_START);
-				 	c.add(brukerpan, BorderLayout.LINE_START);
-				 	c.add(info, BorderLayout.LINE_END);
-					c.revalidate();
-					c.repaint();
+					if (e.getSource() == boligpan.saveBoligButton){	
+						
+					setLeftFrame(1, null, null, theList);
 					}
 				}
 		 		
@@ -365,7 +356,6 @@ public class BoligBaseFrame extends JFrame{
 		 	});
 	 
 	 }
-
 	 
 	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl, Personliste list){
 		 
@@ -380,9 +370,10 @@ public class BoligBaseFrame extends JFrame{
 			NewBoligPanel boligpanel = new NewBoligPanel();
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
+			try{
+				Bruker cycle = boligpan.utleierListe.getFirst();
 			
-			Bruker cycle = boligpan.utleierListe.getFirst();
-			if (cycle != null){
+			if (boligpan.utleierListe.getFirst() != null){
 				boligpan.utleiervelger.addItem(cycle.nametoString());
 				while (cycle.utleierNeste != null) {
 					boligpan.utleiervelger.addItem(cycle.utleierNeste.nametoString());
@@ -390,13 +381,17 @@ public class BoligBaseFrame extends JFrame{
 					
 				}	
 			}
+			}
+			catch ( NullPointerException npe ) {
+			    errorOutput( "Ingen Utleiere er registrert" );
+			    
+			}	
 			//boligpanel = boligpan;
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(boligpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 		 	//laster ActionListeners
-		 	
 			c.revalidate();
 			c.repaint();
 		}
