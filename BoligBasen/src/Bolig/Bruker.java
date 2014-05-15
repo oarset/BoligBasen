@@ -27,13 +27,8 @@ public abstract class Bruker {
 		neste = null;
 	}
 
-	public boolean erUtleier() {
-		if(getClass() == Utleiere.class){
-			return true;
-		}
-		else 
-		return false;
-	}
+	public abstract boolean erUtleier();
+
 	
 	public void setTelefon(String tlf) {
 		telefon = tlf;
