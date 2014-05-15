@@ -116,10 +116,15 @@ public class Boligliste implements Serializable {
 		}
 		else {
 			Bolig cycle = first;
-			while (cycle.next != ny && cycle.next != null)
+			while (cycle.next != ny) {
 				cycle = cycle.next;
-			if (cycle.next == ny) {
+			}
+			if (cycle.next == ny && cycle.next.next != null) {
 				cycle.next = cycle.next.next;
+				return;
+			}
+			else if(cycle.next == ny && cycle.next.next == null) {
+				cycle.next = null;
 				return;
 			}
 			else

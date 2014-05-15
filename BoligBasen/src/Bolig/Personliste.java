@@ -72,10 +72,14 @@ public class Personliste implements Serializable {
 		}
 		else {
 			Bruker cycle = first;
-			while (cycle.neste != ny && cycle.neste != null)
+			while (cycle.neste != ny)
 				cycle = cycle.neste;
-			if (cycle.neste == ny) {
+			if (cycle.neste == ny && cycle.neste.neste != null) {
 				cycle.neste = cycle.neste.neste;
+				return;
+			}
+			else if (cycle.neste == ny && cycle.neste.neste == null) {
+				cycle.neste = null;
 				return;
 			}
 			else
