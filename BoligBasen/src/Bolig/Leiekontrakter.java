@@ -1,3 +1,9 @@
+/**
+ * Klasse for leiekontrakter
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 16. mai.
+ */
+
 package Bolig;
 
 import java.io.Serializable;
@@ -7,7 +13,7 @@ public class Leiekontrakter implements Serializable {
 	Bolig utleieboligen;
 	Bruker utleier;
 	Bruker leietaker;
-	int pris, varighet;
+	int pris, varighet, leiekontraktID;
 	Leiekontrakter neste;
 	
 	public Leiekontrakter(Bolig bolig, Bruker utleieren, Bruker leietakeren, int leie, int lengde) {
@@ -16,6 +22,16 @@ public class Leiekontrakter implements Serializable {
 		leietaker = leietakeren;
 		pris = leie;
 		varighet = lengde;
+	}
+	
+	//Gir en leiekontrakt en id.
+	public void setLeieID(int id) {
+		leiekontraktID = id;
+	}
+	
+	//Returnerer id-en til leiekontrakten.
+	public int getLeieID() {
+		return leiekontraktID;
 	}
 	
 	public String toString() {

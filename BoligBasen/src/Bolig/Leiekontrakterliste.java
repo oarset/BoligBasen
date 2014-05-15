@@ -1,10 +1,17 @@
+/**
+ * Leiekontraktliste 
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 16. mai.
+ */
+
 package Bolig;
 
 import java.io.Serializable;
 
 public class Leiekontrakterliste implements Serializable{
 	
-	Leiekontrakter first;
+	public Leiekontrakter first;
+	private int leiekontraktID = 10000;
 	
 	public Leiekontrakterliste() {
 		
@@ -18,7 +25,9 @@ public class Leiekontrakterliste implements Serializable{
 		
 		//tom liste
 		if (first == null) {
-			first = ny;		
+			first = ny;	
+			first.setLeieID(leiekontraktID);
+			leiekontraktID += 1;
 			return;
 		}
 		else {
@@ -27,8 +36,34 @@ public class Leiekontrakterliste implements Serializable{
 				cycle = cycle.neste;	
 			}
 			cycle.neste = ny;	
+			cycle.neste.setLeieID(leiekontraktID);
+			leiekontraktID +=1;
 		}
 	}
 	
+	//Finner en leiekontrakt basert på id og returnerer den. Returnerer null om den ikke finnes.
+	public Leiekontrakter finnLeiekontrakt(int id) {
+		Leiekontrakter cycle = first;
+		while (cycle != null) {
+			if (cycle.getLeieID() == id) {
+				return cycle;
+			}
+			if (cycle.neste == null) {
+				return null;
+			}
+		}
+		return null;
+	}
 	
+	public String toString() {
+		Leiekontrakter cycle = first;
+		String ut = "";
+		while (cycle != null) {
+			ut += cycle.toString();
+			if (cycle.neste == null) {
+				return ut;
+			}
+		}
+		return ut;
+	}
 }

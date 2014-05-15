@@ -190,6 +190,21 @@ public class Boligliste implements Serializable {
 			}
 		return false;
 	}
+	//Metode som returnerer en bolig på adressen i innparameter.
+	public Bolig finnBoligMedAdresse(String x) {
+		String adr = x.trim();
+		Bolig cycle = first;
+		while (cycle != null) {
+		if (cycle.getAdresse().matches(adr)) {
+			return cycle;
+		}
+		if (cycle.next == null) {
+			return null;
+		}
+		cycle = cycle.next;
+		}
+		return null;
+	}
 	
 	//Returnerer informasjon om boligene i listen.
 	public String toString() {
