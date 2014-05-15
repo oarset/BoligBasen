@@ -1,3 +1,9 @@
+/**
+ * Leiekontraktliste 
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 16. mai.
+ */
+
 package Bolig;
 
 import java.io.Serializable;
@@ -30,5 +36,15 @@ public class Leiekontrakterliste implements Serializable{
 		}
 	}
 	
-	
+	public String toString() {
+		Leiekontrakter cycle = first;
+		String ut = "";
+		while (cycle != null) {
+			ut += cycle.toString();
+			if (cycle.neste == null) {
+				return ut;
+			}
+		}
+		return ut;
+	}
 }

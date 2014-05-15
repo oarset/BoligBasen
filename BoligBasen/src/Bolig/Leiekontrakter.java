@@ -1,3 +1,9 @@
+/**
+ * Klasse for leiekontrakter
+ * @author    Alexander Maaby, Øyvind Årset
+ * Siste forandring: 16. mai.
+ */
+
 package Bolig;
 
 import java.io.Serializable;
