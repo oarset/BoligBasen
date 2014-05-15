@@ -33,6 +33,7 @@ public class NewBoligPanel extends JPanel{
 	private String[] utleierStringListe;
 	private JButton newEierButton, saveBoligButton, backButton;
 	
+	
 	public NewBoligPanel(){
 		super();
 		//setBackground(Color.cyan);

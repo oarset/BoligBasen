@@ -9,11 +9,9 @@ package Bolig;
 public class Utleiere extends Bruker {
 	
 	private String firma, firmaInfo;
-	private boolean utleier;
 	
 	public Utleiere(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {
 		super(nvn, enavn, adr, pnr, sted, d, m, aa, epost, tlf);
-		utleier = true;
 	}
 	
 	//Metode for å sette firma til en utleier.
@@ -36,12 +34,6 @@ public class Utleiere extends Bruker {
 		return firmaInfo;
 	}
 	
-	
-	
-	//Hjelpemetode for å lage utleierliste.
-	public boolean erUtleier() {
-		return utleier;
-	}
 	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {

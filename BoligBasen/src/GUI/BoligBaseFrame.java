@@ -19,11 +19,11 @@ public class BoligBaseFrame extends JFrame{
 	private Personliste theList;
 	private InfoPanel info;
 	private int leftframe;
-	public NewBrukerPanel brukerpan;
-	public NewBoligPanel boligpan;
-	public SeekerPanel seeker;
-	public SeekerInfoPanel sip;
-	public UtleierPanel utlpan;
+	private NewBrukerPanel brukerpan;
+	private NewBoligPanel boligpan;
+	private SeekerPanel seeker;
+	private SeekerInfoPanel sip;
+	private UtleierPanel utlpan;
 	
 	
 	 public BoligBaseFrame()
@@ -175,25 +175,8 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 	});
 	 
-	// actionlistener som håndterer opprettelse av ny Utleier (page1)
-		 brukerpan.newUtlActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
-					Utleiere utl = brukerpan.nyUtleier();
-					String infostring = utl.toString();
-			    	info.addContent(infostring);
-					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
-					header.removeAll();
-					header.add(headerLabel);
-					setLeftFrame(6, null, utl, theList);
-					
-				}
-		 		
-		 		
-		 	});
-	 // actionlistener som håndterer lagring av Boligsøer fra "SeekerPanel" (page2)
+	
+	 // actionlistener som håndterer lagring av Boligskøer fra "SeekerPanel" (page2)
 	 seeker.saveSeekerActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -212,11 +195,37 @@ public class BoligBaseFrame extends JFrame{
 	 		
 	 		
 	 	});
+	 
+	// actionlistener som håndterer opprettelse av ny Utleier (page1)
+			 	brukerpan.newUtlActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					Utleiere utl = brukerpan.nyUtleier();
+					String infostring = utl.toString();
+			    	info.addContent(infostring);
+					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
+					header.removeAll();
+					header.add(headerLabel);
+					setLeftFrame(6, null, utl, theList);
+				
+					}
+			 		
+			 		
+			 	});
 	// actionlistener som håndterer lagring av Utleier fra "UtleierPanel" (page2)
 	 utlpan.saveUtlActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				Utleiere u = utlpan.getUtl();
+				utlpan.setUtl(u);
+				utlpan.setCompleetUtl();
+				Utleiere utl = utlpan.getUtl();
+				String infostring = utl.toString();
+				info.addContent(infostring);
+				theList.settInnPerson(utl);
 				Container c = getContentPane();
 				c.removeAll();
 			 	c.setLayout( new BorderLayout() );
@@ -226,15 +235,7 @@ public class BoligBaseFrame extends JFrame{
 			 	addAllAL();
 				c.revalidate();
 				c.repaint();
-				
-				//Utleiere u = utlpan.getUtl();
-				//utlpan.setUtl(u);
-				utlpan.setCompleetUtl();
-				Utleiere utl = utlpan.getUtl();
-				String infostring = utl.toString();
-				info.addContent(infostring);
-				theList.settInnPerson(utl);
-				setLeftFrame(1, null, utl, theList);
+				//setLeftFrame(1, null, utl, theList);
 				
 			}
 	 		

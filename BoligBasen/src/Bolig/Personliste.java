@@ -14,10 +14,13 @@ public class Personliste {
 		first = null;
 	}
 	
+	
 	public void settInnPerson(Bruker ny) {
 		if (ny == null) {
 			return;
 		}
+		
+		//tom liste
 		if (first == null) {
 			first = ny;			
 		}
