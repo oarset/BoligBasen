@@ -86,25 +86,45 @@ public class BoligBaseFrame extends JFrame{
 		JMenu listemenu = new JMenu("Lister");
 		listemenu.setMnemonic('L');
 		
-			// Oppretter til Ny bolig valg i fil-menyen
+			// viser alle boligsøkere
 			JMenuItem kundeliste = new JMenuItem("Alle Boligsøkere");
 			kundeliste.setMnemonic('B');
 			kundeliste.addActionListener( 
 					new ActionListener(){
 						// endrer infopanel til å vise liste over alle personer i personliste
 						public void actionPerformed(ActionEvent e){
-							//try{
-								setRightFrame(1);
-							//}
-							//catch ( NullPointerException npe ) {
-							  //  errorOutput( "Ingen brukere er registrert" );
+							try{
+								setRightFrame(2);
+							}
+							catch ( NullPointerException npe ) {
+							    errorOutput( "Ingen brukere er registrert" );
 							    
-							  //}	
+							}	
 						
 						}
 
 
 					});
+			
+			// Viser alle utleiere
+						JMenuItem utlliste = new JMenuItem("Alle Utleiere");
+						utlliste.setMnemonic('U');
+						utlliste.addActionListener( 
+								new ActionListener(){
+									// endrer infopanel til å vise liste over alle personer i personliste
+									public void actionPerformed(ActionEvent e){
+										try{
+											setRightFrame(1);
+										}
+										catch ( NullPointerException npe ) {
+										    errorOutput( "Ingen Utleiere er registrert" );
+										    
+										}	
+									
+									}
+
+
+								});
 		
 		// Legger til info meny
 		JMenu infomenu = new JMenu("Info");
@@ -136,6 +156,7 @@ public class BoligBaseFrame extends JFrame{
 		
 		//legger til inhold i liste menyen
 		listemenu.add(kundeliste);
+		listemenu.add(utlliste);
 				
 		
 		// legger til innhold i Info menyen
@@ -391,7 +412,8 @@ public class BoligBaseFrame extends JFrame{
 		 	c.add(brukerpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 		 	//laster ActionListeners
-		 	
+		 	nySeekerP1AL();
+		 	nyUtlP1AL();
 			c.revalidate();
 			c.repaint();
 		}
@@ -458,6 +480,7 @@ public class BoligBaseFrame extends JFrame{
 		 	c.add(utlpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 			nyUtlP2AL();
+			nyBackUtlP2AL();
 			c.revalidate();
 			c.repaint();
 		}
@@ -483,7 +506,7 @@ public class BoligBaseFrame extends JFrame{
 	 public void setRightFrame(int i){
 		 
 		 int rightframe = i;
-		 
+		 // info viser alle Utleiere
 		 if(rightframe == 1){
 			 
 			String s = theList.toString(); 
@@ -493,11 +516,31 @@ public class BoligBaseFrame extends JFrame{
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(boligpan, BorderLayout.LINE_START);
+		 	c.add(brukerpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	nySeekerP1AL();
+		 	nyUtlP1AL();
 			c.revalidate();
 			c.repaint();
 		 }
+		 
+		 //info viser alle leiere
+		 if(rightframe == 2){
+			 
+			String s = theList.toString(); 
+			s += "lol";
+			info.addContent(s); 
+			Container c = getContentPane();
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(brukerpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+		 	nySeekerP1AL();
+		 	nyUtlP1AL();
+			c.revalidate();
+			c.repaint();
+			 }
 		 
 	 }
 	 
