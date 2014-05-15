@@ -31,7 +31,7 @@ public class NewBoligPanel extends JPanel{
 	private String[] typeListe = {"Leilighet", "Enebolig", "Rekkehus"};
 	private Personliste utleierListe;
 	private String[] utleierStringListe;
-	private JButton newEierButton, saveBoligButton, backButton;
+	public JButton newEierButton, saveBoligButton, backButton;
 	
 	
 	public NewBoligPanel(){

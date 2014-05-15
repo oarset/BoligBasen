@@ -22,7 +22,8 @@ public class Personliste {
 		
 		//tom liste
 		if (first == null) {
-			first = ny;			
+			first = ny;		
+			return;
 		}
 		else {
 			Bruker cycle = first;
@@ -31,6 +32,7 @@ public class Personliste {
 			cycle.neste = ny;
 			
 		}
+		
 	}
 	
 	public void slettPerson(Bruker ny) {
@@ -77,12 +79,20 @@ public class Personliste {
 	}
 	
 	public String toString() {
-		String toString = "";
+		
+		if(first ==null){
+			return "Ingen Utleiere opprettet";
+		}
+		else{
+		
 		Bruker cycle = first;
-		while (cycle.neste != null) {
+		String toString = "Utleiere: \n ---- \n\n" + first.toString() + "\n\n ---- \n\n";
+		while (cycle.neste != null){
 			toString += cycle.toString() + "\n\n ---- \n\n";
 			cycle = cycle.neste;
-		}
+		 }
+		 
 		return toString;
+		}
 	}
 }
