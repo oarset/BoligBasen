@@ -10,11 +10,10 @@ import Bolig.*;
 
 public class NewBoligPanel extends JPanel implements Serializable{
 	
-	JFormattedTextField adresse,  boa, byggeaar, pris;
-	JTextArea beskrivelse;
+	private JFormattedTextField adresse,  boa, byggeaar, pris;
+	private JFormattedTextField beskrivelse;
 	private Utleiere utl;
-	public JComboBox<String> typevelger;
-	public JComboBox<String> utleiervelger;
+	public JComboBox<String> typevelger,utleiervelger;
 	private String[] typeListe = {"Leilighet", "Enebolig", "Rekkehus"};
 	public Personliste utleierListe;
 	private String[] utleierStringListe;
@@ -58,7 +57,6 @@ public class NewBoligPanel extends JPanel implements Serializable{
 		adressePanel.setLayout(bl);
 		adresse = new JFormattedTextField(  );
 		adresse.setColumns(20);
-
 				
 		adressePanel.add( new JLabel( "Adresse" ), BorderLayout.PAGE_START );
 		adressePanel.add(adresse, BorderLayout.LINE_START);
@@ -91,22 +89,23 @@ public class NewBoligPanel extends JPanel implements Serializable{
 		c.weighty = 0;
 		c.gridx = 0;
 		c.gridy = 2;
+		c.insets = new Insets(10,50,0,10);
 		add(typePanel, c);
 		
-		// label og inputfelt for adresse
+		// label og inputfelt for beskrivelse
 		JPanel beskrivelsePanel = new JPanel();
 		BorderLayout bl2 = new BorderLayout();
 		bl2.setHgap(10);
 		bl2.setVgap(5);
 		beskrivelsePanel.setLayout(bl2);
-		beskrivelse = new JTextArea(200,100);
-		beskrivelse.setSize(200, 100);
-		JScrollPane scrollPane = new JScrollPane( beskrivelse );
+		beskrivelse = new JFormattedTextField(  );
+		beskrivelse.setColumns(20);
+		
+		//JScrollPane scrollPane = new JScrollPane( beskrivelse );
 		//beskrivelse.setLineWrap (true);
-
-				
-		typePanel.add( new JLabel( "Beskrivelse" ), BorderLayout.PAGE_START );
-		typePanel.add(beskrivelse, BorderLayout.LINE_START);
+		
+		beskrivelsePanel.add( new JLabel( "Beskrivelse" ), BorderLayout.PAGE_START );
+		beskrivelsePanel.add(beskrivelse, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
@@ -115,7 +114,7 @@ public class NewBoligPanel extends JPanel implements Serializable{
 		c.gridx = 0;
 		c.gridy = 3;
 		c.insets = new Insets(10,50,0,10);
-		add(typePanel, c);
+		add(beskrivelsePanel, c);
 		
 		// label og inputfelt for boareal
 		JPanel boaPanel = new JPanel();
@@ -168,7 +167,7 @@ public class NewBoligPanel extends JPanel implements Serializable{
 		pris = new JFormattedTextField(  );
 		pris.setColumns(8);
 		
-		prisPanel.add( new JLabel( "Manedsleie" ), BorderLayout.PAGE_START );
+		prisPanel.add( new JLabel( "Månedsleie" ), BorderLayout.PAGE_START );
 		prisPanel.add(pris, BorderLayout.LINE_START);
 
 		c.fill = GridBagConstraints.NONE;
