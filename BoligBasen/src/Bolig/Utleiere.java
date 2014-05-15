@@ -35,6 +35,10 @@ public class Utleiere extends Bruker {
 		return firmaInfo;
 	}
 	
+	public Utleiere returnThis() {
+		return this;
+	}
+	
 	public boolean erUtleier(){
 		return utleier;
 	}
