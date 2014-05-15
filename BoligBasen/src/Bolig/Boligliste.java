@@ -102,6 +102,20 @@ public class Boligliste {
 		return null;
 	}
 	
+	public Boligliste matchingBolig(Boligsøker person) {
+		if (person == null)
+			return null;
+		Bolig cycle = first;
+		Boligliste ny = new Boligliste();
+		while (cycle.next != null) {
+			if (cycle.getLeiePris() < person.getMaxPris() && cycle.getLeiePris() > person.getMinPris()) {
+				ny.settInnBolig(cycle);
+			}
+			cycle = cycle.next;
+		}
+		return ny;
+	}
+	
 	public boolean utleierHarBolig(Utleiere person) {
 		if (person == null)
 			return false;
