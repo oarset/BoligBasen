@@ -376,11 +376,12 @@ public class BoligBaseFrame extends JFrame{
 				 
 			
 			Container c = getContentPane();
-			//NewBoligPanel boligpanel = new NewBoligPanel();
-			//boligpanel = boligpan;
 			c.removeAll();
+			NewBoligPanel boligpanel = new NewBoligPanel();
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
+			boligpan.utleierPanel.revalidate();
+			//boligpanel = boligpan;
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(boligpan, BorderLayout.LINE_START);

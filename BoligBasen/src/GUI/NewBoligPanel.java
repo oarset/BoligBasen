@@ -32,6 +32,7 @@ public class NewBoligPanel extends JPanel{
 	private Personliste utleierListe;
 	private String[] utleierStringListe;
 	public JButton newEierButton, saveBoligButton, backButton;
+	public JPanel utleierPanel;
 	
 	
 	public NewBoligPanel(){
@@ -192,7 +193,7 @@ public class NewBoligPanel extends JPanel{
 		add(prisPanel, c);
 		
 		// label og valg av Utleier
-		JPanel utleierPanel = new JPanel();
+		utleierPanel = new JPanel();
 		BorderLayout bl7 = new BorderLayout();
 		bl7.setHgap(10);
 		bl7.setVgap(5);
