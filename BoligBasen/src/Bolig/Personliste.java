@@ -84,19 +84,13 @@ public class Personliste {
 		
 		Personliste ny = new Personliste();
 		Bruker cycle = first;
-<<<<<<< HEAD
 		ny.settInnUtleier(cycle);
 		while (cycle.neste != null) {
 			if (cycle.neste.erUtleier() == true) {
 				ny.settInnUtleier(cycle.neste);
-=======
-		while (cycle != null) {
-			if (cycle.erUtleier() == true) {
-				ny.settInnUtleier(cycle);
->>>>>>> branch 'master' of https://github.com/oarset/BoligBasen.git
-			}
 			cycle = cycle.neste;
 			
+			}
 		}
 		return ny;
 	}
