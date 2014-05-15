@@ -112,15 +112,28 @@ public class Personliste {
 	}
 	
 	//Finner en bruker i lista basert på brukerid
-	public Bruker finnPerson(int brukerid) {
+	public Utleiere finnUtleier(int brukerid) {
 		Bruker cycle = first;
 		while (cycle != null) {
-			if (cycle.getBrukerid() == brukerid) {
-				return cycle;
+		if (cycle.getBrukerid() == brukerid && cycle.erUtleier() == true) {
+			return cycle.returnThis();
 			}
-			if (cycle.neste != null) {
+		if (cycle.neste != null) {
 			cycle = cycle.neste;
+		}
+		}
+		return null;
+	}
+	
+	public Boligsøker finnBoligsøker(int brukerid) {
+		Bruker cycle = first;
+		while (cycle != null) {
+			if (cycle.getBrukerid() == brukerid && cycle.erUtleier() == false) {
+				return cycle.returnDenne();
 			}
+		if (cycle.neste != null) {
+			cycle = cycle.neste;
+		}
 		}
 		return null;
 	}

@@ -67,4 +67,11 @@ public abstract class Bruker {
 				ut +=  navn + " " + etternavn + "\n";
 			return ut;
 		}
+
+		public Utleiere returnThis() {
+			return null;
+		}
+		public Boligsøker returnDenne() {
+			return null;
+		}
 }

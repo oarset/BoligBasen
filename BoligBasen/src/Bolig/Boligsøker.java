@@ -109,6 +109,10 @@ public class Boligsøker extends Bruker {
 		return husholdningSize;
 	}
 	
+	public Boligsøker returnDenne() {
+		return this;
+	}
+	
 	//Hjelpemetode for å lage utleierliste.
 	public boolean erUtleier() {
 		return utleier;
