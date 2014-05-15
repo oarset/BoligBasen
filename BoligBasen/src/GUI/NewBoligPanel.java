@@ -10,7 +10,7 @@ import Bolig.*;
 public class NewBoligPanel extends JPanel{
 	
 	JFormattedTextField adresse,  boa, byggeaar, pris;
-	JFormattedTextField beskrivelse;
+	JTextArea beskrivelse;
 	private Utleiere utl;
 	public JComboBox<String> typevelger;
 	public JComboBox<String> utleiervelger;
@@ -98,7 +98,7 @@ public class NewBoligPanel extends JPanel{
 		bl2.setHgap(10);
 		bl2.setVgap(5);
 		beskrivelsePanel.setLayout(bl2);
-		beskrivelse = new JFormattedTextField(20);
+		beskrivelse = new JTextArea(200,100);
 		beskrivelse.setSize(200, 100);
 		JScrollPane scrollPane = new JScrollPane( beskrivelse );
 		//beskrivelse.setLineWrap (true);
@@ -280,6 +280,7 @@ public class NewBoligPanel extends JPanel{
 			bolig.setByggeAar(bobygg);
 			bolig.setLeiePris(bopris);
 			bolig.setEier(utl);
+			bolig.setBeskrivelse(beskr);
 			
 			
 			return bolig;

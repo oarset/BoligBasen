@@ -30,9 +30,10 @@ public class BoligBaseFrame extends JFrame{
 	 public BoligBaseFrame()
 		{
 		super("BoligBasen");
-
+		
 		leftframe = 1;
 		theList = new Personliste();
+		boligList= new Boligliste();
 		
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
