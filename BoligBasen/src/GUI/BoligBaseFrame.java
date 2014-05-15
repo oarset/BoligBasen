@@ -371,7 +371,8 @@ public class BoligBaseFrame extends JFrame{
 			
 			Container c = getContentPane();
 			c.removeAll();
-			//NewBoligPanel boligpanel = new NewBoligPanel();
+			NewBoligPanel boligpanel = new NewBoligPanel();
+			boligpan = boligpanel;
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
 			try{
