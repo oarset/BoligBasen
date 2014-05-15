@@ -114,12 +114,12 @@ public class Personliste {
 		else{
 		
 		Bruker cycle = first;
-		String toString = "Brukere: \n ---- \n\n" + first.toString() + "\n\n ---- \n\n";
+		String toString = "Brukere: \n ---- \n\n";
 		while (cycle.neste != null){
 			toString += cycle.toString() + "\n\n ---- \n\n";
 			cycle = cycle.neste;
 		 }
-		 
+		toString += cycle.toString() + "\n\n ---- \n\n";
 		return toString;
 		}
 	}
