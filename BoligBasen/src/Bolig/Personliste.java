@@ -78,13 +78,16 @@ public class Personliste {
 		if (first == null) {
 			return null;
 		}
+		
 		Personliste ny = new Personliste();
 		Bruker cycle = first;
+		ny.settInnUtleier(cycle);
 		while (cycle.neste != null) {
-			if (cycle.erUtleier() == true) {
-				ny.settInnUtleier(cycle);
+			if (cycle.neste.erUtleier() == true) {
+				ny.settInnUtleier(cycle.neste);
 			}
 			cycle = cycle.neste;
+			
 		}
 		return ny;
 	}
