@@ -341,14 +341,9 @@ public class BoligBaseFrame extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				if (e.getSource() == utlpan.backButton){
-					Container c = getContentPane();
-					c.removeAll();
-				 	c.setLayout( new BorderLayout() );
-				 	c.add(header,BorderLayout.PAGE_START);
-				 	c.add(brukerpan, BorderLayout.LINE_START);
-				 	c.add(info, BorderLayout.LINE_END);
-					c.revalidate();
-					c.repaint();
+					
+					
+					setLeftFrame(2, null, null, theList);
 				}
 			}
 	 		
@@ -382,16 +377,17 @@ public class BoligBaseFrame extends JFrame{
 		 
 		leftframe = i; 
 		
-		// setter venstre frame til NyBoligPanel
+		// setter venstre panel  til NyBoligPanel
 		if(leftframe == 1){
 				 
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
 			Container c = getContentPane();
+			NewBoligPanel boligpanel = new NewBoligPanel();
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(boligpan, BorderLayout.LINE_START);
+		 	c.add(boligpanel, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 		 	//laster ActionListeners
 		 	
@@ -399,7 +395,7 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
-		// setter venstre frame til NyBrukerPanel
+		// setter venstre panel  til NyBrukerPanel
 		else if( leftframe == 2){
 			
 			Container c = getContentPane();
@@ -418,12 +414,14 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
-		// setter venstre frame til SeekerPanel
+		// setter venstre panel til SeekerPanel
 		else if( leftframe == 3){
 			Boligsøker s = seek;
 			
 			seeker.setSeeker(s);
 			Container c = getContentPane();
+			SeekerPanel seekpanel = new SeekerPanel();
+			seeker = seekpanel;
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
@@ -435,12 +433,14 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 
 		}
-		// setter venstre frame til SeekerInfoPanel
+		// setter venstre panel  til SeekerInfoPanel
 		else if( leftframe == 4){
 			Boligsøker s = seek;
 			
 			seeker.setSeeker(s);
 			Container c = getContentPane();
+			SeekerInfoPanel sipanel = new SeekerInfoPanel();
+			sip = sipanel;
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
@@ -457,6 +457,8 @@ public class BoligBaseFrame extends JFrame{
 			
 			seeker.setSeeker(s);
 			Container c = getContentPane();
+			NewBrukerPanel brukerpanel = new NewBrukerPanel();
+			brukerpan = brukerpanel;
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
@@ -468,12 +470,15 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
-		// setter venstre frame til UtleierPanel
+		// setter venstre panel  til UtleierPanel
 		else if( leftframe == 6){
 			Utleiere u = utl;
 			
-			utlpan.setUtl(u);
+			
 			Container c = getContentPane();
+			UtleierPanel utlpanel = new UtleierPanel();
+			utlpan = utlpanel;
+			utlpan.setUtl(u);
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
@@ -485,21 +490,7 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
-		else if( leftframe == 7){
-			Utleiere u = utl;
-			
-			utlpan.setUtl(u);
-			Container c = getContentPane();
-			c.removeAll();
-		 	c.setLayout( new BorderLayout() );
-		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(utlpan, BorderLayout.LINE_START);
-		 	c.add(info, BorderLayout.LINE_END);
-			nyUtlP2AL();
-			nyBackUtlP2AL();
-			c.revalidate();
-			c.repaint();
-		}
+		
 		 
 	 }
 	 
@@ -513,6 +504,8 @@ public class BoligBaseFrame extends JFrame{
 			s += "lol";
 			info.addContent(s); 
 			Container c = getContentPane();
+			NewBrukerPanel brukerpanel = new NewBrukerPanel();
+			brukerpan = brukerpanel;
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
