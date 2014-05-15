@@ -27,6 +27,10 @@ public abstract class Bruker {
 	}
 
 	public boolean erUtleier() {
+		if(getClass() == Utleiere.class){
+			return true;
+		}
+		else 
 		return false;
 	}
 	

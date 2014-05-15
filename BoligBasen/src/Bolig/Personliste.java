@@ -19,15 +19,16 @@ public class Personliste {
 			return;
 		}
 		if (first == null) {
-			first = ny;
-			return;
+			first = ny;			
 		}
 		else {
 			Bruker cycle = first;
-			while (cycle.neste != null){ 
+			while (cycle.neste != null) 
 				cycle = cycle.neste;
+				
 			cycle.neste = ny;
-			}
+			
+			
 		}
 	}
 	
@@ -75,6 +76,12 @@ public class Personliste {
 	}
 	
 	public String toString() {
-		return "lalala";
+		String toString = "";
+		Bruker cycle = first;
+		while (cycle.neste != null) {
+			toString += cycle.toString() + "\n\n ---- \n\n";
+			cycle = cycle.neste;
+		}
+		return toString;
 	}
 }

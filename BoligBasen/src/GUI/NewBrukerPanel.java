@@ -27,7 +27,22 @@ public class NewBrukerPanel extends JPanel{
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.NORTHWEST;
 	
-
+		// label for "siden"
+		JPanel headerPanel = new JPanel();
+		BorderLayout blhead = new BorderLayout();
+		blhead.setHgap(10);
+		blhead.setVgap(5);
+		headerPanel.setLayout(blhead);
+				
+		headerPanel.add( new JLabel( "Bruker informasjon" ), BorderLayout.PAGE_START );
+		c.fill = GridBagConstraints.NONE;
+		c.ipady = 10;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(30,50,0,10);
+		add(headerPanel, c);
 		
 		// label og input felt for fornavn
 		JPanel fornavnPanel = new JPanel();
@@ -46,7 +61,7 @@ public class NewBrukerPanel extends JPanel{
 		c.weighty = 0;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.insets = new Insets(30,50,0,10);
+		c.insets = new Insets(10,50,0,10);
 		add(fornavnPanel, c);
 		
 		// label og input felt for etternavn
@@ -63,7 +78,6 @@ public class NewBrukerPanel extends JPanel{
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 0;
 		c.gridy = 2;
-		c.insets = new Insets(10,50,0,10);
 		add(etternavnPanel, c);
 		
 		// label og inputfelt for addresse

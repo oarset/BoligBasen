@@ -15,11 +15,10 @@ import Bolig.*;
 
 public class BoligBaseFrame extends JFrame{
 	
-	private JPanel header;
+	private HeaderPanel header;
 	private Personliste theList;
 	private InfoPanel info;
 	private int leftframe;
-	private Personliste personliste;
 	public NewBrukerPanel brukerpan;
 	public NewBoligPanel boligpan;
 	public SeekerPanel seeker;
@@ -32,7 +31,6 @@ public class BoligBaseFrame extends JFrame{
 		super("BoligBasen");
 
 		leftframe = 1;
-		personliste = new Personliste();
 		theList = new Personliste();
 		
 		// lager default panelene
@@ -48,44 +46,70 @@ public class BoligBaseFrame extends JFrame{
 		info = new InfoPanel();
 		
 		// lager default tittel
-		header = new JPanel();
-		JLabel headerLabel = new JLabel("Lag ny Bruker");
-		header.add(headerLabel);
+		header = new HeaderPanel();
+		header.setText("Lag ny Bruker");
+
 		
 		 // Legger til Fil meny
 		JMenu filemenu = new JMenu("Fil");
 		filemenu.setMnemonic('F');
 		
+			// Oppretter Ny bruker valg i fil-menyen
+			JMenuItem nyBruker = new JMenuItem("Ny bruker");
+			nyBruker.setMnemonic('u');
+			nyBruker.addActionListener( 
+					new ActionListener(){
+						// endrer venstre panel til "ny bolig panel"
+						public void actionPerformed(ActionEvent e){
+							
+						setLeftFrame(2, null, null, theList);
+						}
+
+
+					});
+			
+			// Oppretter til Ny bolig valg i fil-menyen
+			JMenuItem nyBolig = new JMenuItem("Ny bolig");
+			nyBolig.setMnemonic('b');
+			nyBolig.addActionListener( 
+					new ActionListener(){
+						// endrer venstre panel til "ny bolig panel"
+						public void actionPerformed(ActionEvent e){
+							
+						setLeftFrame(1, null, null, theList);
+						}
+
+
+					});
+		
+		// Legger til Lister meny
+		JMenu listemenu = new JMenu("Lister");
+		listemenu.setMnemonic('L');
+		
+			// Oppretter til Ny bolig valg i fil-menyen
+			JMenuItem kundeliste = new JMenuItem("Alle Boligsøkere");
+			kundeliste.setMnemonic('B');
+			kundeliste.addActionListener( 
+					new ActionListener(){
+						// endrer infopanel til å vise liste over alle personer i personliste
+						public void actionPerformed(ActionEvent e){
+							try{
+								setRightFrame(1);
+							}
+							catch ( NullPointerException npe ) {
+							    errorOutput( "Ingen brukere er registrert" );
+							    
+							  }	
+						
+						}
+
+
+					});
+		
+		// Legger til info meny
 		JMenu infomenu = new JMenu("Info");
 		infomenu.setMnemonic('I');
 		
-		// Oppretter Ny bruker valg i fil-menyen
-		JMenuItem nyBruker = new JMenuItem("Ny bruker");
-		nyBruker.setMnemonic('u');
-		nyBruker.addActionListener( 
-				new ActionListener(){
-					// endrer venstre panel til "ny bolig panel"
-					public void actionPerformed(ActionEvent e){
-						
-					setLeftFrame(2, null, null, theList);
-					}
-
-
-				});
-		
-		// Oppretter til Ny bolig valg i fil-menyen
-		JMenuItem nyBolig = new JMenuItem("Ny bolig");
-		nyBolig.setMnemonic('b');
-		nyBolig.addActionListener( 
-				new ActionListener(){
-					// endrer venstre panel til "ny bolig panel"
-					public void actionPerformed(ActionEvent e){
-						
-					setLeftFrame(1, null, null, theList);
-					}
-
-
-				});
 		
 		// Oppretter til Ny bolig valg i fil-menyen
 		JMenuItem veiviser = new JMenuItem("Veiviser");
@@ -102,12 +126,17 @@ public class BoligBaseFrame extends JFrame{
 		
 		//legger til menyer
 		menu.add(filemenu);
+		menu.add(listemenu);
 		menu.add(infomenu);
 		
 		
 		//legger til inhold i fil menyen
 		filemenu.add(nyBruker);
 		filemenu.add(nyBolig);
+		
+		//legger til inhold i liste menyen
+		listemenu.add(kundeliste);
+				
 		
 		// legger til innhold i Info menyen
 		infomenu.add(veiviser);
@@ -204,7 +233,7 @@ public class BoligBaseFrame extends JFrame{
 				Utleiere utl = utlpan.getUtl();
 				String infostring = utl.toString();
 				info.addContent(infostring);
-				personliste.settInnPerson(utl);
+				theList.settInnPerson(utl);
 				JLabel headerLabel = new JLabel("Legg inn data for Utleier");
 				header.removeAll();
 				header.add(headerLabel);
@@ -225,6 +254,8 @@ public class BoligBaseFrame extends JFrame{
 				c.removeAll();
 			 	c.setLayout( new BorderLayout() );
 			 	c.add(header,BorderLayout.PAGE_START);
+			 	brukerpan.revalidate();
+			 	brukerpan.repaint();
 			 	c.add(brukerpan, BorderLayout.LINE_START);
 			 	c.add(info, BorderLayout.LINE_END);
 			 	addAllAL();
@@ -264,7 +295,7 @@ public class BoligBaseFrame extends JFrame{
 				Boligsøker seek = sip.getSeeker();
 				String infostring = seek.toString();
 				info.addContent(infostring);
-				personliste.settInnPerson(seek);
+				theList.settInnPerson(seek);
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
@@ -324,6 +355,7 @@ public class BoligBaseFrame extends JFrame{
 		// setter venstre frame til NyBoligPanel
 		if(leftframe == 1){
 				 
+			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
 			Container c = getContentPane();
 			c.removeAll();
@@ -414,11 +446,38 @@ public class BoligBaseFrame extends JFrame{
 		 
 	 }
 	 
+	 public void setRightFrame(int i){
+		 
+		 int rightframe = i;
+		 
+		 if(rightframe == 1){
+			 
+			String s = theList.toString(); 
+			s += "lol";
+			info.addContent(s); 
+			Container c = getContentPane();
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(boligpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+		 	addAllAL();
+			c.revalidate();
+			c.repaint();
+		 }
+		 
+	 }
+	 
 	 public void nySeeker(){
 		 
 		 setLeftFrame(3, null, null, theList);
 
 	 }
+	 
+	 private void errorOutput( String msg )
+		{
+		  JOptionPane.showMessageDialog( this, msg );
+		}
 
 	 
 }
