@@ -384,9 +384,9 @@ public class BoligBaseFrame extends JFrame{
 			Bruker cycle = boligpan.utleierListe.getFirst();
 			if (cycle != null){
 				boligpan.utleiervelger.addItem(cycle.nametoString());
-				while (cycle.neste != null) {
-					boligpan.utleiervelger.addItem(cycle.neste.nametoString());
-					cycle = cycle.neste;
+				while (cycle.utleierNeste != null) {
+					boligpan.utleiervelger.addItem(cycle.utleierNeste.nametoString());
+					cycle = cycle.utleierNeste;
 					
 				}	
 			}
