@@ -14,7 +14,7 @@ public class Personliste {
 		first = null;
 	}
 	
-	
+	//Setter inn en person i lista.
 	public void settInnPerson(Bruker ny) {
 		if (ny == null) {
 			return;
@@ -34,6 +34,7 @@ public class Personliste {
 		}
 	}
 	
+	//Setter inn en utleier i lista.
 	public void settInnUtleier(Bruker ny) {
 		if (ny == null) {
 			return;
@@ -53,6 +54,7 @@ public class Personliste {
 		}
 	}
 	
+	//Sletter en person fra lista.
 	public void slettPerson(Bruker ny) {
 		if (ny == null) {
 			return;
@@ -74,6 +76,7 @@ public class Personliste {
 		}
 	}
 	
+	//Lager en ny liste med bare utleiere, ut av hovedlisten med både boligsøkere og utleiere.
 	public Personliste utleierliste() {
 		if (first == null) {
 			return null;
@@ -89,6 +92,7 @@ public class Personliste {
 		return ny;
 	}
 	
+	//Teller hvor mange personer som er registrert i lista.
 	public int antPersoner() {
 		Bruker cycle = first;
 		int teller = 0;
@@ -99,13 +103,17 @@ public class Personliste {
 		return teller;
 	}
 	
+	//Finner en bruker i lista basert på epost, ubrukt.
 	public Bruker finnPerson(String epost) {
 		return null;
 	}
+	
+	//Henter ut første person i lista.
 	public Bruker getFirst(){
 		return first;
 	}
 	
+	//Lever en String med informasjon fra lista.
 	public String toString() {
 		
 		if(first ==null){
