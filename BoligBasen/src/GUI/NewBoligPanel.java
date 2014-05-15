@@ -272,12 +272,14 @@ public class NewBoligPanel extends JPanel{
 		try{
 			Bolig bolig;
 			String boadresse = adresse.getText();
+			
 			int boboa = Integer.parseInt(boa.getText());
 			String botype = typeListe[typevelger.getSelectedIndex()];
 			String boutleier = utleierStringListe[(utleiervelger.getSelectedIndex())];
 			int bobygg = Integer.parseInt(byggeaar.getText());
 			int bopris = Integer.parseInt(pris.getText());
-			
+			int brukerID = Integer.parseInt(utleierStringListe[(utleiervelger.getSelectedIndex())].substring(0,4));
+			utl = utleierListe.finnPerson(brukerID);
 			if(botype == "Rekkehus"){
 				bolig = new Rekkehus(boadresse, botype);
 			}
