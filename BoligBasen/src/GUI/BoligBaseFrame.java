@@ -263,7 +263,7 @@ public class BoligBaseFrame extends JFrame{
 				 	//c.add(info, BorderLayout.LINE_END);
 					//c.revalidate();
 					//c.repaint();
-					setLeftFrame(1, null, utl, theList);
+					setLeftFrame(2, null, utl, theList);
 				}
 			}
 	
@@ -292,14 +292,8 @@ public class BoligBaseFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == sip.saveInfoButton){
-					Container c = getContentPane();
-					c.removeAll();
-				 	c.setLayout( new BorderLayout() );
-				 	c.add(header,BorderLayout.PAGE_START);
-				 	c.add(seeker, BorderLayout.LINE_START);
-				 	c.add(info, BorderLayout.LINE_END);
-					c.revalidate();
-					c.repaint();
+					
+					setLeftFrame(2, null, null, theList);
 				}
 			}
 	 		
@@ -325,7 +319,7 @@ public class BoligBaseFrame extends JFrame{
 					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 					header.removeAll();
 					header.add(headerLabel);
-					setLeftFrame(1, null, null, theList);
+					setLeftFrame(2, null, null, theList);
 				}
 			}
 	 		
