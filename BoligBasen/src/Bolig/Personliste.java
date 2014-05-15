@@ -90,7 +90,6 @@ public class Personliste {
 		Personliste ny = new Personliste();
 		Bruker cycle = first;
 		while (cycle != null) {
-			System.out.println(cycle.erUtleier());
 			if (cycle.erUtleier() == true) {
 				ny.settInnUtleier(cycle);
 				}
