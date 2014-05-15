@@ -206,6 +206,7 @@ public class NewBoligPanel extends JPanel{
 		}
 		else{
 			
+			utleierStringListe = new String[utleierListe.antPersoner()];
 			int i = 0;
 			Bruker cycle = utleierListe.getFirst();
 			while (cycle.neste != null) {
