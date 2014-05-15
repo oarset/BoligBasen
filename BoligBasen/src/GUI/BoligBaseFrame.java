@@ -418,10 +418,11 @@ public class BoligBaseFrame extends JFrame{
 		else if( leftframe == 3){
 			Boligsøker s = seek;
 			
-			seeker.setSeeker(s);
+			
 			Container c = getContentPane();
 			SeekerPanel seekpanel = new SeekerPanel();
 			seeker = seekpanel;
+			seeker.setSeeker(s);
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
@@ -437,10 +438,11 @@ public class BoligBaseFrame extends JFrame{
 		else if( leftframe == 4){
 			Boligsøker s = seek;
 			
-			seeker.setSeeker(s);
+			
 			Container c = getContentPane();
 			SeekerInfoPanel sipanel = new SeekerInfoPanel();
 			sip = sipanel;
+			sip.setSeeker(s);
 			c.removeAll();
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
