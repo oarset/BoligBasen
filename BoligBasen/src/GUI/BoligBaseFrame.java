@@ -386,6 +386,8 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					
 					Bolig b = boligpan.saveNyBolig();
 					boligList.settInnBolig(b);
+					String infostring = b.toString();
+					info.addContent(infostring);
 					setLeftFrame(1, null, null, theList);
 					}
 				}
@@ -531,8 +533,8 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			c.revalidate();
 			c.repaint();
 		}
-		
-		else if( leftframe == 6){
+		// setter venstre panel til nyBolig og høyre viser boligliste 
+		else if( leftframe == 8){
 			Utleiere u = utl;
 			
 			
@@ -550,7 +552,6 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			c.revalidate();
 			c.repaint();
 		}
-		
 		// setter venstre panel  til NyBoligPanel
 		else if(leftframe == 7){
 				 
@@ -630,13 +631,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			 }
 		 
 	 }
-	 
-	 public void nySeeker(){
-		 
-		 setLeftFrame(3, null, null, theList);
-
-	 }
-	 
+	  
 	 private void errorOutput( String msg )
 		{
 		  JOptionPane.showMessageDialog( this, msg );

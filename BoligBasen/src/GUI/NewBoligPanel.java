@@ -252,6 +252,14 @@ public class NewBoligPanel extends JPanel implements Serializable{
 		  }	
 	}
 	
+	public void setBolig(Bolig b){
+		bolig = b;
+	}
+	
+	public Bolig getBolig(){
+		return bolig;
+	}
+	
 	public Bolig saveNyBolig(){
 		try{
 			
