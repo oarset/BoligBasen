@@ -90,12 +90,12 @@ public class Personliste {
 	public String toString() {
 		
 		if(first ==null){
-			return "Ingen Utleiere opprettet";
+			return "Ingen brukere opprettet";
 		}
 		else{
 		
 		Bruker cycle = first;
-		String toString = "Utleiere: \n ---- \n\n" + first.toString() + "\n\n ---- \n\n";
+		String toString = "Brukere: \n ---- \n\n" + first.toString() + "\n\n ---- \n\n";
 		while (cycle.neste != null){
 			toString += cycle.toString() + "\n\n ---- \n\n";
 			cycle = cycle.neste;
