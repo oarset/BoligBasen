@@ -29,6 +29,7 @@ public class InfoPanel extends JPanel{
 		removeAll();
 		output = new JTextArea( 0, 40 );
 		output.setEditable( false );
+		
 		add( output, BorderLayout.PAGE_START );
 		output.setText(s);
 	}

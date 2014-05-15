@@ -1,37 +1,19 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
-import Bolig.Bolig;
-import Bolig.Bruker;
-import Bolig.Enebolig;
-import Bolig.Leilighet;
-import Bolig.Personliste;
-import Bolig.Rekkehus;
-import Bolig.Utleiere;
+import Bolig.*;
 
 public class NewBoligPanel extends JPanel{
 	
 	JFormattedTextField adresse,  boa, byggeaar, pris;
 	JTextArea beskrivelse;
 	private Utleiere utl;
-	public JComboBox<String> typevelger, utleiervelger;
+	public JComboBox<String> typevelger;
+	public JComboBox<String> utleiervelger;
 	private String[] typeListe = {"Leilighet", "Enebolig", "Rekkehus"};
 	public Personliste utleierListe;
 	private String[] utleierStringListe;
@@ -272,13 +254,14 @@ public class NewBoligPanel extends JPanel{
 		try{
 			Bolig bolig;
 			String boadresse = adresse.getText();
+			//utleierStringListe[(utleiervelger.getSelectedIndex())];
 			
 			int boboa = Integer.parseInt(boa.getText());
 			String botype = typeListe[typevelger.getSelectedIndex()];
-			String boutleier = utleierStringListe[(utleiervelger.getSelectedIndex())];
+			String boutleier = utleiervelger.getItemAt(utleiervelger.getSelectedIndex());
 			int bobygg = Integer.parseInt(byggeaar.getText());
 			int bopris = Integer.parseInt(pris.getText());
-			int brukerID = Integer.parseInt(utleierStringListe[(utleiervelger.getSelectedIndex())].substring(0,4));
+			int brukerID = Integer.parseInt(utleiervelger.getItemAt(utleiervelger.getSelectedIndex()).substring(0,4));
 			utl = utleierListe.finnUtleier(brukerID);
 			if(botype == "Rekkehus"){
 				bolig = new Rekkehus(boadresse, botype);
@@ -293,6 +276,7 @@ public class NewBoligPanel extends JPanel{
 			bolig.setBOA(boboa);
 			bolig.setByggeAar(bobygg);
 			bolig.setLeiePris(bopris);
+			bolig.setEier(utl);
 			
 			return bolig;
 			

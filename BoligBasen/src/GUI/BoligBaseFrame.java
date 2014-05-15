@@ -17,6 +17,7 @@ public class BoligBaseFrame extends JFrame{
 	
 	private HeaderPanel header;
 	private Personliste theList;
+	private Boligliste boligList;
 	private InfoPanel info;
 	private int leftframe;
 	private NewBrukerPanel brukerpan;
@@ -329,7 +330,7 @@ public class BoligBaseFrame extends JFrame{
 	 }
 	 
 	 public void nyBackUtlP2AL(){
-	// actionlistener som håndterer "tilbake" knappen på UtleierPanel (page2)
+	// actionlistener som håndterer "tilbake" knappen på UtleierPanel (page2) og ny Eier på BoligPanelet
 	 utlpan.utlBackActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -342,12 +343,14 @@ public class BoligBaseFrame extends JFrame{
 	 	});
 	 }
 	 public void nySaveBOP1AL(){
-	// actionlistener som håndterer "tilbake" knappen på BoligPaneled (page1)
+	// actionlistener som håndterer Lagre Bolig knappen på BoligPanelet (page1)
 		 boligpan.saveBoligActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (e.getSource() == boligpan.saveBoligButton){	
-						
+					
+					Bolig b = boligpan.saveNyBolig();
+					boligList.settInnBolig(b);
 					setLeftFrame(1, null, null, theList);
 					}
 				}
@@ -367,7 +370,7 @@ public class BoligBaseFrame extends JFrame{
 			
 			Container c = getContentPane();
 			c.removeAll();
-			NewBoligPanel boligpanel = new NewBoligPanel();
+			//NewBoligPanel boligpanel = new NewBoligPanel();
 			header.setText("Ny Bolig");
 			boligpan.setUtleierListe(list);
 			try{
@@ -392,6 +395,8 @@ public class BoligBaseFrame extends JFrame{
 		 	c.add(boligpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 		 	//laster ActionListeners
+		 	nySaveBOP1AL();
+		 	nyBackUtlP2AL();
 			c.revalidate();
 			c.repaint();
 		}
@@ -491,7 +496,30 @@ public class BoligBaseFrame extends JFrame{
 			c.repaint();
 		}
 		
+		else if( leftframe == 6){
+			Utleiere u = utl;
+			
+			
+			Container c = getContentPane();
+			UtleierPanel utlpanel = new UtleierPanel();
+			utlpan = utlpanel;
+			utlpan.setUtl(u);
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(utlpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+			nyUtlP2AL();
+			nyBackUtlP2AL();
+			c.revalidate();
+			c.repaint();
+		}
 		
+		// setter venstre panel  til NyBoligPanel
+		else if(leftframe == 7){
+				 
+			
+		}
 		 
 	 }
 	 
