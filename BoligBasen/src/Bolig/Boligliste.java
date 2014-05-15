@@ -199,6 +199,7 @@ public class Boligliste implements Serializable {
 			outPrint += cycle.toString();
 			cycle = cycle.next;
 		}
+		
 		return outPrint;
 	}
 }
