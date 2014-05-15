@@ -67,7 +67,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 						// endrer venstre panel til "ny bolig panel"
 						public void actionPerformed(ActionEvent e){
 							
-						setLeftFrame(2, null, null, theList);
+						setLeftFrame(2, null, null, theList, null);
 						}
 
 
@@ -81,7 +81,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 						// endrer venstre panel til "ny bolig panel"
 						public void actionPerformed(ActionEvent e){
 							
-						setLeftFrame(1, null, null, theList);
+						setLeftFrame(9, null, null, theList, null);
 						}
 
 
@@ -95,7 +95,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 								// endrer venstre panel til "ny bolig panel"
 								public void actionPerformed(ActionEvent e){
 									
-								setLeftFrame(7, null, null, theList);
+								setLeftFrame(7, null, null, theList, null);
 								}
 							});
 		
@@ -227,7 +227,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 					header.removeAll();
 					header.add(headerLabel);
-					setLeftFrame(3, seek, null, theList);
+					setLeftFrame(3, seek, null, theList, null);
 				}
 			}
 	 		
@@ -249,7 +249,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 					header.removeAll();
 					header.add(headerLabel);
-					setLeftFrame(4, seek, null, theList);
+					setLeftFrame(4, seek, null, theList, null);
 				}
 			}
 	 		
@@ -271,7 +271,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 				JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 				header.removeAll();
 				header.add(headerLabel);
-				setLeftFrame(6, null, utl, theList);
+				setLeftFrame(6, null, utl, theList, null);
 			}
 			}		
 
@@ -299,7 +299,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 				 	//c.add(info, BorderLayout.LINE_END);
 					//c.revalidate();
 					//c.repaint();
-					setLeftFrame(2, null, utl, theList);
+					setLeftFrame(2, null, utl, theList, null);
 				}
 			}
 	
@@ -313,7 +313,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == seeker.backButton){
-					setLeftFrame(2, null, null, theList);
+					setLeftFrame(2, null, null, theList, null);
 				}
 				}
 	 		
@@ -329,7 +329,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == sip.saveInfoButton){
 					
-					setLeftFrame(2, null, null, theList);
+					setLeftFrame(2, null, null, theList, null);
 				}
 			}
 	 		
@@ -355,7 +355,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					JLabel headerLabel = new JLabel("Legg inn data for ny Boligsøker");
 					header.removeAll();
 					header.add(headerLabel);
-					setLeftFrame(2, null, null, theList);
+					setLeftFrame(2, null, null, theList, null);
 				}
 			}
 	 		
@@ -370,7 +370,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == utlpan.backButton){
-					setLeftFrame(2, null, null, theList);
+					setLeftFrame(2, null, null, theList, null);
 				}
 			}
 	 		
@@ -388,7 +388,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					boligList.settInnBolig(b);
 					String infostring = b.toString();
 					info.addContent(infostring);
-					setLeftFrame(1, null, null, theList);
+					setLeftFrame(9, null, null, theList, boligList);
 					}
 				}
 		 		
@@ -397,7 +397,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 	 
 	 }
 	 
-	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl, Personliste list){
+	 public void setLeftFrame(int i, Boligsøker seek, Utleiere utl, Personliste list, Boligliste blist){
 		 
 		leftframe = i; 
 		
@@ -568,6 +568,42 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			c.revalidate();
 			c.repaint();
 		}
+		// setter venstre panel  til NyBoligPanel
+		else if(leftframe == 9){
+			
+		//Personliste pl = boligpan.getUtlListe();
+		NewBoligPanel boligpanel = new NewBoligPanel();	
+		//boligpanel.setUltListe(pl);
+		Container c = getContentPane();
+		c.removeAll();
+		header.setText("Ny Bolig");
+		boligpanel.setUtleierListe(list);
+		try{
+			Bruker cycle = boligpanel.getUtlListe().getFirst();
+		
+		if (boligpanel.getUtlListe().getFirst() != null){
+			while (cycle != null) {
+				boligpanel.utleiervelger.addItem(cycle.nametoString());
+				cycle = cycle.neste;
+				
+			}	
+		}
+		}
+		catch ( NullPointerException npe ) {
+		    errorOutput( "Ingen Utleiere er registrert" );
+		    
+		}	
+		boligpan = boligpanel;
+	 	c.setLayout( new BorderLayout() );
+	 	c.add(header,BorderLayout.PAGE_START);
+	 	c.add(boligpan, BorderLayout.LINE_START);
+	 	c.add(info, BorderLayout.LINE_END);
+	 	//laster ActionListeners
+	 	nySaveBOP1AL();
+	 	nyBackUtlP2AL();
+		c.revalidate();
+		c.repaint();
+	}
 		 
 	 }
 	 
@@ -580,18 +616,11 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			String s = theList.toString(); 
 			s += "lol";
 			info.addContent(s); 
-			Container c = getContentPane();
-			NewBrukerPanel brukerpanel = new NewBrukerPanel();
-			brukerpan = brukerpanel;
-			c.removeAll();
-		 	c.setLayout( new BorderLayout() );
-		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(brukerpan, BorderLayout.LINE_START);
-		 	c.add(info, BorderLayout.LINE_END);
-		 	nySeekerP1AL();
-		 	nyUtlP1AL();
-			c.revalidate();
-			c.repaint();
+			info.addContent(s); 
+			info.removeAll();
+			info.addContent(s);
+			info.revalidate();
+			info.repaint();
 		 }
 		 
 		 //info viser alle leiere
@@ -600,16 +629,10 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			String s = theList.toString(); 
 			s += "lol";
 			info.addContent(s); 
-			Container c = getContentPane();
-			c.removeAll();
-		 	c.setLayout( new BorderLayout() );
-		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(brukerpan, BorderLayout.LINE_START);
-		 	c.add(info, BorderLayout.LINE_END);
-		 	nySeekerP1AL();
-		 	nyUtlP1AL();
-			c.revalidate();
-			c.repaint();
+			info.removeAll();
+			info.addContent(s);
+			info.revalidate();
+			info.repaint();
 			 }
 		 
 		//info viser alle boliger
@@ -617,17 +640,13 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			 
 			String s = boligList.toString(); 
 			s += "lol";
-			info.addContent(s); 
-			Container c = getContentPane();
-			c.removeAll();
-		 	c.setLayout( new BorderLayout() );
-		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(boligpan, BorderLayout.LINE_START);
-		 	c.add(info, BorderLayout.LINE_END);
-		 	nySeekerP1AL();
-		 	nyUtlP1AL();
-			c.revalidate();
-			c.repaint();
+			info.removeAll();
+			info.addContent(s);
+			info.revalidate();
+			info.repaint();
+	
+			
+		 	
 			 }
 		 
 	 }

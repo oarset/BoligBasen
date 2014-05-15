@@ -248,7 +248,7 @@ public class NewBoligPanel extends JPanel implements Serializable{
 			utleierListe = p.utleierliste();
 		}
 		catch ( NumberFormatException e ) {
-		    errorOutput( "Ingen ny BoligSøker pga av feil tallformat" );
+		    errorOutput( "Ingen ny Bolig pga av feil tallformat" );
 		  }	
 	}
 	
@@ -258,6 +258,14 @@ public class NewBoligPanel extends JPanel implements Serializable{
 	
 	public Bolig getBolig(){
 		return bolig;
+	}
+	
+	public void setUltListe(Personliste p){
+		utleierListe = p;
+	}
+	
+	public Personliste getUtlListe(){
+		return utleierListe;
 	}
 	
 	public Bolig saveNyBolig(){
