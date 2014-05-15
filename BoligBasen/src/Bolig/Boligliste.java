@@ -155,7 +155,7 @@ public class Boligliste {
 			return null;
 		Bolig cycle = first;
 		Boligliste ny = new Boligliste();
-		while (cycle.next != null) {
+		while (cycle.matchedNext != null) {
 			cycle.resetMatchingScore();
 			if (cycle.getLeiePris() < person.getMaxPris() && cycle.getLeiePris() > person.getMinPris()) {
 				cycle.addToMatchingscore(cycle.getLeiePris() - person.getMinPris());
@@ -164,7 +164,7 @@ public class Boligliste {
 			}
 			ny.settInnSortertMatchetBolig(cycle);
 			}
-			cycle = cycle.next;
+			cycle = cycle.matchedNext;
 		}
 		return ny;
 	}
