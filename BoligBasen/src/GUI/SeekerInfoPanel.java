@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,7 +18,7 @@ import javax.swing.JPanel;
 
 import Bolig.Boligsøker;
 
-public class SeekerInfoPanel extends JLabel{
+public class SeekerInfoPanel extends JLabel implements Serializable{
 
 	private JFormattedTextField sivilstatus, hhs, smoke, yrke, husdyr; 
 	public JPanel buttonPanel;

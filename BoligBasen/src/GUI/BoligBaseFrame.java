@@ -7,13 +7,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.*;
 
 import Bolig.*;
 
 
-public class BoligBaseFrame extends JFrame{
+public class BoligBaseFrame extends JFrame implements Serializable{
 	
 	private HeaderPanel header;
 	private Personliste theList;

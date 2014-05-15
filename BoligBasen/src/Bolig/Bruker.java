@@ -6,7 +6,9 @@
 
 package Bolig;
 
-public abstract class Bruker {
+import java.io.Serializable;
+
+public abstract class Bruker implements Serializable {
 	
 	protected String navn, etternavn, adresse, postnr, sted, email, telefon;
 	protected int dag, mnd, aar, brukerid;

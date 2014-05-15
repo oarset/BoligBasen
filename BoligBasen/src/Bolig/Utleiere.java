@@ -6,7 +6,9 @@
 
 package Bolig;
 
-public class Utleiere extends Bruker {
+import java.io.Serializable;
+
+public class Utleiere extends Bruker implements Serializable {
 	
 	private String firma, firmaInfo;
 	private boolean utleier;

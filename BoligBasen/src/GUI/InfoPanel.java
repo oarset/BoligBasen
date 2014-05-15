@@ -4,12 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.io.Serializable;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class InfoPanel extends JPanel{
+public class InfoPanel extends JPanel implements Serializable{
 	
 	private JTextArea output;
 

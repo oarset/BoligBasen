@@ -6,10 +6,11 @@
 
 package Bolig;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public abstract class Bolig {
+public abstract class Bolig implements Serializable{
 
 	private String addresse, boligtype, beskrivelse;
 	private int boa, byggeaar;

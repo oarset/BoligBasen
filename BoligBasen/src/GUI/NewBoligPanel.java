@@ -2,12 +2,13 @@ package GUI;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.*;
 
 import Bolig.*;
 
-public class NewBoligPanel extends JPanel{
+public class NewBoligPanel extends JPanel implements Serializable{
 	
 	JFormattedTextField adresse,  boa, byggeaar, pris;
 	JTextArea beskrivelse;

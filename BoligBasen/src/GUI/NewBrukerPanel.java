@@ -3,6 +3,7 @@ package GUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ import Bolig.Bruker;
 import Bolig.Utleiere;
 
 
-public class NewBrukerPanel extends JPanel{
+public class NewBrukerPanel extends JPanel implements Serializable{
 
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
 	public JButton newBoligSeekerButton, newUtleierButton;
