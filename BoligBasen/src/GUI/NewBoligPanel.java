@@ -10,7 +10,7 @@ import Bolig.*;
 public class NewBoligPanel extends JPanel{
 	
 	JFormattedTextField adresse,  boa, byggeaar, pris;
-	JTextArea beskrivelse;
+	JFormattedTextField beskrivelse;
 	private Utleiere utl;
 	public JComboBox<String> typevelger;
 	public JComboBox<String> utleiervelger;
@@ -18,6 +18,7 @@ public class NewBoligPanel extends JPanel{
 	public Personliste utleierListe;
 	private String[] utleierStringListe;
 	public JButton newEierButton, saveBoligButton;
+	private Bolig bolig;
 	
 	
 	public NewBoligPanel(){
@@ -55,10 +56,10 @@ public class NewBoligPanel extends JPanel{
 		bl.setVgap(5);
 		adressePanel.setLayout(bl);
 		adresse = new JFormattedTextField(  );
-		adresse.setColumns(8);
+		adresse.setColumns(20);
 
 				
-		adressePanel.add( new JLabel( "Max Måneds Pris" ), BorderLayout.PAGE_START );
+		adressePanel.add( new JLabel( "Adresse" ), BorderLayout.PAGE_START );
 		adressePanel.add(adresse, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
@@ -97,13 +98,14 @@ public class NewBoligPanel extends JPanel{
 		bl2.setHgap(10);
 		bl2.setVgap(5);
 		beskrivelsePanel.setLayout(bl2);
-		beskrivelse = new JTextArea(10,30);
+		beskrivelse = new JFormattedTextField(20);
+		beskrivelse.setSize(200, 100);
 		JScrollPane scrollPane = new JScrollPane( beskrivelse );
-		beskrivelse.setLineWrap (true);
+		//beskrivelse.setLineWrap (true);
 
 				
-		adressePanel.add( new JLabel( "Beskrivelse" ), BorderLayout.PAGE_START );
-		adressePanel.add(beskrivelse, BorderLayout.LINE_START);
+		typePanel.add( new JLabel( "Beskrivelse" ), BorderLayout.PAGE_START );
+		typePanel.add(beskrivelse, BorderLayout.LINE_START);
 		
 		c.fill = GridBagConstraints.NONE;
 		c.ipady = 10;
@@ -112,7 +114,7 @@ public class NewBoligPanel extends JPanel{
 		c.gridx = 0;
 		c.gridy = 3;
 		c.insets = new Insets(10,50,0,10);
-		add(adressePanel, c);
+		add(typePanel, c);
 		
 		// label og inputfelt for boareal
 		JPanel boaPanel = new JPanel();
@@ -252,13 +254,14 @@ public class NewBoligPanel extends JPanel{
 	
 	public Bolig saveNyBolig(){
 		try{
-			Bolig bolig;
+			
 			String boadresse = adresse.getText();
 			//utleierStringListe[(utleiervelger.getSelectedIndex())];
 			
 			int boboa = Integer.parseInt(boa.getText());
 			String botype = typeListe[typevelger.getSelectedIndex()];
 			String boutleier = utleiervelger.getItemAt(utleiervelger.getSelectedIndex());
+			String beskr = beskrivelse.getText();
 			int bobygg = Integer.parseInt(byggeaar.getText());
 			int bopris = Integer.parseInt(pris.getText());
 			int brukerID = Integer.parseInt(utleiervelger.getItemAt(utleiervelger.getSelectedIndex()).substring(0,4));
@@ -277,6 +280,7 @@ public class NewBoligPanel extends JPanel{
 			bolig.setByggeAar(bobygg);
 			bolig.setLeiePris(bopris);
 			bolig.setEier(utl);
+			
 			
 			return bolig;
 			

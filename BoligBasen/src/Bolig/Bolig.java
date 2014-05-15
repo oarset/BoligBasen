@@ -56,6 +56,15 @@ public abstract class Bolig {
 	public int getByggeAar(){
 		return byggeaar;
 	}
+	
+	// setter inn beskrivelse av boligen
+	public void setBeskrivelse(String s){
+		beskrivelse = s;
+	}
+	// henter ut beskrivelse av boligen
+	public String getBeskrivelse(){
+		return beskrivelse;
+	}
 	// setter leie prisen pr. mnd.
 	public void setLeiePris(int leie){
 		leiepris = leie;
