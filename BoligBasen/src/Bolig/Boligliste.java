@@ -51,6 +51,37 @@ public class Boligliste {
 		}
 	}
 	
+	public void settInnSortertMatchetBolig(Bolig ny) {
+		if (ny == null) {
+			return;
+		}
+		if (first == null) {
+			first = ny;
+			return;
+		}
+		else {
+			Bolig cycle = first;
+			if (cycle.getMatchingScore() > ny.getMatchingScore() ) {
+				ny.next = cycle;
+				return;
+			}
+			while (cycle.next != null) {
+				if (cycle.next.getMatchingScore() > ny.getMatchingScore() && cycle.getMatchingScore() < ny.getMatchingScore() ) {
+					ny.next = cycle.next;
+					cycle.next = ny;
+					return;
+				}
+				cycle = cycle.next;
+				
+			}
+			if (cycle.next != null && cycle.getMatchingScore() < ny.getMatchingScore()) {
+				cycle.next = ny;
+				return;
+			}
+			return;
+		}
+	}
+	
 	public void slettBolig(Bolig ny) {
 		if (ny == null) {
 			return;
@@ -108,8 +139,13 @@ public class Boligliste {
 		Bolig cycle = first;
 		Boligliste ny = new Boligliste();
 		while (cycle.next != null) {
+			cycle.resetMatchingScore();
 			if (cycle.getLeiePris() < person.getMaxPris() && cycle.getLeiePris() > person.getMinPris()) {
-				ny.settInnBolig(cycle);
+				cycle.addToMatchingscore(cycle.getLeiePris() - person.getMinPris());
+			if (person.getBalkong() != cycle.getBalkong()) {
+				cycle.addToMatchingscore(1000);
+			}
+			ny.settInnSortertMatchetBolig(cycle);
 			}
 			cycle = cycle.next;
 		}

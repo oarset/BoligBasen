@@ -27,8 +27,9 @@ public class Personliste {
 		}
 		else {
 			Bruker cycle = first;
-			while (cycle.neste != null) 
+			while (cycle.neste != null) { 
 				cycle = cycle.neste;	
+			}
 			cycle.neste = ny;
 			
 		}
@@ -69,6 +70,16 @@ public class Personliste {
 			cycle = cycle.neste;
 		}
 		return ny;
+	}
+	
+	public int antPersoner() {
+		Bruker cycle = first;
+		int teller = 0;
+		while (cycle.neste != null) {
+			teller += 1;
+			cycle = cycle.neste;
+		}
+		return teller;
 	}
 	
 	public Bruker finnPerson(String epost) {

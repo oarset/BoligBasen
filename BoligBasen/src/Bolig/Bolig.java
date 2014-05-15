@@ -17,6 +17,7 @@ public abstract class Bolig {
 	private Date opprettet;
 	private Utleiere eier;
 	public Bolig next;
+	private int matchingScore;
 	
 	// constructor oppretter bolig med adresse og type
 	public Bolig(String add, String type){
@@ -25,6 +26,22 @@ public abstract class Bolig {
 		boligtype = type;
 		
 	}
+	
+	//Metode for å sette bolig - person matching score tilbake til 0.
+	public void resetMatchingScore() {
+		matchingScore = 0;
+	}
+	
+	//Metode for å legge til mer på matchingScore.
+	public void addToMatchingscore(int x) {
+		matchingScore += x;
+	}
+	
+	//Henter matchingscore.
+	public int getMatchingScore() {
+		return matchingScore;
+	}
+	
 	// setter inn areal
 	public void setBOA(int b){
 		boa = b;
@@ -48,6 +65,12 @@ public abstract class Bolig {
 	public Utleiere getEier() {
 		return eier;
 	}
+	
+	//Sørger for at om en bolig ikke har spesifisert om den har balkong blir det levert false.
+	public boolean getBalkong(){
+		return false;
+	}
+	
 	// finner leieprisen for boligen (pr. mnd)
 	public int getLeiePris(){
 		return leiepris;
