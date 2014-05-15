@@ -85,6 +85,10 @@ public abstract class Bolig implements Serializable{
 		return false;
 	}
 	
+	public String getAdresse() {
+		return addresse;
+	}
+	
 	// finner leieprisen for boligen (pr. mnd)
 	public int getLeiePris(){
 		return leiepris;
