@@ -43,6 +43,10 @@ public abstract class Bruker {
 		return telefon;
 	}
 	
+	public boolean getBalkong() {
+		return false;
+	}
+	
 	public String toString() {
 		return "masse tekst" + navn + " " + etternavn ;
 	} 
