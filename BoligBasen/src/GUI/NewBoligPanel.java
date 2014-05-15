@@ -192,7 +192,7 @@ public class NewBoligPanel extends JPanel{
 		utleiervelger = new JComboBox<>(utleierStringListe);
 		utleiervelger.setSelectedIndex(0);
 		
-		utleierPanel.add( new JLabel( "Boligtype" ), BorderLayout.PAGE_START );
+		utleierPanel.add( new JLabel( "Utleier" ), BorderLayout.PAGE_START );
 		utleierPanel.add(utleiervelger, BorderLayout.LINE_START);
 
 		c.fill = GridBagConstraints.NONE;
