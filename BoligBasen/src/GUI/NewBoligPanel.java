@@ -290,10 +290,10 @@ public class NewBoligPanel extends JPanel{
 					utleierStringListe = new String[utleierListe.antPersoner()];
 					int i = 0;
 					Bruker cycle = utleierListe.getFirst();
-					while (cycle.neste != null) {
-						utleierStringListe[i] = cycle.neste.nametoString();
+					while (cycle.utleierNeste != null) {
+						utleierStringListe[i] = cycle.utleierNeste.nametoString();
 						i++;
-						cycle = cycle.neste;
+						cycle = cycle.utleierNeste;
 						
 					}
 				}
