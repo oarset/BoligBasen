@@ -181,7 +181,7 @@ public class SeekerInfoPanel extends JLabel{
 		
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 0;
-		c.gridy = 7;
+		c.gridy = 6;
 		c.insets = new Insets(10,50,0,10);
 		add(buttonPanel, c);
 		
@@ -193,7 +193,7 @@ public class SeekerInfoPanel extends JLabel{
 		c.weighty = 1;
 		c.gridheight = 1;
 		c.gridx = 0;
-		c.gridy = 6;
+		c.gridy = 7;
 		add(bottomFillPanel, c);
 		
 	}

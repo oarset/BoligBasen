@@ -19,9 +19,9 @@ import Bolig.Utleiere;
 
 public class UtleierPanel extends JLabel{
 	
-	public JFormattedTextField firma, firmaInfo;
-	public JButton saveUtlButton, backButton;
-	public JPanel buttonPanel;
+	private JFormattedTextField firma, firmaInfo;
+	private JButton saveUtlButton, backButton;
+	private JPanel buttonPanel;
 	private Utleiere utl;
 	
 	public UtleierPanel(){

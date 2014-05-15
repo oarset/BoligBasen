@@ -11,7 +11,7 @@ public class Personliste {
 	private Bruker first;
 
 	public Personliste() {
-		
+		first = null;
 	}
 	
 	public void settInnPerson(Bruker ny) {
@@ -24,10 +24,8 @@ public class Personliste {
 		else {
 			Bruker cycle = first;
 			while (cycle.neste != null) 
-				cycle = cycle.neste;
-				
+				cycle = cycle.neste;	
 			cycle.neste = ny;
-			
 			
 		}
 	}

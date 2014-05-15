@@ -24,6 +24,7 @@ public abstract class Bruker {
 		dag = d;
 		mnd = m;
 		aar = aa;
+		neste = null;
 	}
 
 	public boolean erUtleier() {
