@@ -26,6 +26,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 	private SeekerPanel seeker;
 	private SeekerInfoPanel sip;
 	private UtleierPanel utlpan;
+	private MatchPanel match;
 	
 	
 	 public BoligBaseFrame()
@@ -44,6 +45,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 	 	boligpan = new NewBoligPanel();
 	 	sip = new SeekerInfoPanel();
 	 	utlpan = new UtleierPanel();
+	 	match = new MatchPanel();
 		
 		// lager default info panel
 		info = new InfoPanel();
@@ -84,6 +86,18 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 
 
 					});
+			
+			// Oppretter til Ny bolig valg i fil-menyen
+					JMenuItem matcher = new JMenuItem("Match bolig");
+					matcher.setMnemonic('b');
+					matcher.addActionListener( 
+							new ActionListener(){
+								// endrer venstre panel til "ny bolig panel"
+								public void actionPerformed(ActionEvent e){
+									
+								setLeftFrame(7, null, null, theList);
+								}
+							});
 		
 		// Legger til Lister meny
 		JMenu listemenu = new JMenu("Lister");
@@ -91,7 +105,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		
 			// viser alle boligsøkere
 			JMenuItem kundeliste = new JMenuItem("Alle Boligsøkere");
-			kundeliste.setMnemonic('B');
+			kundeliste.setMnemonic('s');
 			kundeliste.addActionListener( 
 					new ActionListener(){
 						// endrer infopanel til å vise liste over alle personer i personliste
@@ -110,24 +124,40 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					});
 			
 			// Viser alle utleiere
-						JMenuItem utlliste = new JMenuItem("Alle Utleiere");
-						utlliste.setMnemonic('U');
-						utlliste.addActionListener( 
-								new ActionListener(){
-									// endrer infopanel til å vise liste over alle personer i personliste
-									public void actionPerformed(ActionEvent e){
-										try{
-											setRightFrame(1);
-										}
-										catch ( NullPointerException npe ) {
-										    errorOutput( "Ingen Utleiere er registrert" );
-										    
-										}	
-									
-									}
+			JMenuItem utlliste = new JMenuItem("Alle Utleiere");
+			utlliste.setMnemonic('U');
+			utlliste.addActionListener( 
+					new ActionListener(){
+						// endrer infopanel til å vise liste over alle personer i personliste
+						public void actionPerformed(ActionEvent e){
+							try{
+								setRightFrame(1);
+							}
+							catch ( NullPointerException npe ) {
+							    errorOutput( "Ingen Utleiere er registrert" );
+							    
+							}	
+						
+						}
 
 
-								});
+					});
+			
+			// Viser alle utleiere
+			JMenuItem boligliste = new JMenuItem("Alle Boliger");
+			boligliste.setMnemonic('B');
+			boligliste.addActionListener( 
+				new ActionListener(){
+					// endrer infopanel til å vise liste over alle personer i personliste
+					public void actionPerformed(ActionEvent e){
+						try{
+							setRightFrame(3);
+						}
+						catch ( NullPointerException npe ) {
+						    errorOutput( "Ingen Boliger er registrert" );    
+						}
+					}
+				});
 		
 		// Legger til info meny
 		JMenu infomenu = new JMenu("Info");
@@ -156,10 +186,13 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		//legger til inhold i fil menyen
 		filemenu.add(nyBruker);
 		filemenu.add(nyBolig);
+		filemenu.add(matcher);
+		
 		
 		//legger til inhold i liste menyen
 		listemenu.add(kundeliste);
 		listemenu.add(utlliste);
+		listemenu.add(boligliste);
 				
 		
 		// legger til innhold i Info menyen
@@ -521,7 +554,18 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		// setter venstre panel  til NyBoligPanel
 		else if(leftframe == 7){
 				 
-			
+			Container c = getContentPane();
+			MatchPanel matchpan = new MatchPanel();
+			match = matchpan;
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(match, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+			nyUtlP2AL();
+			nyBackUtlP2AL();
+			c.revalidate();
+			c.repaint();
 		}
 		 
 	 }
@@ -560,6 +604,24 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(brukerpan, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+		 	nySeekerP1AL();
+		 	nyUtlP1AL();
+			c.revalidate();
+			c.repaint();
+			 }
+		 
+		//info viser alle boliger
+		 if(rightframe == 3){
+			 
+			String s = boligList.toString(); 
+			s += "lol";
+			info.addContent(s); 
+			Container c = getContentPane();
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(boligpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
 		 	nySeekerP1AL();
 		 	nyUtlP1AL();
