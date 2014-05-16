@@ -162,6 +162,26 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 						}
 					}
 				});
+			
+		// Legger til en meny for lagring
+		JMenu savemenu = new JMenu("Lagre");
+		listemenu.setMnemonic('L');
+		
+			// Lagre meny
+			JMenuItem saveFile = new JMenuItem("Lagre til Fil");
+			saveFile.setMnemonic('F');
+			saveFile.addActionListener( 
+				new ActionListener(){
+					// endrer infopanel til å vise liste over alle personer i personliste
+					public void actionPerformed(ActionEvent e){
+						try{
+							setInfoPanel(4, theList, boligList);
+						}
+						catch ( NullPointerException npe ) {
+						    errorOutput( "Kunne ikke lagre" );    
+						}
+					}
+				});
 		
 		// Legger til info meny
 		JMenu infomenu = new JMenu("Info");
@@ -625,6 +645,17 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			s += "lol";
 			info.removeAll();
 			info.addContent(s);
+			info.revalidate();
+			info.repaint();
+			 }
+		 
+		 
+		//Lagrer alt
+		 if(rightframe == 4){
+			 
+			
+			info.removeAll();
+			info.addContent("Lagret data til fil");
 			info.revalidate();
 			info.repaint();
 			 }
