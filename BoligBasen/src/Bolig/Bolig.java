@@ -106,7 +106,7 @@ public abstract class Bolig implements Serializable{
 		}
 			ut += "Boligareal: " + boa + "\n";
 			ut += "Byggeår: " + byggeaar + "\n";
-			ut += "Leiepris: " + leiepris + "\n";
+			ut += "Leiepris: " + leiepris + "\n\n";
 		return ut;
 	}
 }
