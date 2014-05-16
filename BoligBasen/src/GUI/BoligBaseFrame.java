@@ -205,7 +205,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		menu.add(filemenu);
 		menu.add(listemenu);
 		menu.add(infomenu);
-		
+		menu.add(savemenu);
 		
 		//legger til inhold i fil menyen
 		filemenu.add(nyBruker);
@@ -217,6 +217,9 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		listemenu.add(kundeliste);
 		listemenu.add(utlliste);
 		listemenu.add(boligliste);
+		
+		//legger til inhold i lagrings menyen
+		savemenu.add(saveFile);
 				
 		
 		// legger til innhold i Info menyen
