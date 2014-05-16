@@ -7,9 +7,6 @@ import java.io.Serializable;
 public class TestRun implements Serializable{
 
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5051413251274124535L;
 
 	public static void main( String[] args )
