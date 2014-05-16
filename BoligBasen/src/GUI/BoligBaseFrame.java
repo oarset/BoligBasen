@@ -7,6 +7,12 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import javax.swing.*;
@@ -16,9 +22,7 @@ import Bolig.*;
 
 public class BoligBaseFrame extends JFrame implements Serializable{
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 7705327600110562397L;
 	private HeaderPanel header;
 	private Personliste theList, utleie;
@@ -38,9 +42,11 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		super("BoligBasen");
 		
 		leftframe = 1;
+		
 		theList = new Personliste();
 		utleie = new Personliste();
 		boligList= new Boligliste();
+		this.lesFraFil();
 		
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
@@ -609,6 +615,42 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		}
 		 
 	 }
+	 public void lagreTilFil() {
+			try (ObjectOutputStream utfil = new ObjectOutputStream(
+			        new FileOutputStream("liste.data") ))
+			{
+						ObjectOutputStream utfil2 = new ObjectOutputStream(
+				        new FileOutputStream("liste2.data") );
+						utfil.writeObject(theList);
+						utfil2.writeObject(boligList);
+						utfil.flush();
+						utfil2.flush();
+						utfil.close();
+						utfil2.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("file not found");
+			} catch (IOException e) {
+				System.out.println("IO");
+			}
+	 }
+	 
+	 public void lesFraFil() {
+		 try (ObjectInputStream innfil = new ObjectInputStream(
+					new FileInputStream("liste.data")))
+				{
+			 		ObjectInputStream innfil2 = new ObjectInputStream(
+			 		new FileInputStream("liste2.data") );
+			 		theList = (Personliste) innfil.readObject();
+			 		boligList = (Boligliste) innfil2.readObject();
+				
+				} catch (FileNotFoundException e) {
+					System.out.println("file not found");
+				} catch (IOException e) {
+					System.out.println("IO");
+				} catch (ClassNotFoundException e) {
+					System.out.println("Class not found");
+				}	
+	 }
 	 
 	 // metode som repainter infoPanel avhengig av input
 	 public void setInfoPanel(int i, Personliste list, Boligliste blist){
@@ -660,7 +702,8 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			info.addContent("Lagret data til fil");
 			info.revalidate();
 			info.repaint();
-			 }
+			this.lagreTilFil();
+		}
 		 
 	 }
 	  
