@@ -25,7 +25,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 	 */
 	private static final long serialVersionUID = 7705327600110562397L;
 	private HeaderPanel header;
-	private Personliste theList;
+	private Personliste theList, utleie;
 	private Boligliste boligList;
 	private InfoPanel info;
 	private int leftframe;
@@ -43,6 +43,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		
 		leftframe = 1;
 		theList = new Personliste();
+		utleie = new Personliste();
 		boligList= new Boligliste();
 		
 		// lager default panelene
@@ -322,14 +323,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					String infostring = utl.toString();
 					info.addContent(infostring);
 					theList.settInnPerson(utl);
-					//Container c = getContentPane();
-					//c.removeAll();
-				 	//c.setLayout( new BorderLayout() );
-				 	//c.add(header,BorderLayout.PAGE_START);
-				 	//c.add(brukerpan, BorderLayout.LINE_START);
-				 	//c.add(info, BorderLayout.LINE_END);
-					//c.revalidate();
-					//c.repaint();
+					utleie.settInnUtleier(utl);
 					setLeftFrame(2, null, utl, theList, null);
 				}
 			}
@@ -435,19 +429,18 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		// setter venstre panel  til NyBoligPanel
 		if(leftframe == 1){
 			
-			Personliste p = theList.utleierliste();
 			Container c = getContentPane();
 			c.removeAll();
-			NewBoligPanel boligpanel = new NewBoligPanel();	
-			boligpan = boligpanel;
-			boligpan.setUltListe(p);
+			//NewBoligPanel boligpanel = new NewBoligPanel();	
+			//boligpan = boligpanel;
+			//boligpan.setUltListe(utleie);
 			
 			header.setText("Ny Bolig");
 			try{
-				Bruker cycle = boligpan.getUtlListe().getFirst();
+				Bruker cycle = utleie.getFirst();
 			
-			if (boligpan.getUtlListe().getFirst() != null){
-				while (cycle.utleierNeste != null) {
+			if (utleie.getFirst() != null){
+				while (cycle != null) {
 					boligpan.utleiervelger.addItem(cycle.nametoString());
 					cycle = cycle.utleierNeste;
 					
@@ -622,9 +615,9 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 // infoPanel viser alle Utleiere
 		 if(rightframe == 1){
 			
-			Personliste utleiere = new Personliste(); 
-			utleiere = theList.utleierliste();
-			String s = utleiere.toString(); 
+			Personliste temp = new Personliste();
+			temp = utleie;
+			String s = temp.toString(); 
 			s += "lol";
 			info.removeAll();
 			info.addContent(s);
