@@ -46,18 +46,23 @@ public class Personliste implements Serializable {
 		if (ny == null) {
 			return;
 		}
-		
-		//tom liste
-		if (first == null) {
-			first = ny;		
-			return;
-		}
-		else {
-			Bruker cycle = first;
-			while (cycle.utleierNeste != null) { 
-				cycle = cycle.utleierNeste;	
+		if(ny.erUtleier() == true){
+			//tom liste
+			if (first == null) {
+				first = ny;		
+				return;
 			}
-			cycle.utleierNeste = ny;	
+			else {
+				Bruker cycle = first;
+				while (cycle != null) { 
+					cycle = cycle.neste;	
+				}
+				
+				cycle = ny;	
+			}
+		}
+		else{
+			return;
 		}
 	}
 	
@@ -95,12 +100,11 @@ public class Personliste implements Serializable {
 		
 		Personliste ny = new Personliste();
 		Bruker cycle = first;
-		while (cycle != null) {
-			if (cycle.erUtleier() == true) {
-				ny.settInnUtleier(cycle);
-				}
+		while (cycle.neste != null) {
+			ny.settInnUtleier(cycle);
 			cycle = cycle.neste;
-			}
+			}	
+
 		return ny;
 	}
 	

@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class InfoPanel extends JPanel implements Serializable{
@@ -30,8 +31,7 @@ public class InfoPanel extends JPanel implements Serializable{
 		removeAll();
 		output = new JTextArea( 0, 40 );
 		output.setEditable( false );
-		
-		add( output, BorderLayout.PAGE_START );
+		add( output, BorderLayout.LINE_START );
 		output.setText(s);
 	}
 }

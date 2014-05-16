@@ -40,7 +40,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		// lager default panelene
 		brukerpan = new NewBrukerPanel();
 		
-		// lager hjelpe panel for boligsøkere og ny bolig
+		// lager panelsene som ligger i framen
 	 	seeker = new SeekerPanel();
 	 	boligpan = new NewBoligPanel();
 	 	sip = new SeekerInfoPanel();
@@ -55,7 +55,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		header.setText("Lag ny Bruker");
 
 		
-		 // Legger til Fil meny
+		 // Legger til Filmeny
 		JMenu filemenu = new JMenu("Fil");
 		filemenu.setMnemonic('F');
 		
@@ -81,18 +81,18 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 						// endrer venstre panel til "ny bolig panel"
 						public void actionPerformed(ActionEvent e){
 							
-						setLeftFrame(9, null, null, theList, null);
+						setLeftFrame(1, null, null, theList, null);
 						}
 
 
 					});
 			
-			// Oppretter til Ny bolig valg i fil-menyen
+			// Oppretter et matching Panel for å finne boliger/boligsøkere som matcher
 					JMenuItem matcher = new JMenuItem("Match bolig");
 					matcher.setMnemonic('b');
 					matcher.addActionListener( 
 							new ActionListener(){
-								// endrer venstre panel til "ny bolig panel"
+								// endrer venstre panel til Matching Panel
 								public void actionPerformed(ActionEvent e){
 									
 								setLeftFrame(7, null, null, theList, null);
@@ -111,7 +111,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 						// endrer infopanel til å vise liste over alle personer i personliste
 						public void actionPerformed(ActionEvent e){
 							try{
-								setRightFrame(2);
+								setInfoPanel(2, theList, boligList);
 							}
 							catch ( NullPointerException npe ) {
 							    errorOutput( "Ingen brukere er registrert" );
@@ -131,7 +131,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 						// endrer infopanel til å vise liste over alle personer i personliste
 						public void actionPerformed(ActionEvent e){
 							try{
-								setRightFrame(1);
+								setInfoPanel(1, theList, boligList);
 							}
 							catch ( NullPointerException npe ) {
 							    errorOutput( "Ingen Utleiere er registrert" );
@@ -151,7 +151,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					// endrer infopanel til å vise liste over alle personer i personliste
 					public void actionPerformed(ActionEvent e){
 						try{
-							setRightFrame(3);
+							setInfoPanel(3, theList, boligList);
 						}
 						catch ( NullPointerException npe ) {
 						    errorOutput( "Ingen Boliger er registrert" );    
@@ -219,7 +219,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 	 brukerpan.newSeekerActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
 				if (e.getSource() == brukerpan.newBoligSeekerButton){
 					Boligsøker seek = brukerpan.nyBoligSeeker();
 					String infostring = seek.toString();
@@ -240,7 +240,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 	 seeker.saveSeekerActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
 				if (e.getSource() == seeker.saveSeekerButton){
 					seeker.oppdaterBoligSeeker();
 					Boligsøker seek = seeker.getSeeker();
@@ -263,7 +263,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
  	brukerpan.newUtlActionListener(new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+
 			if (e.getSource() == brukerpan.newUtleierButton){
 				Utleiere utl = brukerpan.nyUtleier();
 				String infostring = utl.toString();
@@ -388,7 +388,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 					boligList.settInnBolig(b);
 					String infostring = b.toString();
 					info.addContent(infostring);
-					setLeftFrame(9, null, null, theList, boligList);
+					setLeftFrame(1, null, null, theList, boligList);
 					}
 				}
 		 		
@@ -403,22 +403,20 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		
 		// setter venstre panel  til NyBoligPanel
 		if(leftframe == 1){
-				 
-			
+			//Personliste pl = boligpan.getUtlListe();
+			NewBoligPanel boligpanel = new NewBoligPanel();	
+			//boligpanel.setUltListe(pl);
 			Container c = getContentPane();
 			c.removeAll();
-			NewBoligPanel boligpanel = new NewBoligPanel();
-			boligpan = boligpanel;
 			header.setText("Ny Bolig");
-			boligpan.setUtleierListe(list);
+			boligpanel.setUtleierListe(list);
 			try{
-				Bruker cycle = boligpan.utleierListe.getFirst();
+				Bruker cycle = boligpanel.getUtlListe().getFirst();
 			
-			if (boligpan.utleierListe.getFirst() != null){
-				boligpan.utleiervelger.addItem(cycle.nametoString());
-				while (cycle.utleierNeste != null) {
-					boligpan.utleiervelger.addItem(cycle.utleierNeste.nametoString());
-					cycle = cycle.utleierNeste;
+			if (boligpanel.getUtlListe().getFirst() != null){
+				while (cycle != null) {
+					boligpanel.utleiervelger.addItem(cycle.nametoString());
+					cycle = cycle.neste;
 					
 				}	
 			}
@@ -427,7 +425,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			    errorOutput( "Ingen Utleiere er registrert" );
 			    
 			}	
-			//boligpanel = boligpan;
+			boligpan = boligpanel;
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(boligpan, BorderLayout.LINE_START);
@@ -435,6 +433,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	//laster ActionListeners
 		 	nySaveBOP1AL();
 		 	nyBackUtlP2AL();
+		 	//repainting
 			c.revalidate();
 			c.repaint();
 		}
@@ -454,6 +453,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	//laster ActionListeners
 		 	nySeekerP1AL();
 		 	nyUtlP1AL();
+		 	//repainting
 			c.revalidate();
 			c.repaint();
 		}
@@ -470,8 +470,10 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(seeker, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	//laster ActionListeners
 		 	nySeekerP2AL();
 		 	nySeekerBackP2AL();
+		 	//repainting
 			c.revalidate();
 			c.repaint();
 
@@ -490,8 +492,10 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(sip, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	//laster ActionListeners
 		 	nySeekerP3AL();
 		 	nySeekerBackP3AL();
+		 	//repainting
 			c.revalidate();
 			c.repaint();
 		}
@@ -508,8 +512,10 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(brukerpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	//laster ActionListeners
 		 	nySeekerP1AL();
 		 	nyUtlP1AL();
+		 	//repainting
 			c.revalidate();
 			c.repaint();
 		}
@@ -528,8 +534,28 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(utlpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	//laster ActionListeners
 			nyUtlP2AL();
 			nyBackUtlP2AL();
+			//repainting
+			c.revalidate();
+			c.repaint();
+		}
+		// setter venstre panel  til NyBoligPanel
+		else if(leftframe == 7){
+				 
+			Container c = getContentPane();
+			MatchPanel matchpan = new MatchPanel();
+			match = matchpan;
+			c.removeAll();
+		 	c.setLayout( new BorderLayout() );
+		 	c.add(header,BorderLayout.PAGE_START);
+		 	c.add(match, BorderLayout.LINE_START);
+		 	c.add(info, BorderLayout.LINE_END);
+		 	//laster ActionListeners
+			nyUtlP2AL();
+			nyBackUtlP2AL();
+			//repainting
 			c.revalidate();
 			c.repaint();
 		}
@@ -547,73 +573,26 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(utlpan, BorderLayout.LINE_START);
 		 	c.add(info, BorderLayout.LINE_END);
+		 	//laster ActionListeners
 			nyUtlP2AL();
 			nyBackUtlP2AL();
+			//repainting
 			c.revalidate();
 			c.repaint();
 		}
-		// setter venstre panel  til NyBoligPanel
-		else if(leftframe == 7){
-				 
-			Container c = getContentPane();
-			MatchPanel matchpan = new MatchPanel();
-			match = matchpan;
-			c.removeAll();
-		 	c.setLayout( new BorderLayout() );
-		 	c.add(header,BorderLayout.PAGE_START);
-		 	c.add(match, BorderLayout.LINE_START);
-		 	c.add(info, BorderLayout.LINE_END);
-			nyUtlP2AL();
-			nyBackUtlP2AL();
-			c.revalidate();
-			c.repaint();
-		}
-		// setter venstre panel  til NyBoligPanel
-		else if(leftframe == 9){
-			
-		//Personliste pl = boligpan.getUtlListe();
-		NewBoligPanel boligpanel = new NewBoligPanel();	
-		//boligpanel.setUltListe(pl);
-		Container c = getContentPane();
-		c.removeAll();
-		header.setText("Ny Bolig");
-		boligpanel.setUtleierListe(list);
-		try{
-			Bruker cycle = boligpanel.getUtlListe().getFirst();
-		
-		if (boligpanel.getUtlListe().getFirst() != null){
-			while (cycle != null) {
-				boligpanel.utleiervelger.addItem(cycle.nametoString());
-				cycle = cycle.neste;
-				
-			}	
-		}
-		}
-		catch ( NullPointerException npe ) {
-		    errorOutput( "Ingen Utleiere er registrert" );
-		    
-		}	
-		boligpan = boligpanel;
-	 	c.setLayout( new BorderLayout() );
-	 	c.add(header,BorderLayout.PAGE_START);
-	 	c.add(boligpan, BorderLayout.LINE_START);
-	 	c.add(info, BorderLayout.LINE_END);
-	 	//laster ActionListeners
-	 	nySaveBOP1AL();
-	 	nyBackUtlP2AL();
-		c.revalidate();
-		c.repaint();
-	}
 		 
 	 }
 	 
-	 public void setRightFrame(int i){
+	 // metode som repainter infoPanel avhengig av input
+	 public void setInfoPanel(int i, Personliste list, Boligliste blist){
 		 
 		 int rightframe = i;
-		 // info viser alle Utleiere
+		 // infoPanel viser alle Utleiere
 		 if(rightframe == 1){
-			 
-			String s = theList.utleierliste().toString(); 
+			
+			Personliste utleiere = new Personliste(); 
+			utleiere = theList.utleierliste();
+			String s = utleiere.toString(); 
 			s += "lol";
 			info.removeAll();
 			info.addContent(s);
@@ -621,10 +600,12 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			info.repaint();
 		 }
 		 
-		 //info viser alle leiere
+		 //infoPanel viser alle leiere
 		 if(rightframe == 2){
 			 
-			String s = theList.toString(); 
+			Personliste seekers = new Personliste(); 
+			seekers = theList;
+			String s = seekers.toString(); 
 			s += "lol";
 			info.removeAll();
 			info.addContent(s);
@@ -632,10 +613,10 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			info.repaint();
 			 }
 		 
-		//info viser alle boliger
+		//infoPanel viser alle boliger
 		 if(rightframe == 3){
 			 
-			String s = boligList.toString(); 
+			String s = blist.toString(); 
 			s += "lol";
 			info.removeAll();
 			info.addContent(s);
