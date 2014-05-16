@@ -16,6 +16,10 @@ import javax.swing.JPanel;
 
 public class MatchPanel extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7175962729728730729L;
 	private JButton matchSeekerButton , matchBoligButton;
 	private JPanel buttonPanel;
 	public JComboBox<String> boligvelger, brukervelger;

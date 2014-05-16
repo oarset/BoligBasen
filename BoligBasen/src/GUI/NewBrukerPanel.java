@@ -14,6 +14,10 @@ import Bolig.Utleiere;
 
 public class NewBrukerPanel extends JPanel implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -221958276479046410L;
 	private JFormattedTextField fornavn, etternavn, adresse, pnr, sted, dag, mnd, aar, email, tlf;
 	public JButton newBoligSeekerButton, newUtleierButton;
 	private JPanel buttonPanel;

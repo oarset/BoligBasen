@@ -10,6 +10,10 @@ import Bolig.*;
 
 public class NewBoligPanel extends JPanel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -337476548194832557L;
 	private JFormattedTextField adresse,  boa, byggeaar, pris;
 	private JFormattedTextField beskrivelse;
 	private Utleiere utl;

@@ -20,6 +20,10 @@ import Bolig.Boligsøker;
 
 public class SeekerInfoPanel extends JLabel implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3948299007708588828L;
 	private JFormattedTextField sivilstatus, hhs, smoke, yrke, husdyr; 
 	public JPanel buttonPanel;
 	public JButton saveInfoButton, backButton;

@@ -20,6 +20,10 @@ import Bolig.Bruker;
 
 public class SeekerPanel extends JLabel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6027996351493350976L;
 	private JFormattedTextField maxmndpris, minmndpris, rom, size, balkong, hage, husdyr;
 	public JButton saveSeekerButton, backButton;
 	public JPanel buttonPanel;

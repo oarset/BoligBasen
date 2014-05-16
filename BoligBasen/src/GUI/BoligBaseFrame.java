@@ -16,6 +16,10 @@ import Bolig.*;
 
 public class BoligBaseFrame extends JFrame implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7705327600110562397L;
 	private HeaderPanel header;
 	private Personliste theList;
 	private Boligliste boligList;

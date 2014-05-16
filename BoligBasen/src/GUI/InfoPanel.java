@@ -13,6 +13,10 @@ import javax.swing.JTextArea;
 
 public class InfoPanel extends JPanel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6850235223016977454L;
 	private JTextArea output;
 
 	public InfoPanel(){
