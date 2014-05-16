@@ -20,6 +20,10 @@ import Bolig.Utleiere;
 
 public class UtleierPanel extends JLabel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1926265705012052374L;
 	private JFormattedTextField firma, firmaInfo;
 	public JButton saveUtlButton, backButton;
 	private JPanel buttonPanel;
