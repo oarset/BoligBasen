@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Leilighet extends Bolig implements Serializable {
 
+	private static final long serialVersionUID = 2449748294041470803L;
 	private int etasje;
 	private boolean heis, balkong;
 	

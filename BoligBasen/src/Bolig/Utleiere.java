@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Utleiere extends Bruker implements Serializable {
 	
+	private static final long serialVersionUID = -6119126669352504828L;
 	private String firma, firmaInfo;
 	private boolean utleier;
 	public Utleiere(String nvn, String enavn, String adr, String pnr, String sted, int d, int m, int aa, String epost, String tlf) {

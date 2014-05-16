@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Rekkehus extends Bolig implements Serializable{
 	
+	private static final long serialVersionUID = 4356557454833029174L;
 	private int antEtg, tomt;
 	private boolean kjeller;
 	

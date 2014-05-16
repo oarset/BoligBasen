@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 public class Boligliste implements Serializable {
 	
+
+	private static final long serialVersionUID = -1103968212860561155L;
 	private Bolig first;
 	
 	public Boligliste() {

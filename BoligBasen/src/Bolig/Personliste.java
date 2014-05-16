@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Personliste implements Serializable {
 	
+	private static final long serialVersionUID = 705517920628450505L;
 	private Bruker first;
 	private int brukerTeller = 1000;
 

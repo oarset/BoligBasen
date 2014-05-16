@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Leiekontrakter implements Serializable {
 	
+	private static final long serialVersionUID = -2432248480300189465L;
 	Bolig utleieboligen;
 	Bruker utleier;
 	Bruker leietaker;

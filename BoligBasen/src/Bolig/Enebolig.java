@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Enebolig extends Bolig implements Serializable {
 	
+	private static final long serialVersionUID = -7239594569972937532L;
 	private int antEtg, tomt;
 	private boolean kjeller;
 	

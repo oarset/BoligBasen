@@ -12,6 +12,8 @@ import java.util.Date;
 
 public abstract class Bolig implements Serializable{
 
+
+	private static final long serialVersionUID = -9095470871436573656L;
 	private String addresse, boligtype, beskrivelse;
 	private int boa, byggeaar;
 	private int leiepris; 

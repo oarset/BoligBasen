@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public abstract class Bruker implements Serializable {
 	
+	private static final long serialVersionUID = -4822555228248176346L;
 	protected String navn, etternavn, adresse, postnr, sted, email, telefon;
 	protected int dag, mnd, aar, brukerid;
 	public Bruker neste;

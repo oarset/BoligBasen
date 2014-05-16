@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 public class Leiekontrakterliste implements Serializable{
 	
+	private static final long serialVersionUID = -5564329984600662602L;
 	public Leiekontrakter first;
 	private int leiekontraktID = 10000;
 	

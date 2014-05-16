@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 public class Boligsøker extends Bruker implements Serializable {
 	
+
+	private static final long serialVersionUID = 7708086654091313383L;
 	private String sivilstatus, yrke;
 	private boolean røyker, husdyr, balkong, hage;
 	private int maxpris, minpris, antrom, størrelse, husholdningSize;
