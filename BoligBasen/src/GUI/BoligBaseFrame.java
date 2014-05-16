@@ -436,8 +436,14 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 				Bruker cycle = utleie.getFirst();
 			
 			if (utleie.getFirst() != null){
-				while (cycle != null) {
-					boligpan.utleiervelger.addItem(cycle.nametoString());
+				while (cycle != null && !cycle.nametoString().equalsIgnoreCase(boligpan.utleiervelger.getItemAt(i))) {
+					for (int j = 0; j < 3 ; j++){
+						if(!cycle.nametoString().equalsIgnoreCase(boligpan.utleiervelger.getItemAt(j))){
+							boligpan.utleiervelger.addItem(cycle.nametoString());
+							cycle = cycle.utleierNeste;
+						}
+						
+					}
 					cycle = cycle.utleierNeste;
 					
 				}	
@@ -613,7 +619,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			
 			Personliste temp = new Personliste();
 			temp = utleie;
-			String s = temp.toString(); 
+			String s = temp.utleiertoString(); 
 			s += "lol";
 			info.removeAll();
 			info.addContent(s);
