@@ -441,19 +441,12 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			try{
 				Bruker cycle = utleie.getFirst();
 			
-			if (utleie.getFirst() != null){
-				while (cycle != null && !cycle.nametoString().equalsIgnoreCase(boligpan.utleiervelger.getItemAt(i))) {
-					for (int j = 0; j < 3 ; j++){
-						if(!cycle.nametoString().equalsIgnoreCase(boligpan.utleiervelger.getItemAt(j))){
-							boligpan.utleiervelger.addItem(cycle.nametoString());
-							cycle = cycle.utleierNeste;
-						}
-						
+				if (utleie.getFirst() != null){
+					while (cycle != null ) {
+						boligpan.utleiervelger.addItem(cycle.nametoString());
+						cycle = cycle.utleierNeste;
 					}
-					cycle = cycle.utleierNeste;
-					
-				}	
-			}
+				}
 			}
 			catch ( NullPointerException npe ) {
 			    errorOutput( "Ingen Utleiere er registrert" );

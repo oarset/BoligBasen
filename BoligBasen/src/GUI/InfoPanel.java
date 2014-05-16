@@ -26,7 +26,7 @@ public class InfoPanel extends JPanel implements Serializable{
 		bl.setVgap(5);
 		setLayout(bl);
 
-		add( new JLabel( "Vis info her" ),BorderLayout.PAGE_START );
+		add( new JLabel( "" ),BorderLayout.PAGE_START );
 	
 	}
 	
