@@ -7,6 +7,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import javax.swing.*;
@@ -661,7 +665,19 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			info.addContent("Lagret data til fil");
 			info.revalidate();
 			info.repaint();
-			 }
+			try (ObjectOutputStream utfil = new ObjectOutputStream(
+			        new FileOutputStream("liste.data") ))
+			{
+						//utfil.writeObject(theList);
+						utfil.writeBoolean(true);
+						utfil.flush();
+						System.out.println("trol");
+			} catch (FileNotFoundException e) {
+				System.out.println("file not found");
+			} catch (IOException e) {
+				System.out.println("IO");
+			}
+		}
 		 
 	 }
 	  
