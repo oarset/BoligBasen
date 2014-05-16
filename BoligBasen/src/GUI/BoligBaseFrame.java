@@ -662,7 +662,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			Personliste temp = new Personliste();
 			temp = utleie;
 			String s = temp.utleiertoString(); 
-			s += "lol";
+
 			info.removeAll();
 			info.addContent(s);
 			info.revalidate();
@@ -675,7 +675,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			Personliste seekers = new Personliste(); 
 			seekers = theList;
 			String s = seekers.toString(); 
-			s += "lol";
+
 			info.removeAll();
 			info.addContent(s);
 			info.revalidate();
@@ -686,7 +686,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		 if(rightframe == 3){
 			 
 			String s = blist.toString(); 
-			s += "lol";
+
 			info.removeAll();
 			info.addContent(s);
 			info.revalidate();
