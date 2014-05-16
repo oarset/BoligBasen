@@ -45,6 +45,16 @@ public class Utleiere extends Bruker implements Serializable {
 		return utleier;
 	}
 	
+	//Returnerer String med informasjon om en utleier sitt firma, men bare om utleieren har et firma registrert.
+	public String firmaToString() {
+		String ut = "";
+		if (firma != null) 
+			ut += "Firmanavn: " + firma  + "\n";
+		if (firmaInfo != null)
+			ut += "Informasjon om firma: " + firmaInfo  + "\n";
+		return ut;
+	}
+	
 	//ToString for å hente informasjon om en utleier.
 	public String toString() {
 		String ut = "";
