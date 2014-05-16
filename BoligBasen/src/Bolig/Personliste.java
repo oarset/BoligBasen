@@ -95,7 +95,7 @@ public class Personliste implements Serializable {
 		
 		Personliste ny = new Personliste();
 		Bruker cycle = first;
-		while (cycle != null) {
+		while (cycle.neste != null) {
 			if (cycle.erUtleier() == true) {
 				ny.settInnUtleier(cycle);
 				}

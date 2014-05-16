@@ -261,7 +261,8 @@ public class NewBoligPanel extends JPanel implements Serializable{
 	}
 	
 	public void setUltListe(Personliste p){
-		utleierListe = p;
+		
+		utleierListe = p.utleierliste();
 	}
 	
 	public Personliste getUtlListe(){

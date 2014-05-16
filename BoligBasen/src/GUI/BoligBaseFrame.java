@@ -403,20 +403,22 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		
 		// setter venstre panel  til NyBoligPanel
 		if(leftframe == 1){
-			//Personliste pl = boligpan.getUtlListe();
-			NewBoligPanel boligpanel = new NewBoligPanel();	
-			//boligpanel.setUltListe(pl);
+			
+			Personliste p = theList.utleierliste();
 			Container c = getContentPane();
 			c.removeAll();
-			header.setText("Ny Bolig");
-			boligpanel.setUtleierListe(list);
-			try{
-				Bruker cycle = boligpanel.getUtlListe().getFirst();
+			NewBoligPanel boligpanel = new NewBoligPanel();	
+			boligpan = boligpanel;
+			boligpan.setUltListe(p);
 			
-			if (boligpanel.getUtlListe().getFirst() != null){
-				while (cycle != null) {
-					boligpanel.utleiervelger.addItem(cycle.nametoString());
-					cycle = cycle.neste;
+			header.setText("Ny Bolig");
+			try{
+				Bruker cycle = boligpan.getUtlListe().getFirst();
+			
+			if (boligpan.getUtlListe().getFirst() != null){
+				while (cycle.utleierNeste != null) {
+					boligpan.utleiervelger.addItem(cycle.nametoString());
+					cycle = cycle.utleierNeste;
 					
 				}	
 			}
@@ -425,7 +427,6 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			    errorOutput( "Ingen Utleiere er registrert" );
 			    
 			}	
-			boligpan = boligpanel;
 		 	c.setLayout( new BorderLayout() );
 		 	c.add(header,BorderLayout.PAGE_START);
 		 	c.add(boligpan, BorderLayout.LINE_START);
