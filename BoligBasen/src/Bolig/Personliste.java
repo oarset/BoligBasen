@@ -168,4 +168,23 @@ public class Personliste implements Serializable {
 		return toString;
 		}
 	}
+	
+	//Lever en String med informasjon om utleiere fra lista.
+		public String utleiertoString() {
+			
+			if(first ==null){
+				return "Ingen brukere opprettet";
+			}
+			else{
+			
+			Bruker cycle = first;
+			String toString = "Brukere: \n ---- \n\n";
+			while (cycle.neste != null){
+				toString += cycle.toString() + "\n\n ---- \n\n";
+				cycle = cycle.utleierNeste;
+			 }
+			toString += cycle.toString() + "\n\n ---- \n\n";
+			return toString;
+			}
+		}
 }
