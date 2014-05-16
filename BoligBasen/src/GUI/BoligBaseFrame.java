@@ -165,7 +165,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 			
 		// Legger til en meny for lagring
 		JMenu savemenu = new JMenu("Lagre");
-		listemenu.setMnemonic('L');
+		savemenu.setMnemonic('L');
 		
 			// Lagre meny
 			JMenuItem saveFile = new JMenuItem("Lagre til Fil");
