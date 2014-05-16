@@ -281,7 +281,6 @@ public class NewBoligPanel extends JPanel implements Serializable{
 			
 			int boboa = Integer.parseInt(boa.getText());
 			String botype = typeListe[typevelger.getSelectedIndex()];
-			String boutleier = utleiervelger.getItemAt(utleiervelger.getSelectedIndex());
 			String beskr = beskrivelse.getText();
 			int bobygg = Integer.parseInt(byggeaar.getText());
 			int bopris = Integer.parseInt(pris.getText());

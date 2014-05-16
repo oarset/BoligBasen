@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Bolig.Boligsøker;
-import Bolig.Bruker;
 
 public class SeekerPanel extends JLabel implements Serializable{
 	
@@ -24,7 +23,7 @@ public class SeekerPanel extends JLabel implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -6027996351493350976L;
-	private JFormattedTextField maxmndpris, minmndpris, rom, size, balkong, hage, husdyr;
+	private JFormattedTextField maxmndpris, minmndpris, rom, size;
 	public JButton saveSeekerButton, backButton;
 	public JPanel buttonPanel;
 	private Boligsøker seeker;

@@ -2,9 +2,6 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -43,6 +40,7 @@ public class BoligBaseFrame extends JFrame implements Serializable{
 		
 		leftframe = 1;
 		
+		//lister brukt i programmet
 		theList = new Personliste();
 		utleie = new Personliste();
 		boligList= new Boligliste();

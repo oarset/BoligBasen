@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 
@@ -24,7 +23,7 @@ public class SeekerInfoPanel extends JLabel implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -3948299007708588828L;
-	private JFormattedTextField sivilstatus, hhs, smoke, yrke, husdyr; 
+	private JFormattedTextField hhs, yrke; 
 	public JPanel buttonPanel;
 	public JButton saveInfoButton, backButton;
 	private Boligsøker seeker;

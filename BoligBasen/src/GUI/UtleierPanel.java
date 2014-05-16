@@ -14,8 +14,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Bolig.Boligsøker;
-import Bolig.Bruker;
 import Bolig.Utleiere;
 
 public class UtleierPanel extends JLabel implements Serializable{
