@@ -21,7 +21,7 @@ public class TestRun implements Serializable{
 			    new WindowAdapter() {
 			      public void windowClosing( WindowEvent e )
 			      {
-
+			    	  bbf.lagreTilFil();
 			    	  System.exit( 0 );
 			      }
 			    } );
